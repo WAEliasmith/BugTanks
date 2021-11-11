@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CameraHolder : MonoBehaviour
 {
@@ -182,6 +183,10 @@ public class CameraHolder : MonoBehaviour
     // LateUpdate is called once per frame after update
     void FixedUpdate()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene("main");
+        }
         if (follow)
         {
             transform.position = Vector3.SmoothDamp(transform.position,

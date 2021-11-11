@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     {
         movement.xAxis = -Input.GetAxis("Horizontal");
         movement.yAxis = Input.GetAxis("Vertical");
-        if(Input.GetButtonDown("Fire")){
+        if (Input.GetButtonDown("Fire"))
+        {
             gun.Shoot();
         }
     }

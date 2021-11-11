@@ -22,4 +22,12 @@ public class hurtbox : MonoBehaviour
             other.GetComponent<bullet>().hit();
         }
     }
+
+    void Update()
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+    }
 }
