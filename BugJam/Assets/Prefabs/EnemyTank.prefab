@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 1
+  hp: 0
 --- !u!1 &306223115797380877
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
 --- !u!1 &306223115874997229
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306223115874997229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
@@ -306,22 +307,26 @@ MonoBehaviour:
   movement: {fileID: 306223115874997225}
   gun: {fileID: 306223115248917528}
   gunPos: {fileID: 306223116967102112}
-  Target: {fileID: 0}
-  reload: 30
-  bulletCheckDist: 1.2
-  bulletCheckAngle: 60
-  nextWaypointDistance: 0.3
-  time: 30
+  reload: 20
+  bulletCheckDist: 1.5
+  bulletCheckAngle: 80
+  hbox: {fileID: 306223115573594231}
+  nextWaypointDistance: 0.4
+  time: 25
   dodgeCheckTime: 3
-  passiveShotCheckTime: 5
-  AngrySinSpeed: 0.1
-  angryTime: 60
-  trackTime: 60
-  chillTime: 60
+  passiveShotCheckTime: 3
+  AngrySinSpeed: 0.2
+  angryTime: 30
+  trackTime: 20
+  chillTime: 20
   chillRadius: 3
-  angryAngle: 45
-  playerDesire: 70
-  anger: 30
+  angryAngle: 50
+  playerDesire: 80
+  baseAnger: 20
+  angerPerShot: 5
+  angerWhenClose: 1
+  angerGainPerFrame: 0
+  dontShootAtWallDist: 0.5
   bulletSafeDist: 1
 --- !u!50 &306223115874997226
 Rigidbody2D:
@@ -417,6 +422,7 @@ MonoBehaviour:
   numAngles: 32
   rotDelay: 3
   rotStationaryUntilBurst: 5
+  dead: 0
 --- !u!114 &306223115874997204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +445,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 306223115874997229}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d14ae6b06f0e48c44be4048a13c9c037, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -470,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306223116967102119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -6,7 +6,7 @@ public class hurtbox : MonoBehaviour
 {
     public float maxHp = 3;
 
-    private float hp;
+    public float hp;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +20,6 @@ public class hurtbox : MonoBehaviour
         {
             hp -= 1;
             other.GetComponent<bullet>().hit();
-        }
-    }
-
-    void Update()
-    {
-        if (hp <= 0)
-        {
-            Destroy(gameObject.transform.parent.gameObject);
         }
     }
 }

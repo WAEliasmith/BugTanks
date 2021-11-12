@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 
     public Transform gunPos;
 
-    public Transform Target;
+    private Transform Target;
 
     public float reload = 20;
 
@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     public float bulletCheckAngle = 80;
 
     private float reloadLeft;
-
+    public hurtbox hbox;
     Path path;
     int currentWaypoint = 0;
     public float nextWaypointDistance = 0.3f;
@@ -36,7 +36,14 @@ public class EnemyController : MonoBehaviour
     public float angryAngle = 45;
 
     public float playerDesire = 70f;
-    public float anger = 30f;
+    public float baseAnger = 30f;
+    public float angerPerShot = 1f;
+    public float angerWhenClose = 1f;
+    public float angerGainPerFrame = 0.1f;
+    public float dontShootAtWallDist = 0.5f;
+
+    private float anger;
+
 
     public float bulletSafeDist = 1f;
     Seeker seeker;
@@ -45,8 +52,9 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        anger = baseAnger;
         seeker = GetComponent<Seeker>();
-
+        Target = GetClosestPlayer();
         seeker.StartPath(transform.position, Target.position, OnPathComplete);
     }
 
@@ -92,53 +100,62 @@ public class EnemyController : MonoBehaviour
         return (closestBullet);
     }
 
-    // Update is called once per physics
+    // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        //Debug.Log(state);
-        movement.xAxis = 0;
-        movement.yAxis = 0;
-        passiveShotCheckTimeLeft--;
-        if (passiveShotCheckTimeLeft <= 0)
+        if (hbox.hp <= 0)
         {
-            passiveShotCheckTimeLeft = passiveShotCheckTime;
-            ShotCheck(true);
+            movement.dead = true;
         }
-
-        dodgeCheckTimeLeft--;
-        if (dodgeCheckTimeLeft <= 0)
+        if (!movement.dead)
         {
-            dodgeCheckTimeLeft = dodgeCheckTime;
-            //check to see if I need to dodge
-            Collider2D bullet = CheckForBullets();
-            if (bullet != null && (bullet.transform.position - transform.position).magnitude < bulletCheckDist)
+            anger += angerGainPerFrame;
+            //Debug.Log(anger);
+            movement.xAxis = 0;
+            movement.yAxis = 0;
+            passiveShotCheckTimeLeft--;
+            if (passiveShotCheckTimeLeft <= 0)
             {
-                //Initiate dodge
-                state = "dodge";
-                timeLeft = time;
+                passiveShotCheckTimeLeft = passiveShotCheckTime;
+                ShotCheck(true);
             }
-        }
-        timeLeft--;
-        if (timeLeft <= 0)
-        {
-            state = GetNewState();
-        }
 
-        reloadLeft--;
+            dodgeCheckTimeLeft--;
+            if (dodgeCheckTimeLeft <= 0)
+            {
+                dodgeCheckTimeLeft = dodgeCheckTime;
+                //check to see if I need to dodge
+                Collider2D bullet = CheckForBullets();
+                if (bullet != null && (bullet.transform.position - transform.position).magnitude < bulletCheckDist)
+                {
+                    //Initiate dodge
+                    state = "dodge";
+                    timeLeft = time;
+                }
+            }
+            timeLeft--;
+            if (timeLeft <= 0)
+            {
+                state = GetNewState();
+            }
 
-        if (state == "track")
-        {
-            Track();
-        }
-        else if (state == "angry")
-        {
-            Angry();
-        }
-        else if (state == "dodge")
-        {
-            dodgeCheckTimeLeft++;
-            timeLeft++;
-            Dodge();
+            reloadLeft--;
+
+            if (state == "track")
+            {
+                Track();
+            }
+            else if (state == "angry")
+            {
+                anger = baseAnger;
+                Angry();
+            }
+            else if (state == "dodge")
+            {
+                dodgeCheckTimeLeft++;
+                timeLeft++;
+                Dodge();
+            }
         }
     }
 
@@ -151,11 +168,17 @@ public class EnemyController : MonoBehaviour
 
         RaycastHit2D hit;
 
-        int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7 | 1 << 10;
+        int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;
+        int wallLayerMask = 1 << 8 | 1 << 9;
 
         Vector2 direction = gunPos.right;
 
-        //Debug.DrawRay(shotPos, direction, Color.green);
+        Debug.DrawRay(shotPos, direction, Color.green);
+
+        if (Physics2D.Raycast(shotPos, direction, maxDist, wallLayerMask).distance < dontShootAtWallDist)
+        {
+            return;
+        }
 
         for (int i = 0; i < 25; i++)
         {
@@ -174,6 +197,7 @@ public class EnemyController : MonoBehaviour
                         {
                             //passive shot
                             gun.Shoot();
+                            anger += angerPerShot;
                             reloadLeft = reload;
                             if (passive) { reloadLeft += reload; }
                         }
@@ -205,6 +229,8 @@ public class EnemyController : MonoBehaviour
 
                 //Move new lazer point forwards a lil
                 shotPos += direction * 0.01f;
+                layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
+
             }
             else
             {
@@ -216,7 +242,11 @@ public class EnemyController : MonoBehaviour
 
     string GetNewState()
     {
+        Target = GetClosestPlayer();
+        float playerDist = (Target.position - transform.position).magnitude;
         float r1 = Random.value * 100;
+
+        anger += (10 - playerDist) * angerWhenClose;
 
         if (r1 < anger)
         {
@@ -228,7 +258,6 @@ public class EnemyController : MonoBehaviour
 
         if (r1 < playerDesire)
         {
-            Target = GetClosestPlayer();
             timeLeft = trackTime;
             seeker.StartPath(transform.position, Target.position, OnPathComplete);
             return ("track");
