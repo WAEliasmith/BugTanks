@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class CameraHolder : MonoBehaviour
 {
     public Transform target;
-
+    public Transform target2;
     public bool follow = true;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
@@ -174,23 +174,36 @@ public class CameraHolder : MonoBehaviour
         SW.transform.localPosition = new Vector3(-w, -h, 0);
         S.transform.localPosition = new Vector3(0, -h, 0);
         SE.transform.localPosition = new Vector3(w, -h, 0);
-
-        // Debug.DrawLine(NW.transform.localPosition / 2, NE.transform.localPosition / 2, Color.white, 999f);
-        // Debug.DrawLine(NE.transform.localPosition / 2, SE.transform.localPosition / 2, Color.white, 999f);
-        // Debug.DrawLine(SE.transform.localPosition / 2, SW.transform.localPosition / 2, Color.white, 999f);
-        // Debug.DrawLine(SW.transform.localPosition / 2, NW.transform.localPosition / 2, Color.white, 999f);
     }
-    // LateUpdate is called once per frame after update
+    // Fixed is called once per physics
     void FixedUpdate()
     {
         if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene("main");
         }
-        if (follow)
+        if (follow && target.GetComponent<MoveTank>().dead == false)
         {
             transform.position = Vector3.SmoothDamp(transform.position,
             target.position + offset, ref velocity, smoothSpeed);
+        }
+        else
+        {
+            Transform killedBy = target.GetComponent<MoveTank>().killedBy;
+            if (killedBy != null)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position,
+                killedBy.position + offset, ref velocity, smoothSpeed);
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position,
+                new Vector3(0, 0, 0) + offset, ref velocity, smoothSpeed);
+            }
+
+
+
+
         }
     }
 }

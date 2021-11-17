@@ -22,7 +22,6 @@ public class Gun : MonoBehaviour
         int shotIndex = -1;
         for (int i = 0; i < myBullets.Length; i++)
         {
-            Debug.Log(myBullets[i]);
             if (myBullets[i] == null)
             {
                 shotIndex = i;
