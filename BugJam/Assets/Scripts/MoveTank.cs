@@ -24,7 +24,11 @@ public class MoveTank : MonoBehaviour
     private float rotStationary;
     private float rotDelayLeft;
     public bool dead = false;
-
+    public Transform killedBy;
+    void Start()
+    {
+        killedBy = null;
+    }
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
@@ -86,7 +90,7 @@ public class MoveTank : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector2(-999, -999);
+            gameObject.SetActive(false);
         }
     }
 }

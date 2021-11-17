@@ -55,14 +55,20 @@ public class EnemyController : MonoBehaviour
         anger = baseAnger;
         seeker = GetComponent<Seeker>();
         Target = GetClosestPlayer();
-        seeker.StartPath(transform.position, Target.position, OnPathComplete);
+        if (Target)
+        {
+            seeker.StartPath(transform.position, Target.position, OnPathComplete);
+        }
     }
 
     void UpdatePath()
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(transform.position, Target.position, OnPathComplete);
+            if (Target)
+            {
+                seeker.StartPath(transform.position, Target.position, OnPathComplete);
+            }
         }
     }
 
@@ -106,6 +112,7 @@ public class EnemyController : MonoBehaviour
         if (hbox.hp <= 0)
         {
             movement.dead = true;
+            movement.killedBy = transform;
         }
         if (!movement.dead)
         {
@@ -243,10 +250,13 @@ public class EnemyController : MonoBehaviour
     string GetNewState()
     {
         Target = GetClosestPlayer();
-        float playerDist = (Target.position - transform.position).magnitude;
-        float r1 = Random.value * 100;
+        if (Target)
+        {
+            float playerDist = (Target.position - transform.position).magnitude;
+            anger += (10 - playerDist) * angerWhenClose;
+        }
 
-        anger += (10 - playerDist) * angerWhenClose;
+        float r1 = Random.value * 100;
 
         if (r1 < anger)
         {
@@ -259,7 +269,10 @@ public class EnemyController : MonoBehaviour
         if (r1 < playerDesire)
         {
             timeLeft = trackTime;
-            seeker.StartPath(transform.position, Target.position, OnPathComplete);
+            if (Target)
+            {
+                seeker.StartPath(transform.position, Target.position, OnPathComplete);
+            }
             return ("track");
         }
 
@@ -270,7 +283,15 @@ public class EnemyController : MonoBehaviour
 
     void Angry()
     {
-        Vector2 direction = (Vector2)(Target.position - transform.position).normalized;
+        Vector2 direction;
+        if (Target)
+        {
+            direction = (Vector2)(Target.position - transform.position).normalized;
+        }
+        else
+        {
+            direction = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+        }
         float dangle = Mathf.DeltaAngle(transform.eulerAngles.z, Vector2.SignedAngle(new Vector2(1f, 0f), direction));
         dangle += angryAngle * (Mathf.Sin((timeLeft - angryTime) * AngrySinSpeed));
         if (dangle > 10)
