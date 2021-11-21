@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Gun gun;
     public hurtbox hbox;
 
+    public MazeHandler maze;
+
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +18,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire") && movement.dead == false)
         {
             gun.Shoot();
+        }
+        if (Input.GetKeyDown("1"))
+        {
+            maze.changeWall(transform.position, "XW");
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            maze.changeWall(transform.position, "YW");
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            maze.changeWall(transform.position, "TXW");
+        }
+        if (Input.GetKeyDown("4"))
+        {
+            maze.changeWall(transform.position, "TYW");
+        }
+        if (Input.GetKeyDown("5"))
+        {
+            maze.changeWall(transform.position);
         }
 
         if (hbox.hp <= 0)

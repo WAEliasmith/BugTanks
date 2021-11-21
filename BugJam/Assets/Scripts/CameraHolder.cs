@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using System;
 using UnityEngine.SceneManagement;
 
 public class CameraHolder : MonoBehaviour
@@ -13,11 +11,6 @@ public class CameraHolder : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
-
-    private Tilemap XW;
-    private Tilemap YW;
-    private Tilemap TXW;
-    private Tilemap TYW;
 
     public Vector2 screenSize;
     public Vector2 wrapOffset;
@@ -56,106 +49,9 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
-
-        XW = GameObject.Find("XWalls").GetComponent<Tilemap>();
-        YW = GameObject.Find("YWalls").GetComponent<Tilemap>();
-        TXW = GameObject.Find("ThickXWalls").GetComponent<Tilemap>();
-        TYW = GameObject.Find("ThickYWalls").GetComponent<Tilemap>();
-
-        float w = screenSize.x;
-        float h = screenSize.y;
-        AudioListener.volume = 1.4f;
-
-        Tilemap TileMap;
-        TileBase currTile;
-
-
-        //Duplicate X edge tiles
-        TileMap = XW;
-        //currTile = TileMap.GetTile(new Vector3Int(0,0,0));
-
-        for (int i = 0; i < 2; i++)
-        {
-            int x = -Convert.ToInt32(w / 2);
-            for (int y = -Convert.ToInt32(h / 2); y <= Convert.ToInt32(h / 2) - 1; y++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x + Convert.ToInt32(w), y, 0), currTile);
-            }
-            TileMap = TXW;
-        }
-
-        TileMap = XW;
-        for (int i = 0; i < 2; i++)
-        {
-            int x = Convert.ToInt32(w / 2) - 1;
-            for (int y = -Convert.ToInt32(h / 2); y <= Convert.ToInt32(h / 2) - 1; y++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x - Convert.ToInt32(w), y, 0), currTile);
-            }
-            TileMap = TXW;
-        }
-
-        //Duplicate X edge tiles on the top edge
-        TileMap = XW;
-        //currTile = TileMap.GetTile(new Vector3Int(0,0,0));
-
-        for (int i = 0; i < 2; i++)
-        {
-            int y = Convert.ToInt32(h / 2) - 1;
-            for (int x = -Convert.ToInt32(w / 2); x <= Convert.ToInt32(w / 2); x++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x, y - Convert.ToInt32(h), 0), currTile);
-            }
-            TileMap = TXW;
-        }
-
-        //Duplicate Y edge tiles
-        TileMap = YW;
-        //currTile = TileMap.GetTile(new Vector3Int(0,0,0));
-        for (int i = 0; i < 2; i++)
-        {
-            int y = -Convert.ToInt32(h / 2);
-            for (int x = -Convert.ToInt32(w / 2); x <= Convert.ToInt32(w / 2); x++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x, y + Convert.ToInt32(h), 0), currTile);
-            }
-            TileMap = TYW;
-        }
-
-        TileMap = YW;
-        for (int i = 0; i < 2; i++)
-        {
-            int y = Convert.ToInt32(h / 2) - 1;
-            for (int x = -Convert.ToInt32(w / 2); x <= Convert.ToInt32(w / 2); x++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x, y - Convert.ToInt32(h), 0), currTile);
-            }
-            TileMap = TYW;
-        }
-
-        //Duplicate Y edge tiles on the left edge
-        TileMap = YW;
-        //currTile = TileMap.GetTile(new Vector3Int(0,0,0));
-
-        for (int i = 0; i < 2; i++)
-        {
-            int x = -Convert.ToInt32(w / 2);
-            for (int y = -Convert.ToInt32(h / 2); y <= Convert.ToInt32(h / 2); y++)
-            {
-                currTile = TileMap.GetTile(new Vector3Int(x, y, 0));
-                TileMap.SetTile(new Vector3Int(x + Convert.ToInt32(w), y, 0), currTile);
-            }
-            TileMap = TYW;
-        }
-
-
-
-
+        //get screen size
+        screenSize = GameObject.Find("MazeHandler").GetComponent<MazeHandler>().screenSize;
+        //disable outer cameras
         // NW.GetComponent<Camera>().enabled = false;
         // N.GetComponent<Camera>().enabled = false;
         // NE.GetComponent<Camera>().enabled = false;
@@ -164,6 +60,9 @@ public class CameraHolder : MonoBehaviour
         // SW.GetComponent<Camera>().enabled = false;
         // S.GetComponent<Camera>().enabled = false;
         // SE.GetComponent<Camera>().enabled = false;
+
+        float w = screenSize.x;
+        float h = screenSize.y;
 
         NW.transform.localPosition = new Vector3(-w, h, 0);
         N.transform.localPosition = new Vector3(0, h, 0);

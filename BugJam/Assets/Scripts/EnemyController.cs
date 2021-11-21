@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     int currentWaypoint = 0;
     public float nextWaypointDistance = 0.3f;
     public int time = 30;
-    private int timeLeft;
+    private float timeLeft;
     public int dodgeCheckTime = 30;
     private int dodgeCheckTimeLeft;
     public int passiveShotCheckTime = 5;
@@ -33,17 +33,25 @@ public class EnemyController : MonoBehaviour
     public int trackTime = 60;
     public int chillTime = 60;
     public int chillRadius = 3;
+    public int cheeseTime = 15;
     public float angryAngle = 45;
+    public float cheeseAngle;
 
     public float playerDesire = 70f;
     public float baseAnger = 30f;
     public float angerPerShot = 1f;
     public float angerWhenClose = 1f;
+    public float cheeseWhenClose = 1f;
     public float angerGainPerFrame = 0.1f;
     public float dontShootAtWallDist = 0.5f;
+    public float aimDist = 10f;
 
-    private float anger;
+    public float cheeseProximity = 4f;
 
+    public float cheesingReduction = 0.75f;
+    public float anger;
+    public float cheeseAnger;
+    private Vector2 screenSize;
 
     public float bulletSafeDist = 1f;
     Seeker seeker;
@@ -52,6 +60,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         anger = baseAnger;
         seeker = GetComponent<Seeker>();
         Target = GetClosestPlayer();
@@ -109,6 +118,32 @@ public class EnemyController : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
+        Target = GetClosestPlayer();
+        if (Target)
+        {
+            float playerDist = (Target.position - transform.position).magnitude;
+            //update anger
+            anger += (screenSize.x - playerDist) * angerWhenClose;
+            if (path != null && path.vectorPath != null && currentWaypoint < path.vectorPath.Count)
+            {
+                float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+                cheeseAnger += (cheeseProximity - distance) * cheeseWhenClose;
+            }
+            else
+            {
+                //path invalid, assume endpoint is 1 unit away
+                cheeseAnger += (cheeseProximity - 1) * cheeseWhenClose;
+            }
+            if (cheeseAnger < 0)
+            {
+                cheeseAnger = 0;
+            }
+            if (anger < 0)
+            {
+                anger = 0;
+            }
+        }
+
         if (hbox.hp <= 0)
         {
             movement.dead = true;
@@ -117,7 +152,6 @@ public class EnemyController : MonoBehaviour
         if (!movement.dead)
         {
             anger += angerGainPerFrame;
-            //Debug.Log(anger);
             movement.xAxis = 0;
             movement.yAxis = 0;
             passiveShotCheckTimeLeft--;
@@ -157,6 +191,10 @@ public class EnemyController : MonoBehaviour
                 anger = baseAnger;
                 Angry();
             }
+            else if (state == "cheesed")
+            {
+                Cheesed();
+            }
             else if (state == "dodge")
             {
                 dodgeCheckTimeLeft++;
@@ -169,7 +207,7 @@ public class EnemyController : MonoBehaviour
     void ShotCheck(bool passive)
     {
         //Shoot ray
-        float maxDist = 10;
+        float maxDist = aimDist;
         if (passive) { maxDist -= 2; }
         Vector2 shotPos = (Vector2)gunPos.position;
 
@@ -181,10 +219,19 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = gunPos.right;
 
         Debug.DrawRay(shotPos, direction, Color.green);
-
-        if (Physics2D.Raycast(shotPos, direction, maxDist, wallLayerMask).distance < dontShootAtWallDist)
+        // subtract a small amount to avoid attempting to shoot over walls
+        hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
+        if (hit.distance < dontShootAtWallDist)
         {
-            return;
+            if (hit.collider == null)
+            {
+                return;
+            }
+            //allow AI to pointblank player
+            if (hit.collider.tag != "Player")
+            {
+                return;
+            }
         }
 
         for (int i = 0; i < 25; i++)
@@ -249,14 +296,16 @@ public class EnemyController : MonoBehaviour
 
     string GetNewState()
     {
-        Target = GetClosestPlayer();
-        if (Target)
+        //need to be really cheeseAngry to cheese
+        float r1 = Random.value * 70 + 30;
+
+        if (r1 < cheeseAnger)
         {
-            float playerDist = (Target.position - transform.position).magnitude;
-            anger += (10 - playerDist) * angerWhenClose;
+            timeLeft = cheeseTime;
+            return ("cheesed");
         }
 
-        float r1 = Random.value * 100;
+        r1 = Random.value * 100;
 
         if (r1 < anger)
         {
@@ -305,27 +354,71 @@ public class EnemyController : MonoBehaviour
         ShotCheck(false);
     }
 
+    bool CloseToAngle(Vector2 angle, float requirement)
+    {
+        float dangle = Mathf.DeltaAngle(transform.eulerAngles.z,
+        Vector2.SignedAngle(new Vector2(1f, 0f), angle));
+        if (Mathf.Abs(dangle) < requirement)
+        {
+            return (true);
+        }
+        return (false);
+    }
+
+    void Cheesed()
+    {
+        if (timeLeft == cheeseTime)
+        {
+            cheeseAnger = cheeseAnger * cheesingReduction;
+            //initiate cheesing
+            //go to closest cardinal directions
+
+            if (CloseToAngle(new Vector2(0, 1), 45))
+            {
+                cheeseAngle = 90;
+            }
+            else if (CloseToAngle(new Vector2(0, -1), 45))
+            {
+                cheeseAngle = -90;
+            }
+            else if (CloseToAngle(new Vector2(1, 0), 45))
+            {
+                cheeseAngle = 0;
+            }
+            else if (CloseToAngle(new Vector2(-1, 0), 45))
+            {
+                cheeseAngle = 180;
+            }
+        }
+
+        float dangle = Mathf.DeltaAngle(transform.eulerAngles.z, cheeseAngle);
+
+        if (dangle > 5)
+        {
+            timeLeft += 0.8f;
+            movement.xAxis = 1;
+        }
+        else if (dangle < -5)
+        {
+            timeLeft += 0.8f;
+            movement.xAxis = -1;
+        }
+        movement.yAxis = 1;
+    }
+
     void Track()
     {
         if (path == null)
         {
-            float r1 = Random.value * 100;
+            timeLeft -= 5;
 
-            if (r1 < 80)
-            {
-                GetNewState();
-            }
             return;
         }
         if (currentWaypoint >= path.vectorPath.Count)
         {
             //reached end of path
-            float r1 = Random.value * 100;
+            timeLeft -= 5;
 
-            if (r1 < 80)
-            {
-                GetNewState();
-            }
             return;
         }
         bool increaseWaypoint = false;

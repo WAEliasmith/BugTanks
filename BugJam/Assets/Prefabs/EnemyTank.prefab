@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 306223115573594231}
   m_Layer: 6
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,13 +571,21 @@ MonoBehaviour:
   trackTime: 20
   chillTime: 20
   chillRadius: 3
+  cheeseTime: 35
   angryAngle: 50
+  cheeseAngle: 0
   playerDesire: 80
-  baseAnger: 20
-  angerPerShot: 5
-  angerWhenClose: 1
+  baseAnger: 10
+  angerPerShot: 7
+  angerWhenClose: 0.02
+  cheeseWhenClose: 0.12
   angerGainPerFrame: 0
-  dontShootAtWallDist: 0.75
+  dontShootAtWallDist: 0.6
+  aimDist: 10
+  cheeseProximity: 1.6
+  cheesingReduction: 0.35
+  anger: 0
+  cheeseAnger: 0
   bulletSafeDist: 1
 --- !u!50 &306223115874997226
 Rigidbody2D:
@@ -612,16 +620,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af99f4e1a651ec4e9a3184f52a823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.03
+  speed: 0.035
   xAxis: 0
   yAxis: 0
   rotationSpeed: 5.6
-  box: {fileID: 0}
   rb: {fileID: 306223115874997226}
   numAngles: 32
   rotDelay: 3
   rotStationaryUntilBurst: 5
   dead: 0
+  killedBy: {fileID: 0}
 --- !u!114 &306223115874997204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306223116967102119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

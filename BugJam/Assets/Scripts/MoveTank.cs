@@ -10,8 +10,6 @@ public class MoveTank : MonoBehaviour
     public float yAxis;
     public float rotationSpeed;
 
-    public BoxCollider2D box;
-
     public Rigidbody2D rb;
 
     public float numAngles;

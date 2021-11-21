@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Wrap : MonoBehaviour
 {
-
     public GameObject CameraHolder = null;
 
     private Vector2 screenSize;
