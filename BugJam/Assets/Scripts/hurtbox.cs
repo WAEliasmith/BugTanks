@@ -22,7 +22,7 @@ public class hurtbox : MonoBehaviour
         hp -= 1;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Bullet")
         {
@@ -35,8 +35,11 @@ public class hurtbox : MonoBehaviour
 
         if (other.tag == "Powerup")
         {
-            gun.powerup = other.GetComponent<Powerup>().powerup;
-            other.GetComponent<Powerup>().Collected();
+            if (gun.powerup == "none")
+            {
+                gun.powerup = other.GetComponent<Powerup>().powerup;
+                other.GetComponent<Powerup>().Collected();
+            }
         }
     }
 }

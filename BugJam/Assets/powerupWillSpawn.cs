@@ -7,7 +7,8 @@ public class powerupWillSpawn : MonoBehaviour
     public int timer = 60;
     private int timerLeft;
 
-    public GameObject powerUp = null;
+    public string powerup = "none";
+    public GameObject powerUp;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,8 @@ public class powerupWillSpawn : MonoBehaviour
         timerLeft--;
         if (timerLeft == 0)
         {
-            Instantiate(powerUp, transform.position, Quaternion.identity);
+            GameObject currPowerup = Instantiate(powerUp, transform.position, Quaternion.identity);
+            currPowerup.GetComponent<Powerup>().powerup = powerup;
             Destroy(gameObject);
         }
     }

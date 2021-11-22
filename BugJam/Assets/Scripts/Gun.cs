@@ -28,8 +28,13 @@ public class Gun : MonoBehaviour
 
     public LineRenderer line;
 
+    private Vector2 screenSize;
+    private Vector2 wrapOffset;
+
     void Start()
     {
+        screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
+        wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
         myBullets = new GameObject[bulletCount];
     }
 
@@ -82,6 +87,7 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
                 powerup = "none";
                 p.GetComponent<lazer>().path = lazerArray;
+                p.transform.position = lazerArray[0];
             }
         }
         else if (powerup == "missile")
@@ -141,13 +147,36 @@ public class Gun : MonoBehaviour
         //Shoot ray
         RaycastHit2D hit;
         int wallLayerMask = 1 << 8 | 1 << 9;
-        Vector2 shotPos = (Vector2)transform.position;
+        Vector3 initialShotPos = transform.position;
+
+        Debug.Log("initialShotPos" + initialShotPos);
+
+        if (initialShotPos.x > (screenSize.x / 2) + wrapOffset.x)
+        {
+            initialShotPos -= new Vector3(screenSize.x, 0f, 0f);
+        }
+        else if (initialShotPos.x < -(screenSize.x / 2) + wrapOffset.x)
+        {
+            initialShotPos += new Vector3(screenSize.x, 0f, 0f);
+        }
+        if (initialShotPos.y > (screenSize.y / 2) + wrapOffset.y)
+        {
+            initialShotPos -= new Vector3(0f, screenSize.y, 0f);
+        }
+        else if (initialShotPos.y < -(screenSize.y / 2) + wrapOffset.y)
+        {
+            initialShotPos += new Vector3(0f, screenSize.y, 0f);
+        }
+
         float maxDist = lazerRange;
+
+        Vector2 shotPos = (Vector2)initialShotPos;
+        Debug.Log("shotPos" + shotPos);
 
         Vector2 prepDirection = gunPos.transform.right;
 
         List<Vector3> currPath = new List<Vector3>();
-        currPath.Add(transform.position);
+        currPath.Add(initialShotPos);
 
         //calculate currPath
         for (int i = 0; i < 25; i++)

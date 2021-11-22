@@ -18,6 +18,7 @@ public class Powerup : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
+        lifeLeft--;
         if (lifeLeft <= 0)
         {
             Destroy(gameObject);
