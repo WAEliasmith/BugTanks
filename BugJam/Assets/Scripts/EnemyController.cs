@@ -264,11 +264,11 @@ public class EnemyController : MonoBehaviour
                 float y = hit.normal.y;
 
                 //Make lazer bounce
-                if (Mathf.Abs(x) > Mathf.Abs(y) + 0.2)
+                if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
                 {
                     direction.x = -direction.x;
                 }
-                else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.2)
+                else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
                 {
                     direction.y = -direction.y;
                 }
@@ -279,7 +279,7 @@ public class EnemyController : MonoBehaviour
                 }
 
                 //Move new lazer point forwards a lil
-                shotPos += direction * 0.01f;
+                shotPos += direction * 0.015f;
                 layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
 
             }

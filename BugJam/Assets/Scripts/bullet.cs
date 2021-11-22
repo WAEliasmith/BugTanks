@@ -18,6 +18,9 @@ public class bullet : MonoBehaviour
     private bool yFlip;
     private bool frame1;
 
+    public bool dead = false;
+    public bool hitted = false;
+    public bool visible = true;
 
     void Start()
     {
@@ -36,32 +39,46 @@ public class bullet : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        if (lifeLeft < life)
+        if (!dead)
         {
-            frame1 = false;
-            sr.color = new Color(0f, 0f, 0f, 1f);
-        }
-        xFlip = false;
-        yFlip = false;
-        lifeLeft -= 1;
-        if (weird)
-        {
-            transform.position += new Vector3(velocity.y, velocity.x, 0f);
-        }
-        else
-        {
-            transform.position += velocity;
-        }
-
-
-        if (lifeLeft < fadeStart)
-        {
-            sr.color = new Color(0f, 0f, 0f, (lifeLeft / fadeStart) + 0.1f);
-            if (lifeLeft <= 0)
+            if (lifeLeft < life)
             {
-                Destroy(gameObject);
+                frame1 = false;
+                float b = 0;
+                if (weird)
+                { b = 1; }
+                sr.color = new Color(0f, 0f, b, 1f);
+                if (!visible)
+                { sr.color = new Color(0f, 0f, 0f, 0f); }
+            }
+            xFlip = false;
+            yFlip = false;
+            lifeLeft -= 1;
+            if (weird)
+            {
+                transform.position += new Vector3(velocity.y, velocity.x, 0f);
+            }
+            else
+            {
+                transform.position += velocity;
+            }
+
+
+            if (lifeLeft < fadeStart)
+            {
+                float b = 0;
+                if (weird)
+                { b = 1; }
+                sr.color = new Color(0f, 0f, b, (lifeLeft / fadeStart) + 0.1f);
+                if (!visible)
+                { sr.color = new Color(0f, 0f, 0f, 0f); }
+                if (lifeLeft <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
+
     }
 
     public void hit()
@@ -70,6 +87,7 @@ public class bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        hitted = true;
     }
 
     // called when the player hits an enemyWeapon
