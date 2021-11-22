@@ -50,7 +50,6 @@ public class CameraHolder : MonoBehaviour
     void Start()
     {
         //get screen size
-        screenSize = GameObject.Find("MazeHandler").GetComponent<MazeHandler>().screenSize;
         //disable outer cameras
         // NW.GetComponent<Camera>().enabled = false;
         // N.GetComponent<Camera>().enabled = false;

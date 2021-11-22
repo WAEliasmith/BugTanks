@@ -223,16 +223,13 @@ public class EnemyController : MonoBehaviour
         hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
         if (hit.distance < dontShootAtWallDist)
         {
-            if (hit.collider == null)
-            {
-                return;
-            }
             //allow AI to pointblank player
-            if (hit.collider.tag != "Player")
+            if (hit.collider != null && hit.collider.tag != "Player")
             {
                 return;
             }
         }
+
 
         for (int i = 0; i < 25; i++)
         {

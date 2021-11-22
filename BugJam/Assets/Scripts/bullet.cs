@@ -84,7 +84,7 @@ public class bullet : MonoBehaviour
             }
             float x = other.GetContact(0).normal.x;
             float y = other.GetContact(0).normal.y;
-            if (Mathf.Abs(x) > Mathf.Abs(y) + 0.2)
+            if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
             {
                 if (xFlip == false)
                 {
@@ -92,7 +92,7 @@ public class bullet : MonoBehaviour
                     xFlip = true;
                 }
             }
-            else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.2)
+            else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
             {
                 if (yFlip == false)
                 {
