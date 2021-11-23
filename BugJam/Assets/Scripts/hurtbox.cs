@@ -26,11 +26,8 @@ public class hurtbox : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            if (other.GetComponent<bullet>().dead = true)
-            {
-                IHaveBeenHit();
-                other.GetComponent<bullet>().hit();
-            }
+            IHaveBeenHit();
+            other.GetComponent<bullet>().hit();
         }
 
         if (other.tag == "Powerup")

@@ -7,26 +7,19 @@ public class bullet : MonoBehaviour
     public Vector3 velocity;
     public float life = 200;
     public float fadeStart = 50;
-    public SpriteRenderer sr;
+    public SpriteRenderer sr = null;
 
     public bool weird = false;
-    public bool piercing = false;
-    private float lifeLeft;
-    private GridLayout gridLayout;
-    private GridLayout gridLayoutY;
+    protected float lifeLeft;
     private bool xFlip;
     private bool yFlip;
     private bool frame1;
-
-    public bool dead = false;
-    public bool hitted = false;
-    public bool visible = true;
+    protected bool piercing = false;
 
     void Start()
     {
+        sr = gameObject.GetComponent<SpriteRenderer>();
         lifeLeft = life;
-        gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
-        gridLayoutY = GameObject.Find("YWalls").GetComponent<GridLayout>();
         frame1 = true;
         if (weird)
         {
@@ -34,63 +27,51 @@ public class bullet : MonoBehaviour
             velocity.y = velocity.x;
             velocity.x = temp;
         }
+        frame1 = false;
+        float b = 0;
+        if (weird)
+        { b = 1; }
+        sr.color = new Color(0f, 0f, b, 1f);
 
     }
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        if (!dead)
+        xFlip = false;
+        yFlip = false;
+        lifeLeft -= 1;
+        if (weird)
         {
-            if (lifeLeft < life)
-            {
-                frame1 = false;
-                float b = 0;
-                if (weird)
-                { b = 1; }
-                sr.color = new Color(0f, 0f, b, 1f);
-                if (!visible)
-                { sr.color = new Color(0f, 0f, 0f, 0f); }
-            }
-            xFlip = false;
-            yFlip = false;
-            lifeLeft -= 1;
-            if (weird)
-            {
-                transform.position += new Vector3(velocity.y, velocity.x, 0f);
-            }
-            else
-            {
-                transform.position += velocity;
-            }
-
-
-            if (lifeLeft < fadeStart)
-            {
-                float b = 0;
-                if (weird)
-                { b = 1; }
-                sr.color = new Color(0f, 0f, b, (lifeLeft / fadeStart) + 0.1f);
-                if (!visible)
-                { sr.color = new Color(0f, 0f, 0f, 0f); }
-                if (lifeLeft <= 0)
-                {
-                    Destroy(gameObject);
-                }
-            }
+            transform.position += new Vector3(velocity.y, velocity.x, 0f);
+        }
+        else
+        {
+            transform.position += velocity;
         }
 
+
+        if (lifeLeft < fadeStart)
+        {
+            float b = 0;
+            if (weird)
+            { b = 1; }
+            sr.color = new Color(0f, 0f, b, (lifeLeft / fadeStart) + 0.1f);
+            if (lifeLeft <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
-    public void hit()
+    public virtual void hit()
     {
         if (!piercing)
         {
             Destroy(gameObject);
         }
-        hitted = true;
     }
 
-    // called when the player hits an enemyWeapon
+    // called when the bullet hits a wall
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "YWall" || other.gameObject.tag == "XWall")

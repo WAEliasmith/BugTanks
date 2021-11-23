@@ -105,7 +105,6 @@ MonoBehaviour:
   fadeStart: 50
   sr: {fileID: 2378534546452916498}
   weird: 0
-  piercing: 0
 --- !u!58 &717643649
 CircleCollider2D:
   m_ObjectHideFlags: 0

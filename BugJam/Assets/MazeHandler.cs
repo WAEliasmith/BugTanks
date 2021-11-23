@@ -238,7 +238,7 @@ public class MazeHandler : MonoBehaviour
         }
     }
 
-    public void changeWall(Vector3 position3d, string wallType = "air", bool batch = false, bool replace = false)
+    public void changeWall(Vector3 position3d, string wallType = "air", bool batch = false, bool replace = false, bool weakReplace = false)
     {
         bool validX = false;
         bool validY = false;
@@ -303,21 +303,21 @@ public class MazeHandler : MonoBehaviour
 
         if ((wallType == "XW" || (wallType == "air")) && validX)
         {
-            if (replace == false || (XW.GetTile(xposition) != null || TXW.GetTile(xposition) != null))
+            if (replace == false || (XW.GetTile(xposition) != null || (weakReplace == false && TXW.GetTile(xposition) != null)))
             {
                 XW.SetTile(xposition, tile);
             }
         }
         if ((wallType == "YW" || (wallType == "air")) && validY)
         {
-            if (replace == false || (YW.GetTile(yposition) != null || TYW.GetTile(yposition) != null))
+            if (replace == false || (YW.GetTile(yposition) != null || (weakReplace == false && TYW.GetTile(yposition) != null)))
             {
                 YW.SetTile(yposition, tile);
             }
         }
         if ((wallType == "TXW" || (wallType == "air")) && validX)
         {
-            if (replace == false || (XW.GetTile(xposition) != null || TXW.GetTile(xposition) != null))
+            if (replace == false || (XW.GetTile(xposition) != null || (weakReplace == false && TXW.GetTile(xposition) != null)))
             {
                 XW.SetTile(xposition, null);
                 TXW.SetTile(xposition, tile);
@@ -325,7 +325,7 @@ public class MazeHandler : MonoBehaviour
         }
         if ((wallType == "TYW" || (wallType == "air")) && validY)
         {
-            if (replace == false || (YW.GetTile(yposition) != null || TYW.GetTile(yposition) != null))
+            if (replace == false || (YW.GetTile(yposition) != null || (weakReplace == false && TYW.GetTile(yposition) != null)))
             {
                 YW.SetTile(yposition, null);
                 TYW.SetTile(yposition, tile);
@@ -338,7 +338,7 @@ public class MazeHandler : MonoBehaviour
         }
     }
 
-    void updateGraph()
+    public void updateGraph()
     {
         GameObject XWO = GameObject.Find("XWalls");
         GameObject YWO = GameObject.Find("YWalls");
@@ -348,7 +348,7 @@ public class MazeHandler : MonoBehaviour
         AstarPath.active.UpdateGraphs(b);
     }
 
-    void screenWrapProofWalls()
+    public void screenWrapProofWalls()
     {
         float w = screenSize.x;
         float h = screenSize.y;

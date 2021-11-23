@@ -23,6 +23,16 @@ public class MoveTank : MonoBehaviour
     private float rotDelayLeft;
     public bool dead = false;
     public Transform killedBy;
+
+    public float launchVectorDecay = 0.05f;
+    public Vector2 launchVector;
+    public float launchStrength = 1f;
+
+    public void recoil(Vector2 recoil)
+    {
+        launchVector += recoil;
+    }
+
     void Start()
     {
         killedBy = null;
@@ -30,6 +40,10 @@ public class MoveTank : MonoBehaviour
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
+        launchVector -= launchVector * launchVectorDecay;
+
+        Vector2 displacementThisFrame = new Vector2(0, 0);
+
         if (!dead)
         {
             float rotation = Mathf.Clamp(xAxis, -1, 1) * rotationSpeed;
@@ -64,9 +78,7 @@ public class MoveTank : MonoBehaviour
             {
                 moveAmount = -speed * backwardsMultiplier;
             }
-            Vector2 displacementThisFrame = new Vector2(moveAmount * Mathf.Cos(Mathf.Deg2Rad * rb.rotation), moveAmount * Mathf.Sin(Mathf.Deg2Rad * rb.rotation));
-
-            rb.MovePosition(rb.position + displacementThisFrame);
+            displacementThisFrame = new Vector2(moveAmount * Mathf.Cos(Mathf.Deg2Rad * rb.rotation), moveAmount * Mathf.Sin(Mathf.Deg2Rad * rb.rotation));
 
             if ((rb.rotation % 90 < 1 && rb.rotation % 90 > -1) || rb.rotation % 90 > 89 || rb.rotation % 90 < -89)
             {
@@ -90,5 +102,7 @@ public class MoveTank : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        rb.MovePosition(rb.position + displacementThisFrame + launchVector * launchStrength * Time.deltaTime);
+
     }
 }

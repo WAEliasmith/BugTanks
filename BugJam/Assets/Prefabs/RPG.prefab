@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &966619046920893350
+--- !u!1 &4169178763570937128
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 966619046920893349}
-  - component: {fileID: 966619046920893348}
-  - component: {fileID: 966619046920893351}
-  - component: {fileID: 3199911402878584119}
-  - component: {fileID: 3199911402878584115}
-  - component: {fileID: 5694113414175940318}
+  - component: {fileID: 4169178763570937131}
+  - component: {fileID: 4169178763570937130}
+  - component: {fileID: 1790644219965803449}
+  - component: {fileID: 1790644219965803453}
+  - component: {fileID: 8913880278088912976}
+  - component: {fileID: -6691600746735521846}
   m_Layer: 3
-  m_Name: Weird
+  m_Name: RPG
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &966619046920893349
+--- !u!4 &4169178763570937131
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
+  m_GameObject: {fileID: 4169178763570937128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
@@ -36,13 +36,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &966619046920893348
+--- !u!212 &4169178763570937130
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
+  m_GameObject: {fileID: 4169178763570937128}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -88,30 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &966619046920893351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22c3d3f1d3dbf41930717deeb0743a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
-  life: 400
-  fadeStart: 50
-  sr: {fileID: 966619046920893348}
-  weird: 1
---- !u!58 &3199911402878584119
+--- !u!58 &1790644219965803449
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
+  m_GameObject: {fileID: 4169178763570937128}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -120,15 +103,15 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!50 &3199911402878584115
+  m_Radius: 1
+--- !u!50 &1790644219965803453
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
+  m_GameObject: {fileID: 4169178763570937128}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -142,16 +125,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &5694113414175940318
+--- !u!114 &8913880278088912976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966619046920893350}
+  m_GameObject: {fileID: 4169178763570937128}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e38d454ef6d87a4ebc6ed37172f9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraHolder: {fileID: 0}
+--- !u!114 &-6691600746735521846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169178763570937128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80308fb59a3c5f9469affaa61f4ffb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+  life: 200
+  fadeStart: 50
+  sr: {fileID: 0}
+  weird: 0
+  explosion: {fileID: 5524349361989402806, guid: 2a05bb1a3a151d24a9fc8aa2a44a9fba, type: 3}
+  maxVelocity: 0.16
+  acceleration: 1.08
+  startSpeed: 0.01

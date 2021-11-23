@@ -41,7 +41,7 @@ public class PowerupDirector : MonoBehaviour
     void CreatePowerup()
     {
         Vector2 direction = Random.insideUnitCircle.normalized;
-        Vector3 position = (Vector3)direction * Random.Range(0f, range);
+        Vector3 position = (Vector3)direction * Random.Range(0f, range / 2);
 
         GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
         powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];

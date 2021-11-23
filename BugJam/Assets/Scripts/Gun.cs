@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public GameObject gunPos;
     public float shotSpeed;
+    private int wallLayerMask = 1 << 8 | 1 << 9;
+    public MoveTank movement;
 
     public string powerup = "none";
 
@@ -23,6 +25,8 @@ public class Gun : MonoBehaviour
     public GameObject rpg = null;
     public GameObject grenade = null;
     private int weirdCount = 0;
+
+    public float minShotDistance = 0.2f;
 
     public float lazerRange = 10;
 
@@ -62,82 +66,88 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        if (powerup == "none")
+        RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
+        if (hit != null)
         {
-            int shotIndex = -1;
-            for (int i = 0; i < myBullets.Length; i++)
+            if (powerup == "none")
             {
-                if (myBullets[i] == null)
+                int shotIndex = -1;
+                for (int i = 0; i < myBullets.Length; i++)
                 {
-                    shotIndex = i;
+                    if (myBullets[i] == null)
+                    {
+                        shotIndex = i;
+                    }
+                }
+                if (shotIndex != -1)
+                {
+                    GameObject p = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
+                    p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                    myBullets[shotIndex] = p;
                 }
             }
-            if (shotIndex != -1)
+            else if (powerup == "lazer")
             {
-                GameObject p = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
+                List<Vector3> lazerArray = CalculatePath();
+                if (lazerArray != null)
+                {
+                    GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
+                    powerup = "none";
+                    p.GetComponent<lazer>().path = lazerArray;
+                    p.transform.position = lazerArray[0];
+                }
+            }
+            else if (powerup == "missile")
+            {
+                GameObject p = Instantiate(missile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-                myBullets[shotIndex] = p;
-            }
-        }
-        else if (powerup == "lazer")
-        {
-            List<Vector3> lazerArray = CalculatePath();
-            if (lazerArray != null)
-            {
-                GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
                 powerup = "none";
-                p.GetComponent<lazer>().path = lazerArray;
-                p.transform.position = lazerArray[0];
             }
-        }
-        else if (powerup == "missile")
-        {
-            GameObject p = Instantiate(missile, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "none";
-        }
-        else if (powerup == "wifi missile")
-        {
-            GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "none";
-        }
-        else if (powerup == "shockwave")
-        {
-            GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "none";
-        }
-        else if (powerup == "frag exploder")
-        {
-            powerup = "none";
-        }
-        else if (powerup == "frag shot")
-        {
-            GameObject p = Instantiate(fragShot, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "frag exploder";
-        }
-        else if (powerup == "rpg")
-        {
-            GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "none";
-        }
-        else if (powerup == "grenade")
-        {
-            GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            powerup = "none";
-        }
-        else if (powerup == "weird")
-        {
-            GameObject p = Instantiate(weird, gunPos.transform.position, Quaternion.identity);
-            p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
-            weirdCount++;
-            if (weirdCount % 5 == 0)
+            else if (powerup == "wifi missile")
+            {
+                GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                powerup = "none";
+            }
+            else if (powerup == "shockwave")
+            {
+                GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                powerup = "none";
+            }
+            else if (powerup == "frag exploder")
             {
                 powerup = "none";
+            }
+            else if (powerup == "frag shot")
+            {
+                GameObject p = Instantiate(fragShot, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                powerup = "frag exploder";
+            }
+            else if (powerup == "rpg")
+            {
+                movement.recoil(-1f * gunPos.transform.right);
+                GameObject p = Instantiate(rpg, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
+                powerup = "none";
+
+            }
+            else if (powerup == "grenade")
+            {
+                GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                powerup = "none";
+            }
+            else if (powerup == "weird")
+            {
+                GameObject p = Instantiate(weird, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                weirdCount++;
+                if (weirdCount % 5 == 0)
+                {
+                    powerup = "none";
+                }
             }
         }
     }
@@ -146,7 +156,6 @@ public class Gun : MonoBehaviour
     {
         //Shoot ray
         RaycastHit2D hit;
-        int wallLayerMask = 1 << 8 | 1 << 9;
         Vector3 initialShotPos = transform.position;
 
         Debug.Log("initialShotPos" + initialShotPos);
@@ -168,10 +177,15 @@ public class Gun : MonoBehaviour
             initialShotPos += new Vector3(0f, screenSize.y, 0f);
         }
 
+        RaycastHit2D testhit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
+        if (testhit == null)
+        {
+            return null;
+        }
+
         float maxDist = lazerRange;
 
         Vector2 shotPos = (Vector2)initialShotPos;
-        Debug.Log("shotPos" + shotPos);
 
         Vector2 prepDirection = gunPos.transform.right;
 
@@ -185,13 +199,6 @@ public class Gun : MonoBehaviour
             // Does the ray intersect
             if (hit.collider != null)
             {
-                if (i == 0)
-                {
-                    if (hit.distance < 0.2f)
-                    {
-                        return null;
-                    }
-                }
                 currPath.Add((Vector3)(shotPos + prepDirection * hit.distance));
                 Debug.DrawRay(shotPos, prepDirection * hit.distance, Color.yellow);
 
