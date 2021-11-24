@@ -364,6 +364,7 @@ MonoBehaviour:
   fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
   rpg: {fileID: 4169178763570937128, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
   grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}
+  absorbShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
   minShotDistance: 0.175
   explodeFrag: 0
   lazerRange: 10

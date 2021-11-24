@@ -3292,15 +3292,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToSpawn: 0
   r: 1
-  rateIncrease: 0.001
+  rateIncrease: 0.0005
   timeToSpawnLeft: 0
   initialTimeToSpawn: 200
+  noWallsNear: 0.6
   enabledPowerups:
   - lazer
   - weird
   - rpg
   - grenade
   - frag shot
+  - absorb shot
   powerupPrefab: {fileID: 1234181511820125749, guid: 732ed4a08de70d44889104ca13a08c32, type: 3}
   rangeMod: 1
 --- !u!4 &1659179940
@@ -3816,6 +3818,8 @@ MonoBehaviour:
   fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
   rpg: {fileID: 4169178763570937128, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
   grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}
+  absorbShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
+  scoreNumber: -1
   minShotDistance: 0.175
   explodeFrag: 0
   lazerRange: 12

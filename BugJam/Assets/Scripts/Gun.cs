@@ -24,7 +24,14 @@ public class Gun : MonoBehaviour
     public GameObject fragShot = null;
     public GameObject rpg = null;
     public GameObject grenade = null;
+    public GameObject absorbShot = null;
+
+    public float scoreNumber = -1;
+
     private int weirdCount = 0;
+    private int absorbCount = 0;
+    private int absorbShots = 3;
+    private int weirdShots = 5;
 
     public float minShotDistance = 0.2f;
     public bool explodeFrag = false;
@@ -92,6 +99,7 @@ public class Gun : MonoBehaviour
                     GameObject p = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
                     p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                     myBullets[shotIndex] = p;
+                    p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
                 }
             }
             else if (powerup == "lazer")
@@ -110,26 +118,30 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(missile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "wifi missile")
             {
                 GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "shockwave")
             {
                 GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "frag shot")
             {
                 movement.recoil(-0.5f * gunPos.transform.right);
                 GameObject p = Instantiate(fragShot, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<FragGrenade>().velocity = gunPos.transform.right * shotSpeed;
-                p.GetComponent<FragGrenade>().Owner = gameObject;
                 powerup = "frag exploder";
+                p.GetComponent<FragGrenade>().Owner = gameObject;
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "rpg")
             {
@@ -137,6 +149,7 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(rpg, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "grenade")
             {
@@ -144,13 +157,27 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<Grenade>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "weird")
             {
                 GameObject p = Instantiate(weird, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
                 weirdCount++;
-                if (weirdCount % 5 == 0)
+                if (weirdCount % weirdShots == 0)
+                {
+                    powerup = "none";
+                }
+            }
+            else if (powerup == "absorb shot")
+            {
+                movement.recoil(-0.1f * gunPos.transform.right);
+                GameObject p = Instantiate(absorbShot, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                absorbCount++;
+                if (absorbCount % absorbShots == 0)
                 {
                     powerup = "none";
                 }

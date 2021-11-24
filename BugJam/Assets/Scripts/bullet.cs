@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    public float ownerScoreNumber;
     public Vector3 velocity;
     public float life = 200;
     public float fadeStart = 50;
@@ -14,7 +15,7 @@ public class bullet : MonoBehaviour
     protected bool xFlip;
     protected bool yFlip;
     public float strength = 1f;
-    protected bool piercing = false;
+    public bool piercing = false;
     public bool dead = false;
     public float velocityOverride = 0;
 

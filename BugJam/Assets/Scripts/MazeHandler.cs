@@ -180,8 +180,16 @@ public class MazeHandler : MonoBehaviour
             spreadBlocksInMaze(screenSize.x, screenSize.y, rng, thickMod, "TYW", 0, true);
         }
         screenWrapProofWalls();
+        StartCoroutine(updateGraphDelayed());
+
+    }
+
+    IEnumerator updateGraphDelayed()
+    {
+        yield return new WaitForSeconds(0.01f);
         updateGraph();
     }
+
 
     void spreadBlocksInMaze(int width, int height, System.Random rng, float mod, string type, int edge = 0, bool replace = false)
     {

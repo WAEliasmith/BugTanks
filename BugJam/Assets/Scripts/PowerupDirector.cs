@@ -9,6 +9,7 @@ public class PowerupDirector : MonoBehaviour
     public float rateIncrease = 0.1f;
     public float timeToSpawnLeft;
     public float initialTimeToSpawn = 100;
+    public float noWallsNear = 1f;
 
     public string[] enabledPowerups;
 
@@ -40,10 +41,20 @@ public class PowerupDirector : MonoBehaviour
 
     void CreatePowerup()
     {
-        Vector2 direction = Random.insideUnitCircle.normalized;
-        Vector3 position = (Vector3)direction * Random.Range(0f, range / 2);
-
-        GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
-        powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
+        int wallLayerMask = 1 << 8 | 1 << 9;
+        for (int i = 0; i < 50; i++)
+        {
+            Vector2 direction = Random.insideUnitCircle.normalized;
+            Vector3 position = (Vector3)direction * Random.Range(0f, range / 2);
+            //see if position is on wall
+            Collider2D box = Physics2D.OverlapBox(position, new Vector2(noWallsNear, noWallsNear), 0f, wallLayerMask);
+            Debug.Log(box);
+            if (box == null)
+            {
+                GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
+                powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
+                i = 999;
+            }
+        }
     }
 }
