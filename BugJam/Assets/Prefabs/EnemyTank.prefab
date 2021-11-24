@@ -361,10 +361,11 @@ MonoBehaviour:
   missile: {fileID: 0}
   wifimissile: {fileID: 0}
   shockwave: {fileID: 0}
-  fragShot: {fileID: 0}
+  fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
   rpg: {fileID: 4169178763570937128, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
-  grenade: {fileID: 0}
-  minShotDistance: 0.2
+  grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}
+  minShotDistance: 0.175
+  explodeFrag: 0
   lazerRange: 10
   line: {fileID: 207501771406465066}
 --- !u!120 &207501771406465066
@@ -541,6 +542,7 @@ MonoBehaviour:
   maxHp: 1
   hp: 0
   gun: {fileID: 306223115248917528}
+  move: {fileID: 306223115874997225}
 --- !u!1 &306223115797380877
 GameObject:
   m_ObjectHideFlags: 0

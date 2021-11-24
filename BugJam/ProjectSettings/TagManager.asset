@@ -8,6 +8,7 @@ TagManager:
   - YWall
   - Bullet
   - Powerup
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -36,7 +36,7 @@ public class lazer : MonoBehaviour
                             transform.position, ((Vector2)path[0] - (Vector2)transform.position), ((Vector2)path[0] - (Vector2)transform.position).magnitude, layerMask);
                         if (hit.collider != null && hit.collider.tag == "Player")
                         {
-                            hit.collider.GetComponent<hurtbox>().IHaveBeenHit();
+                            hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
                             dead = true;
                             path[0] = (Vector2)transform.position + ((Vector2)path[0] - (Vector2)transform.position).normalized * hit.distance;
                         }
@@ -62,7 +62,7 @@ public class lazer : MonoBehaviour
                             transform.position, (goal - transform.position), (goal - transform.position).magnitude, layerMask);
                         if (hit.collider != null && hit.collider.tag == "Player")
                         {
-                            hit.collider.GetComponent<hurtbox>().IHaveBeenHit();
+                            hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
                             dead = true;
                             goal = transform.position + (goal - transform.position).normalized * hit.distance;
                             tr.AddPosition(goal);

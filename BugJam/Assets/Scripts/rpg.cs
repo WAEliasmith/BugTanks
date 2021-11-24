@@ -6,36 +6,35 @@ public class rpg : bullet
 {
     public GameObject explosion = null;
     public float maxVelocity = 4;
+    public float minVelocity = 0f;
     public float acceleration = 1.02f;
     public float startSpeed = 0.8f;
+    public float size;
+    public float explodeStart = 10f;
 
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         velocity = velocity.normalized * startSpeed;
         lifeLeft = life;
-        sr.color = new Color(1f, 0f, 0f, 1f);
+        color = new Color(1f, 0f, 0f, 1f);
     }
-    // FixedUpdate is called once per physics
-    void FixedUpdate()
+
+    public override void SpecificAction()
     {
-        lifeLeft -= 1;
-        transform.position += velocity;
-        if (velocity.magnitude < maxVelocity)
+        if (velocity.magnitude < maxVelocity && velocity.magnitude > minVelocity)
         {
             velocity *= acceleration;
         }
-
-
-        if (lifeLeft < fadeStart)
+        if (lifeLeft <= 1)
         {
-            sr.color = new Color(1f, 0f, 0f, (lifeLeft / fadeStart) + 0.1f);
-            if (lifeLeft <= 0)
-            {
-                Destroy(gameObject);
-            }
+            hit();
         }
-
+        if (lifeLeft < explodeStart)
+        {
+            float scale = Mathf.Max((lifeLeft / explodeStart) * size, 0.01f);
+            transform.localScale = new Vector3(scale, scale, 1f);
+        }
     }
 
     public override void hit()

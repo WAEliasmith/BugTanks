@@ -19,23 +19,24 @@ public class Explosion : bullet
         sr = gameObject.GetComponent<SpriteRenderer>();
         life = maxLife;
         piercing = true;
+        color = new Color(1f, 0.2f, 0f, 0f);
     }
 
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
         life -= 1;
-
+        sr.color = color;
         if (life <= fadeStart)
         {
-            sr.color = new Color(1f, 0.2f, 0f, (life / fadeStart));
+            color.a = (life / fadeStart);
             scale = Mathf.Max((life / fadeStart) * size, 0.1f);
 
         }
 
         if (life >= fadeEnd)
         {
-            sr.color = new Color(1f, 0.2f, 0f, ((maxLife - fadeEnd) - (life - fadeEnd)) / (maxLife - fadeEnd));
+            color.a = ((maxLife - fadeEnd) - (life - fadeEnd)) / (maxLife - fadeEnd);
             scale = Mathf.Max((((maxLife - fadeEnd) - (life - fadeEnd)) / (maxLife - fadeEnd)) * size, 0.1f);
         }
         transform.localScale = new Vector3(scale, scale, 1f);
@@ -45,7 +46,7 @@ public class Explosion : bullet
         }
         if (life == fadeEnd)
         {
-            spreadBlocksInExplosion(12, 12, "air", true, true);
+            spreadBlocksInExplosion(6, 6, "air", true, true);
         }
 
     }
@@ -62,13 +63,13 @@ public class Explosion : bullet
                 // {
                 //remove x walls
                 var position = new Vector2(center.x - (width / 2) + i, center.y - (height / 2) + j);
-                if ((position - (Vector2)transform.position).magnitude < size / 2)
+                if ((position - (Vector2)transform.position).magnitude < size * 0.5f)
                 {
                     maze.changeWall(position + new Vector2(0.5f, -0.5f), type, true, replace, true);
                 }
                 //remove y walls
                 position = new Vector2(center.x - (width / 2) + i, center.y - (height / 2) + j);
-                if ((position - (Vector2)transform.position).magnitude < size / 2)
+                if ((position - (Vector2)transform.position).magnitude < size * 0.5f)
                 {
                     maze.changeWall(position + new Vector2(0f, 0f), type, true, replace, true);
                 }

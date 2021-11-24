@@ -27,6 +27,7 @@ public class Gun : MonoBehaviour
     private int weirdCount = 0;
 
     public float minShotDistance = 0.2f;
+    public bool explodeFrag = false;
 
     public float lazerRange = 10;
 
@@ -66,8 +67,15 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
-        if (hit != null)
+        if (powerup == "frag exploder")
+        {
+            powerup = "none";
+            return;
+        }
+        RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f + gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f - gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
+
+        if (hit.collider == null && hit2.collider == null)
         {
             if (powerup == "none")
             {
@@ -115,14 +123,12 @@ public class Gun : MonoBehaviour
                 p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
             }
-            else if (powerup == "frag exploder")
-            {
-                powerup = "none";
-            }
             else if (powerup == "frag shot")
             {
+                movement.recoil(-0.5f * gunPos.transform.right);
                 GameObject p = Instantiate(fragShot, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<FragGrenade>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<FragGrenade>().Owner = gameObject;
                 powerup = "frag exploder";
             }
             else if (powerup == "rpg")
@@ -131,12 +137,12 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(rpg, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
-
             }
             else if (powerup == "grenade")
             {
+                movement.recoil(-0.2f * gunPos.transform.right);
                 GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<Grenade>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
             }
             else if (powerup == "weird")

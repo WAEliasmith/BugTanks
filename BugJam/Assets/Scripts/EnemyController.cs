@@ -97,18 +97,21 @@ public class EnemyController : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, bulletCheckDist, layerMask);
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            //Check bullet direction vs my direction
-            Vector2 bvel = hitColliders[i].GetComponent<bullet>().velocity;
-            Vector2 bdirtome = transform.position - hitColliders[i].transform.position;
-
-            float dangle = Mathf.DeltaAngle(Vector2.SignedAngle(new Vector2(1f, 0f), bdirtome), Vector2.SignedAngle(new Vector2(1f, 0f), bvel));
-            if (Mathf.Abs(dangle) < bulletCheckAngle || (safe && (hitColliders[i].transform.position - transform.position).magnitude < bulletSafeDist))
+            if (hitColliders[i].GetComponent<bullet>().dead == false)
             {
-                //see bullet
-                //Debug.DrawRay(hitColliders[i].transform.position, bvel * 4f, Color.yellow);
-                if (closestBullet == null || (hitColliders[i].transform.position - transform.position).magnitude < (closestBullet.transform.position - transform.position).magnitude)
+                //Check bullet direction vs my direction
+                Vector2 bvel = hitColliders[i].GetComponent<bullet>().velocity;
+                Vector2 bdirtome = transform.position - hitColliders[i].transform.position;
+
+                float dangle = Mathf.DeltaAngle(Vector2.SignedAngle(new Vector2(1f, 0f), bdirtome), Vector2.SignedAngle(new Vector2(1f, 0f), bvel));
+                if (Mathf.Abs(dangle) < bulletCheckAngle || (safe && (hitColliders[i].transform.position - transform.position).magnitude < bulletSafeDist))
                 {
-                    closestBullet = hitColliders[i];
+                    //see bullet
+                    //Debug.DrawRay(hitColliders[i].transform.position, bvel * 4f, Color.yellow);
+                    if (closestBullet == null || (hitColliders[i].transform.position - transform.position).magnitude < (closestBullet.transform.position - transform.position).magnitude)
+                    {
+                        closestBullet = hitColliders[i];
+                    }
                 }
             }
         }
