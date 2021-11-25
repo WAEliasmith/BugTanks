@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     private float reloadLeft;
     public hurtbox hbox;
     Path path;
-    int currentWaypoint = 0;
+    private int currentWaypoint = 0;
     public float nextWaypointDistance = 0.3f;
     public int time = 30;
     private float timeLeft;
@@ -67,17 +67,6 @@ public class EnemyController : MonoBehaviour
         if (Target)
         {
             seeker.StartPath(transform.position, Target.position, OnPathComplete);
-        }
-    }
-
-    void UpdatePath()
-    {
-        if (seeker.IsDone())
-        {
-            if (Target)
-            {
-                seeker.StartPath(transform.position, Target.position, OnPathComplete);
-            }
         }
     }
 
@@ -465,7 +454,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (closestHurtboxTransform == null ||
                 Vector2.Distance(transform.position, closestHurtboxTransform.position)
-                < Vector2.Distance(transform.position, Obj.transform.position))
+                > Vector2.Distance(transform.position, Obj.transform.position))
                 {
                     //Do Something
                     closestHurtboxTransform = Obj.transform;

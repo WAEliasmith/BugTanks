@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7885506154081703573}
   - component: {fileID: 450448189042917616}
   m_Layer: 3
-  m_Name: Wifi Missle
+  m_Name: Wifi Missile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,14 +152,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 400
+  life: 500
   fadeStart: 75
   sr: {fileID: 0}
   weird: 0
   strength: 1
-  piercing: 0
+  piercing: 1
   dead: 0
   speedOverride: 0.04
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 1, g: 0.64540267, b: 0, a: 1}
   movement: {fileID: 0}
   rotateSpeed: 5.6

@@ -358,7 +358,7 @@ MonoBehaviour:
   powerup: none
   weird: {fileID: 966619046920893350, guid: 2f18c37e7ac51d74f8ae268e8159e068, type: 3}
   lazer: {fileID: 4759223488101248938, guid: 3dae0963ec331cb4a812842d4f4220b6, type: 3}
-  missile: {fileID: 0}
+  missile: {fileID: 1090183058788405901, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
   wifimissile: {fileID: 3387095103126682605, guid: fbf56f7976a4eef46b28c56c2583729c, type: 3}
   shockwave: {fileID: 0}
   fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}

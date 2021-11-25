@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WifiMissle : bullet
+public class WifiMissile : absorption
 {
     public MoveTank movement;
     public float rotateSpeed;
@@ -21,4 +21,5 @@ public class WifiMissle : bullet
         transform.eulerAngles = new Vector3(0f, 0f, angle);
 
     }
+
 }

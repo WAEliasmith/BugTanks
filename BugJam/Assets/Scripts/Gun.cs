@@ -116,16 +116,16 @@ public class Gun : MonoBehaviour
             else if (powerup == "missile")
             {
                 GameObject p = Instantiate(missile, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<Missile>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
-                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                p.GetComponent<Missile>().ownerScoreNumber = scoreNumber;
             }
             else if (powerup == "wifi missile")
             {
                 movement.recoil(-0.1f * gunPos.transform.right);
                 GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<WifiMissle>().velocity = gunPos.transform.right * shotSpeed;
-                p.GetComponent<WifiMissle>().movement = movement;
+                p.GetComponent<WifiMissile>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<WifiMissile>().movement = movement;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
