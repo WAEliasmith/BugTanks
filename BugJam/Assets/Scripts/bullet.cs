@@ -17,15 +17,15 @@ public class bullet : MonoBehaviour
     public float strength = 1f;
     public bool piercing = false;
     public bool dead = false;
-    public float velocityOverride = 0;
+    public float speedOverride = 0;
 
     public Color color = new Color(0f, 0f, 0f, 1f);
 
     void Start()
     {
-        if (velocityOverride > 0)
+        if (speedOverride > 0)
         {
-            velocity = velocity.normalized * velocityOverride;
+            velocity = velocity.normalized * speedOverride;
         }
         sr = gameObject.GetComponent<SpriteRenderer>();
         lifeLeft = life;

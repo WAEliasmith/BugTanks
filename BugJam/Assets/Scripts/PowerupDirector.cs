@@ -47,8 +47,7 @@ public class PowerupDirector : MonoBehaviour
             Vector2 direction = Random.insideUnitCircle.normalized;
             Vector3 position = (Vector3)direction * Random.Range(0f, range / 2);
             //see if position is on wall
-            Collider2D box = Physics2D.OverlapBox(position, new Vector2(noWallsNear, noWallsNear), 0f, wallLayerMask);
-            Debug.Log(box);
+            Collider2D box = Physics2D.OverlapBox(transform.position + position, new Vector2(noWallsNear, noWallsNear), 0f, wallLayerMask);
             if (box == null)
             {
                 GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);

@@ -46,7 +46,7 @@ public class Explosion : bullet
         }
         if (life == fadeEnd)
         {
-            spreadBlocksInExplosion(6, 6, "air", true, true);
+            spreadBlocksInExplosion((int)Mathf.Round(size + 0.5f), (int)Mathf.Round(size + 0.5f), "air", true, true);
         }
 
     }
@@ -62,16 +62,16 @@ public class Explosion : bullet
                 // && -(width / 2) + i + center.x > -screenSize.x / 2 && -(height / 2) + j + center.y > -screenSize.y / 2))
                 // {
                 //remove x walls
-                var position = new Vector2(center.x - (width / 2) + i, center.y - (height / 2) + j);
-                if ((position - (Vector2)transform.position).magnitude < size * 0.5f)
+                var position = new Vector2(center.x - (width / 2) + i, center.y - (height / 2) + j) + new Vector2(0.5f, -0.5f);
+                if ((position - (Vector2)transform.position).magnitude < (size / 2 + 0.1f))
                 {
-                    maze.changeWall(position + new Vector2(0.5f, -0.5f), type, true, replace, true);
+                    maze.changeWall(position, type, true, replace, true);
                 }
                 //remove y walls
                 position = new Vector2(center.x - (width / 2) + i, center.y - (height / 2) + j);
-                if ((position - (Vector2)transform.position).magnitude < size * 0.5f)
+                if ((position - (Vector2)transform.position).magnitude < (size / 2 + 0.1f))
                 {
-                    maze.changeWall(position + new Vector2(0f, 0f), type, true, replace, true);
+                    maze.changeWall(position, type, true, replace, true);
                 }
                 // }
             }

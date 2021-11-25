@@ -359,12 +359,13 @@ MonoBehaviour:
   weird: {fileID: 966619046920893350, guid: 2f18c37e7ac51d74f8ae268e8159e068, type: 3}
   lazer: {fileID: 4759223488101248938, guid: 3dae0963ec331cb4a812842d4f4220b6, type: 3}
   missile: {fileID: 0}
-  wifimissile: {fileID: 0}
+  wifimissile: {fileID: 3387095103126682605, guid: fbf56f7976a4eef46b28c56c2583729c, type: 3}
   shockwave: {fileID: 0}
   fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
   rpg: {fileID: 4169178763570937128, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
   grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}
   absorbShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
+  scoreNumber: -1
   minShotDistance: 0.175
   explodeFrag: 0
   lazerRange: 10

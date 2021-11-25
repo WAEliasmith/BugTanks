@@ -122,8 +122,10 @@ public class Gun : MonoBehaviour
             }
             else if (powerup == "wifi missile")
             {
+                movement.recoil(-0.1f * gunPos.transform.right);
                 GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<WifiMissle>().velocity = gunPos.transform.right * shotSpeed;
+                p.GetComponent<WifiMissle>().movement = movement;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
@@ -190,8 +192,6 @@ public class Gun : MonoBehaviour
         //Shoot ray
         RaycastHit2D hit;
         Vector3 initialShotPos = transform.position;
-
-        Debug.Log("initialShotPos" + initialShotPos);
 
         if (initialShotPos.x > (screenSize.x / 2) + wrapOffset.x)
         {

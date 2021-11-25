@@ -12,7 +12,7 @@ public class Fragment : bullet
         sr = gameObject.GetComponent<SpriteRenderer>();
         lifeLeft = life;
         sr.color = new Color(0f, 0f, 0f, 1f);
-        rotateSpeed = Random.Range(-0.4f, 0.4f);
+        rotateSpeed = Random.Range(-5f, 5f);
     }
 
     public override void SpecificAction()
