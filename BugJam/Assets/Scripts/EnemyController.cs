@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private float reloadLeft;
     public hurtbox hbox;
-    Path path;
+    public Path path;
     private int currentWaypoint = 0;
     public float nextWaypointDistance = 0.3f;
     public int time = 30;
@@ -56,7 +56,7 @@ public class EnemyController : MonoBehaviour
     public float bulletSafeDist = 1f;
     Seeker seeker;
 
-    private string state;
+    public string state;
 
     void Start()
     {
@@ -452,7 +452,12 @@ public class EnemyController : MonoBehaviour
         {
             if (Obj.name == "Hurtbox")
             {
-                if (closestHurtboxTransform == null ||
+                if (Vector2.Distance(transform.position, Obj.transform.position) < 0.1f)
+                {
+                    //stop targeting yourself
+                    Debug.Log("Obj.transform: " + Obj.transform.position);
+                }
+                else if (closestHurtboxTransform == null ||
                 Vector2.Distance(transform.position, closestHurtboxTransform.position)
                 > Vector2.Distance(transform.position, Obj.transform.position))
                 {

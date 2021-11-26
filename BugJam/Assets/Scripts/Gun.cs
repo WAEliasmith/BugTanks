@@ -25,6 +25,9 @@ public class Gun : MonoBehaviour
     public GameObject rpg = null;
     public GameObject grenade = null;
     public GameObject absorbShot = null;
+    public float wingDuration = 350;
+
+    public Color tankColor;
 
     public float scoreNumber = -1;
 
@@ -35,6 +38,7 @@ public class Gun : MonoBehaviour
 
     public float minShotDistance = 0.2f;
     public bool explodeFrag = false;
+    private float wingTimer = 999;
 
     public float lazerRange = 10;
 
@@ -52,12 +56,21 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        if (wingTimer < 200)
+        {
+            tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;
+            Debug.Log(tankColor);
+        }
+
         if (powerup == "lazer")
         {
             line.enabled = true;
-            List<Vector3> lazerArray = CalculatePath();
-            if (lazerArray != null)
+            RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f + gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
+            RaycastHit2D hit2 = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f - gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
+
+            if (hit.collider == null && hit2.collider == null)
             {
+                List<Vector3> lazerArray = CalculatePath();
                 line.positionCount = lazerArray.Count;
                 line.SetPositions(lazerArray.ToArray());
             }
@@ -84,8 +97,35 @@ public class Gun : MonoBehaviour
         return v;
     }
 
+    public void FixedUpdate()
+    {
+        if (powerup == "wings")
+        {
+            if (wingTimer == 999)
+            {
+                movement.wings = true;
+                wingTimer = wingDuration;
+            }
+
+            if (wingTimer <= 1)
+            {
+                tankColor.a = 1f;
+                wingTimer = 999;
+                powerup = "none";
+                movement.wings = false;
+            }
+            else
+            {
+                wingTimer -= 1;
+
+            }
+        }
+
+    }
+
     public void Shoot()
     {
+
         if (powerup == "frag exploder")
         {
             powerup = "none";
@@ -93,6 +133,8 @@ public class Gun : MonoBehaviour
         }
         else if (powerup == "shockwave")
         {
+            movement.recoil(-0.1f * gunPos.transform.right);
+
             for (int i = 0; i < 3; i++)
             {
                 GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
@@ -108,7 +150,7 @@ public class Gun : MonoBehaviour
 
         if (hit.collider == null && hit2.collider == null)
         {
-            if (powerup == "none")
+            if (powerup == "none" || powerup == "wings")
             {
                 int shotIndex = -1;
                 for (int i = 0; i < myBullets.Length; i++)
@@ -225,12 +267,6 @@ public class Gun : MonoBehaviour
         else if (initialShotPos.y < -(screenSize.y / 2) + wrapOffset.y)
         {
             initialShotPos += new Vector3(0f, screenSize.y, 0f);
-        }
-
-        RaycastHit2D testhit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
-        if (testhit == null)
-        {
-            return null;
         }
 
         float maxDist = lazerRange;

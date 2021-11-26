@@ -220,9 +220,12 @@ MonoBehaviour:
   rpg: {fileID: 7361330188128710006, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
   grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}
   absorbShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
+  wingDuration: 350
+  tankColor: {r: 1, g: 0, b: 0, a: 1}
   scoreNumber: -1
   minShotDistance: 0.175
   explodeFrag: 0
+  wingTimer: 0
   lazerRange: 10
   line: {fileID: 207501771406465066}
 --- !u!120 &207501771406465066
@@ -597,6 +600,7 @@ MonoBehaviour:
   xAxis: 0
   yAxis: 0
   rotationSpeed: 5.6
+  wings: 0
   rb: {fileID: 306223115874997226}
   numAngles: 32
   rotDelay: 3
@@ -712,6 +716,7 @@ GameObject:
   - component: {fileID: 4482604892328874826}
   - component: {fileID: 1415651265804099054}
   - component: {fileID: 9042937590243742133}
+  - component: {fileID: 4060201414522520275}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -812,6 +817,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb9c3df7bf54a5543b93152d072dd980, type: 3}
   - {fileID: 21300000, guid: feb7318028b42144989f9927b828682b, type: 3}
   - {fileID: 21300000, guid: 19124ab8da4d62c42a8b3cf215f2a62e, type: 3}
+--- !u!114 &4060201414522520275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011563362587681722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b061ed6ed9f94c4bbc0589b53aff416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 306223115248917528}
+  sr: {fileID: 0}
 --- !u!1 &1163657176239726926
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8341709635474636425}
   - component: {fileID: 8867992590985837871}
+  - component: {fileID: 1077420928873874610}
   m_Layer: 6
   m_Name: Box
   m_TagString: Untagged
@@ -1006,3 +1026,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1077420928873874610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597991721892432210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b061ed6ed9f94c4bbc0589b53aff416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 306223115248917528}
+  sr: {fileID: 0}

@@ -10,6 +10,8 @@ public class MoveTank : MonoBehaviour
     public float yAxis;
     public float rotationSpeed;
 
+    public bool wings = false;
+
     public Rigidbody2D rb;
 
     public float numAngles;
@@ -46,38 +48,58 @@ public class MoveTank : MonoBehaviour
 
         if (!dead)
         {
-            float rotation = Mathf.Clamp(xAxis, -1, 1) * rotationSpeed;
-            rotDelayLeft--;
-            if (rotDelayLeft < 0)
-            {
-                if (rotStationary > rotStationaryUntilBurst && xAxis != 0)
-                {
-                    //Tap rotation:
-                    rotStationary = 0;
-                    rotDelayLeft = rotDelay;
-                    //Find next rotation amount
-                    innerAngle = rb.rotation;
-                    innerAngle += Mathf.Clamp(xAxis, -1, 1) * 360 / numAngles;
-                    rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
-                    rb.rotation = rotation;
-                }
-                else
-                {
-                    innerAngle += rotation;
-                    rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
-                    rb.rotation = rotation;
-                }
-            }
+            float rotation = 0f;
             float moveAmount = 0f;
+            if (wings == false)
+            {
+                //wingless movement
+                rotation = Mathf.Clamp(xAxis, -1, 1) * rotationSpeed;
+                rotDelayLeft--;
+                if (rotDelayLeft < 0)
+                {
+                    if (rotStationary > rotStationaryUntilBurst && xAxis != 0)
+                    {
+                        //Tap rotation:
+                        rotStationary = 0;
+                        rotDelayLeft = rotDelay;
+                        //Find next rotation amount
+                        innerAngle = rb.rotation;
+                        innerAngle += Mathf.Clamp(xAxis, -1, 1) * 360 / numAngles;
+                        rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
+                        rb.rotation = rotation;
+                    }
+                    else
+                    {
+                        innerAngle += rotation;
+                        rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
+                        rb.rotation = rotation;
+                    }
+                }
+                if (yAxis > 0.2f)
+                {
+                    moveAmount = speed;
+                }
+                else if (yAxis < -0.2f)
+                {
+                    moveAmount = -speed * backwardsMultiplier;
+                }
+            }
+            else
+            {
 
-            if (yAxis > 0.2f)
-            {
-                moveAmount = speed;
+                //winged movement
+                if (xAxis != 0 || yAxis != 0)
+                {
+                    moveAmount = speed;
+                    innerAngle = rb.rotation;
+                    Vector2 vector = new Vector2(-Mathf.Clamp(xAxis, -1, 1), Mathf.Clamp(yAxis, -1, 1)).normalized;
+                    float targetAngle = Vector2.SignedAngle(new Vector2(1f, 0f), vector);
+
+                    rotation = Mathf.Round(targetAngle / (360 / numAngles)) * (360 / numAngles);
+                    rb.rotation = rotation;
+                }
             }
-            else if (yAxis < -0.2f)
-            {
-                moveAmount = -speed * backwardsMultiplier;
-            }
+
             displacementThisFrame = new Vector2(moveAmount * Mathf.Cos(Mathf.Deg2Rad * rb.rotation), moveAmount * Mathf.Sin(Mathf.Deg2Rad * rb.rotation));
 
             if ((rb.rotation % 90 < 1 && rb.rotation % 90 > -1) || rb.rotation % 90 > 89 || rb.rotation % 90 < -89)
