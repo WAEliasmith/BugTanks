@@ -25,6 +25,8 @@ public class CameraHolder : MonoBehaviour
     public GameObject S;
     public GameObject SE;
 
+    private int prep = 4;
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
@@ -49,7 +51,6 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
-        //get screen size
         //disable outer cameras
         // NW.GetComponent<Camera>().enabled = false;
         // N.GetComponent<Camera>().enabled = false;
@@ -76,11 +77,19 @@ public class CameraHolder : MonoBehaviour
     // Fixed is called once per physics
     void FixedUpdate()
     {
+        if (prep > 0)
+        {
+            prep--;
+            if (prep == 1)
+            {
+                target = GameObject.Find("Player").transform;
+            }
+        }
         if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene("main");
         }
-        if (follow && target.GetComponent<MoveTank>().dead == false)
+        if (prep == 0 && follow && target.GetComponent<MoveTank>().dead == false)
         {
             transform.position = Vector3.SmoothDamp(transform.position,
             target.position + offset, ref velocity, smoothSpeed);

@@ -12,6 +12,7 @@ public class lazer : MonoBehaviour
     public float speed = 2f;
     public float deadTime = 10f;
     public bool dead;
+    public int ownerScoreNumber;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -37,6 +38,10 @@ public class lazer : MonoBehaviour
                         if (hit.collider != null && hit.collider.tag == "Player")
                         {
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
+                            //add score to the player that owns me
+                            GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>()
+                            .AddScore(ownerScoreNumber);
+
                             dead = true;
                             path[0] = (Vector2)transform.position + ((Vector2)path[0] - (Vector2)transform.position).normalized * hit.distance;
                         }

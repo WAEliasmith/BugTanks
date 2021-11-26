@@ -52,7 +52,7 @@ public class PowerupDirector : MonoBehaviour
             {
                 GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
                 powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
-                i = 999;
+                return;
             }
         }
     }

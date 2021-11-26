@@ -153,8 +153,8 @@ public class MazeHandler : MonoBehaviour
     private Tilemap TYW;
     private Vector2Int screenSize;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called before any start
+    void Awake()
     {
         screenSize = Vector2Int.RoundToInt(GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize);
 
@@ -181,7 +181,6 @@ public class MazeHandler : MonoBehaviour
         }
         screenWrapProofWalls();
         StartCoroutine(updateGraphDelayed());
-
     }
 
     IEnumerator updateGraphDelayed()

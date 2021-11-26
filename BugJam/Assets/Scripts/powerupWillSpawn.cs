@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class powerupWillSpawn : MonoBehaviour
 {
-    public int timer = 60;
-    private int timerLeft;
+    public float timer = 60;
+    public float timerLeft;
 
     public string powerup = "none";
     public GameObject powerUp;

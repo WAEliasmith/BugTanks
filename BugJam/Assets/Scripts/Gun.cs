@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
 
     public Color tankColor;
 
-    public float scoreNumber = -1;
+    public int scoreNumber = -1;
 
     private int weirdCount = 0;
     private int absorbCount = 0;
@@ -59,7 +59,6 @@ public class Gun : MonoBehaviour
         if (wingTimer < 200)
         {
             tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;
-            Debug.Log(tankColor);
         }
 
         if (powerup == "lazer")
@@ -176,6 +175,7 @@ public class Gun : MonoBehaviour
                     GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
                     powerup = "none";
                     p.GetComponent<lazer>().path = lazerArray;
+                    p.GetComponent<lazer>().ownerScoreNumber = scoreNumber;
                     p.transform.position = lazerArray[0];
                 }
             }

@@ -35,7 +35,6 @@ public class Missile : bullet
         if (lifeLeft < trackStart)
         {
             Target = GetClosestPlayer();
-            Debug.Log("targeting");
             seeker.StartPath(transform.position, Target.position, OnPathComplete);
 
             Track();

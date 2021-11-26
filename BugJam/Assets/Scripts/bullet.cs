@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    public float ownerScoreNumber;
+    public int ownerScoreNumber;
     public Vector3 velocity;
     public float life = 200;
     public float fadeStart = 50;

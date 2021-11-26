@@ -22,7 +22,6 @@ public class Shockwave : Explosion
         float squeeze = Mathf.Min(stretchMax, 1f + Mathf.Pow(Mathf.Abs(bullet.velocity.magnitude), 2f) * stretchFromVelocityMod);
         float stretch = 1f / squeeze;
 
-        //Debug.Log(transform.localScale);
 
         life -= 1;
         sr.color = color;

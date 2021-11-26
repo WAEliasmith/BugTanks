@@ -455,7 +455,6 @@ public class EnemyController : MonoBehaviour
                 if (Vector2.Distance(transform.position, Obj.transform.position) < 0.1f)
                 {
                     //stop targeting yourself
-                    Debug.Log("Obj.transform: " + Obj.transform.position);
                 }
                 else if (closestHurtboxTransform == null ||
                 Vector2.Distance(transform.position, closestHurtboxTransform.position)

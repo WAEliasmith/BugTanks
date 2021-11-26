@@ -9,6 +9,7 @@ public class powerupVisuals : MonoBehaviour
     public float fadeEnd = 400;
     public float fadeStart = 100;
     private float lifeLeft;
+    public Color color = new Color(0f, 0f, 0f, 0f);
 
     private SpriteRenderer sr;
     // Start is called before the first frame update
@@ -25,12 +26,17 @@ public class powerupVisuals : MonoBehaviour
 
         if (lifeLeft < fadeStart)
         {
+            color.a = (lifeLeft / fadeStart);
+
             sr.color = new Color(0f, 0f, 0f, (lifeLeft / fadeStart));
         }
 
         if (lifeLeft > fadeEnd)
         {
+            color.a = ((maxLife - fadeEnd) - (lifeLeft - fadeEnd)) / (maxLife - fadeEnd);
             sr.color = new Color(0f, 0f, 0f, ((maxLife - fadeEnd) - (lifeLeft - fadeEnd)) / (maxLife - fadeEnd));
         }
+        sr.color = color;
+
     }
 }

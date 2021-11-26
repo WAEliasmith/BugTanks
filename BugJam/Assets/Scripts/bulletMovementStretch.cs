@@ -26,7 +26,6 @@ public class bulletMovementStretch : MonoBehaviour
         float stretch = Mathf.Min(stretchMax, 1f + Mathf.Pow(Mathf.Abs(bullet.velocity.magnitude), 2f) * stretchFromVelocityMod);
         float squeeze = 1f / stretch;
         transform.localScale = new Vector3(stretch, squeeze, 1f);
-        //Debug.Log(transform.localScale);
     }
 
     void RotateToVelocity()
