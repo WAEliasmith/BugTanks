@@ -46,12 +46,12 @@ public class Explosion : bullet
         }
         if (life == fadeEnd)
         {
-            spreadBlocksInExplosion((int)Mathf.Round(size + 0.5f), (int)Mathf.Round(size + 0.5f), "air", true, true);
+            spreadBlocksInExplosion((int)Mathf.Round(size + 1), (int)Mathf.Round(size + 1f), "air", true);
         }
 
     }
 
-    void spreadBlocksInExplosion(int width, int height, string type, bool edge = false, bool replace = false)
+    void spreadBlocksInExplosion(int width, int height, string type, bool replace = false)
     {
         Vector2Int center = Vector2Int.RoundToInt((Vector2)transform.position);
         for (int i = 0; i < width; i++)

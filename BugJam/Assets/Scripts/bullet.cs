@@ -27,7 +27,10 @@ public class bullet : MonoBehaviour
         {
             velocity = velocity.normalized * speedOverride;
         }
-        sr = gameObject.GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            sr = gameObject.GetComponent<SpriteRenderer>();
+        }
         lifeLeft = life;
         if (weird)
         {
