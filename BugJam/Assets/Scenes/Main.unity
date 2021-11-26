@@ -3332,6 +3332,7 @@ MonoBehaviour:
   - absorb shot
   - wifi missile
   - missile
+  - shockwave
   powerupPrefab: {fileID: 1234181511820125749, guid: 732ed4a08de70d44889104ca13a08c32, type: 3}
   rangeMod: 1
 --- !u!4 &1659179940
@@ -3843,7 +3844,7 @@ MonoBehaviour:
   lazer: {fileID: 4759223488101248938, guid: 3dae0963ec331cb4a812842d4f4220b6, type: 3}
   missile: {fileID: 1090183058788405901, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
   wifimissile: {fileID: 3387095103126682605, guid: fbf56f7976a4eef46b28c56c2583729c, type: 3}
-  shockwave: {fileID: 0}
+  shockwave: {fileID: 6244922680823504292, guid: 1f06e36d96fddcd4db413dc12fcff278, type: 3}
   fragShot: {fileID: 6907466161558533738, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
   rpg: {fileID: 7361330188128710006, guid: 281182939dd0d534fbbc747f39cc61aa, type: 3}
   grenade: {fileID: 1207882494556430898, guid: 81e68387f1a0f1144a0f5e0f4e90a6ff, type: 3}

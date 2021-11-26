@@ -38,7 +38,8 @@ public class rpg : bullet
 
     public override void hit()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject p = Instantiate(explosion, transform.position, Quaternion.identity);
+        p.GetComponent<bullet>().ownerScoreNumber = ownerScoreNumber;
         Destroy(gameObject);
     }
 

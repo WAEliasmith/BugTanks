@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Explosion : bullet
 {
+    public bullet carrier;
     public float size = 2f;
     public float fadeEnd = 100f;
-    private float scale;
+    protected float scale;
     public float maxLife = 200f;
     public Vector2 screenSize;
     public MazeHandler maze;
@@ -14,44 +15,44 @@ public class Explosion : bullet
     // Start is called before the first frame update
     void Start()
     {
+        ownerScoreNumber = carrier.ownerScoreNumber;
         maze = GameObject.Find("MazeHandler").GetComponent<MazeHandler>();
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         sr = gameObject.GetComponent<SpriteRenderer>();
-        life = maxLife;
+        lifeLeft = maxLife;
         piercing = true;
-        color = new Color(1f, 0.2f, 0f, 0f);
     }
 
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        life -= 1;
+        lifeLeft -= 1;
         sr.color = color;
-        if (life <= fadeStart)
+        if (lifeLeft <= fadeStart)
         {
-            color.a = (life / fadeStart);
-            scale = Mathf.Max((life / fadeStart) * size, 0.1f);
+            color.a = (lifeLeft / fadeStart);
+            scale = Mathf.Max((lifeLeft / fadeStart) * size, 0.1f);
 
         }
 
-        if (life >= fadeEnd)
+        if (lifeLeft >= fadeEnd)
         {
-            color.a = ((maxLife - fadeEnd) - (life - fadeEnd)) / (maxLife - fadeEnd);
-            scale = Mathf.Max((((maxLife - fadeEnd) - (life - fadeEnd)) / (maxLife - fadeEnd)) * size, 0.1f);
+            color.a = ((maxLife - fadeEnd) - (lifeLeft - fadeEnd)) / (maxLife - fadeEnd);
+            scale = Mathf.Max((((maxLife - fadeEnd) - (lifeLeft - fadeEnd)) / (maxLife - fadeEnd)) * size, 0.1f);
         }
         transform.localScale = new Vector3(scale, scale, 1f);
-        if (life <= 0)
+        if (lifeLeft <= 0)
         {
+            maze.updateGraph();
             Destroy(gameObject);
         }
-        if (life == fadeEnd)
+        if (lifeLeft == fadeEnd)
         {
             spreadBlocksInExplosion((int)Mathf.Round(size + 1), (int)Mathf.Round(size + 1f), "air", true);
         }
-
     }
 
-    void spreadBlocksInExplosion(int width, int height, string type, bool replace = false)
+    protected void spreadBlocksInExplosion(int width, int height, string type, bool replace = false)
     {
         Vector2Int center = Vector2Int.RoundToInt((Vector2)transform.position);
         for (int i = 0; i < width; i++)
@@ -77,6 +78,5 @@ public class Explosion : bullet
             }
         }
         maze.screenWrapProofWalls();
-        maze.updateGraph();
     }
 }

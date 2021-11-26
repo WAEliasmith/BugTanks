@@ -72,6 +72,18 @@ public class Gun : MonoBehaviour
         }
     }
 
+    Vector2 Rotate(Vector2 v, float degrees)
+    {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return v;
+    }
+
     public void Shoot()
     {
         if (powerup == "frag exploder")
@@ -79,6 +91,18 @@ public class Gun : MonoBehaviour
             powerup = "none";
             return;
         }
+        else if (powerup == "shockwave")
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
+                p.GetComponent<bullet>().velocity = Rotate((Vector2)gunPos.transform.right, (i - 1) * 8f) * shotSpeed;
+                powerup = "none";
+                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+            }
+            return;
+        }
+
         RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f + gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
         RaycastHit2D hit2 = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f - gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
 
@@ -126,13 +150,6 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<WifiMissile>().velocity = gunPos.transform.right * shotSpeed;
                 p.GetComponent<WifiMissile>().movement = movement;
-                powerup = "none";
-                p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
-            }
-            else if (powerup == "shockwave")
-            {
-                GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
-                p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }

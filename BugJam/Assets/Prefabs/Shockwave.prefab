@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8168494745500498414}
   - component: {fileID: 2467635813027297295}
+  - component: {fileID: 1519625818209419445}
   m_Layer: 0
   m_Name: Shockwave
   m_TagString: Untagged
@@ -79,6 +80,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 0}
   screenSize: {x: 10, y: 10}
+--- !u!114 &1519625818209419445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244922680823504292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7988b288bc5529841a8c102b488df05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerScoreNumber: 0
+  velocity: {x: 0, y: 0, z: 0}
+  life: 105
+  fadeStart: 50
+  sr: {fileID: 2172268712702265179}
+  weird: 0
+  strength: 1
+  piercing: 0
+  dead: 0
+  speedOverride: 0.018
+  color: {r: 0, g: 0, b: 0, a: 1}
+  minVelocity: 0
+  maxVelocity: 0.25
+  acceleration: 1.02
 --- !u!1 &7726395805989207218
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +118,7 @@ GameObject:
   - component: {fileID: 2172268712702265179}
   - component: {fileID: 7385438201925095952}
   - component: {fileID: 7862695485464952102}
-  - component: {fileID: 1322775412871233913}
-  - component: {fileID: 6048618255174699339}
+  - component: {fileID: 3100897151021757821}
   m_Layer: 3
   m_Name: Explosion
   m_TagString: Bullet
@@ -156,8 +182,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -174,7 +200,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726395805989207218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -204,35 +230,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &1322775412871233913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7726395805989207218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5811ed242051a7e41a37f37087c7899c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerScoreNumber: 0
-  velocity: {x: 0, y: 0, z: 0}
-  life: 0
-  fadeStart: 15
-  sr: {fileID: 0}
-  weird: 0
-  strength: 1
-  piercing: 0
-  dead: 0
-  velocityOverride: 0
-  color: {r: 0, g: 0, b: 0, a: 1}
-  size: 2.6
-  fadeEnd: 70
-  maxLife: 80
-  screenSize: {x: 0, y: 0}
-  maze: {fileID: 0}
---- !u!114 &6048618255174699339
+--- !u!114 &3100897151021757821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,3 +242,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2859ad4bcfb3446b38244372ba1f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerScoreNumber: 0
+  velocity: {x: 0, y: 0, z: 0}
+  life: 105
+  fadeStart: 10
+  sr: {fileID: 2172268712702265179}
+  weird: 0
+  strength: 1
+  piercing: 0
+  dead: 0
+  speedOverride: 0
+  color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  carrier: {fileID: 1519625818209419445}
+  size: 1.75
+  fadeEnd: 45
+  maxLife: 105
+  screenSize: {x: 0, y: 0}
+  maze: {fileID: 0}
+  explodeStart: 45
+  stretchFromVelocityMod: 35
+  stretchMax: 8
+  angularRotationSpeed: 0
+  bullet: {fileID: 1519625818209419445}

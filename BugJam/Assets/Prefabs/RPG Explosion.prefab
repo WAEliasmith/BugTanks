@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7736147181441688828}
   - component: {fileID: 4052905259659240733}
+  - component: {fileID: 997458434317588714}
   m_Layer: 0
   m_Name: RPG Explosion
   m_TagString: Untagged
@@ -47,6 +48,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 0}
   screenSize: {x: 10, y: 10}
+--- !u!114 &997458434317588714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524349361989402806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7988b288bc5529841a8c102b488df05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerScoreNumber: 0
+  velocity: {x: 0, y: 0, z: 0}
+  life: 200
+  fadeStart: 50
+  sr: {fileID: 0}
+  weird: 0
+  strength: 1
+  piercing: 0
+  dead: 0
+  speedOverride: 0
+  color: {r: 1, g: 0.8903707, b: 0, a: 1}
+  minVelocity: 0
+  maxVelocity: 1.6
+  acceleration: 1.02
 --- !u!1 &5701099334895132152
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +183,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 0.91567624, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -219,13 +246,14 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   life: 0
   fadeStart: 25
-  sr: {fileID: 0}
+  sr: {fileID: 298768698793744969}
   weird: 0
   strength: 1
   piercing: 0
   dead: 0
   speedOverride: 0
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 0.5754717, g: 0, b: 0, a: 1}
+  carrier: {fileID: 997458434317588714}
   size: 2
   fadeEnd: 82
   maxLife: 90
