@@ -37,6 +37,7 @@ public class MoveTank : MonoBehaviour
 
     void Awake()
     {
+        wings = false;
         rb.rotation = innerAngle;
         float rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
         rb.rotation = rotation;

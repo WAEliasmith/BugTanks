@@ -34,8 +34,13 @@ public class hurtbox : MonoBehaviour
                 IHaveBeenHit(other.transform.position, other.GetComponent<bullet>().strength);
                 other.GetComponent<bullet>().hit();
                 //add score to the player that hit me
-                GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>()
-                .AddScore(other.GetComponent<bullet>().ownerScoreNumber);
+                if (other.GetComponent<bullet>().ownerScoreNumber != gun.scoreNumber)
+                {
+                    //not self hitting
+                    GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>()
+                    .AddScore(other.GetComponent<bullet>().ownerScoreNumber);
+                }
+
             }
         }
 

@@ -21,6 +21,8 @@ public class FragGrenade : bullet
             float angle = i * 360f / (FragCount);
             p.GetComponent<Fragment>().velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad * angle),
             Mathf.Sin(Mathf.Deg2Rad * angle)).normalized * shotSpeed;
+            p.GetComponent<Fragment>().ownerScoreNumber = ownerScoreNumber;
+
         }
         Destroy(gameObject);
     }

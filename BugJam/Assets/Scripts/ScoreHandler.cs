@@ -5,7 +5,7 @@ using UnityEngine.UI; // This is so that it should find the Text component
 
 public class ScoreHandler : MonoBehaviour
 {
-    public StartGame director;
+    public PvPDirector director;
 
     public Color[] colors;
     //Index into these lists are score IDs
@@ -16,7 +16,7 @@ public class ScoreHandler : MonoBehaviour
     public int tankCount;
 
     public Transform[] holders;
-    public Image[] tanks;
+    public Image[] bases;
     public Image[] guns;
 
     //player 1 has index 1, max 8 players
@@ -29,9 +29,9 @@ public class ScoreHandler : MonoBehaviour
 
         for (int i = 1; i <= tankCount; i++)
         {
-            //texts[i].enabled = true;
+            holders[i].gameObject.SetActive(true); //comment out later
             texts[i].color = colors[i];
-            tanks[i].color = colors[i];
+            bases[i].color = colors[i];
             guns[i].color = colors[i];
         }
     }
@@ -45,8 +45,26 @@ public class ScoreHandler : MonoBehaviour
         }
     }
 
-    public void AddScore(int player)
+    void FixedUpdate()
     {
-        scores[player] += 1;
+        if (director.time == 10)
+        {
+            for (int i = 1; i <= tankCount; i++)
+            {
+                holders[i].gameObject.SetActive(false);
+            }
+        }
+        else if (director.time == -1)
+        {
+            for (int i = 1; i <= tankCount; i++)
+            {
+                holders[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void AddScore(int player, int score = 1)
+    {
+        scores[player] += score;
     }
 }

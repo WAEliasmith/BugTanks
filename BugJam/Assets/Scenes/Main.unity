@@ -1358,7 +1358,7 @@ MonoBehaviour:
   - {fileID: 2062097585}
   - {fileID: 386369691}
   - {fileID: 252684782}
-  tanks:
+  bases:
   - {fileID: 0}
   - {fileID: 1136265116}
   - {fileID: 1984429997}
@@ -3977,7 +3977,7 @@ GameObject:
   - component: {fileID: 1303329405}
   - component: {fileID: 1303329404}
   m_Layer: 0
-  m_Name: GameStarter
+  m_Name: PvPDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3995,6 +3995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18871c8531cd9c44ab9b2fb1216fb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0
+  dodgeTime: Infinity
+  dodgeTime2: Infinity
+  dodgeDuration: 200
+  dodgeDuration2: 100
   numPlayers: 1
   numTanks: 8
   colors:
@@ -4011,6 +4016,16 @@ MonoBehaviour:
   noPlayersNear: 2
   PlayerTank: {fileID: 897224242519615257, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
   AITank: {fileID: 306223115874997229, guid: 60251a080d3db194d9bde59d31248c66, type: 3}
+  tanks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1303329405
 Transform:
   m_ObjectHideFlags: 0

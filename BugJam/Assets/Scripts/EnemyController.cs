@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
     public float anger;
     public float cheeseAnger;
     private Vector2 screenSize;
+    private float reactionTime = 20f;
 
     public float bulletSafeDist = 1f;
     Seeker seeker;
@@ -60,6 +61,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        reactionTime += Random.Range(0, 10f);
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         anger = baseAnger;
         seeker = GetComponent<Seeker>();
@@ -110,88 +112,95 @@ public class EnemyController : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        Target = GetClosestPlayer();
-        if (Target)
+        if (reactionTime > 0)
         {
-            float playerDist = (Target.position - transform.position).magnitude;
-            //update anger
-            anger += (screenSize.x - playerDist) * angerWhenClose;
-            if (path != null && path.vectorPath != null && currentWaypoint < path.vectorPath.Count)
-            {
-                float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-                cheeseAnger += (cheeseProximity - distance) * cheeseWhenClose;
-            }
-            else
-            {
-                //path invalid, assume endpoint is 1 unit away
-                cheeseAnger += (cheeseProximity - 1) * cheeseWhenClose;
-            }
-            if (cheeseAnger < 0)
-            {
-                cheeseAnger = 0;
-            }
-            if (anger < 0)
-            {
-                anger = 0;
-            }
+            reactionTime--;
         }
-
-        if (hbox.hp <= 0)
+        else
         {
-            movement.dead = true;
-            movement.killedBy = transform;
-        }
-        if (!movement.dead)
-        {
-            anger += angerGainPerFrame;
-            movement.xAxis = 0;
-            movement.yAxis = 0;
-            passiveShotCheckTimeLeft--;
-            if (passiveShotCheckTimeLeft <= 0)
+            Target = GetClosestPlayer();
+            if (Target)
             {
-                passiveShotCheckTimeLeft = passiveShotCheckTime;
-                ShotCheck(true);
-            }
-
-            dodgeCheckTimeLeft--;
-            if (dodgeCheckTimeLeft <= 0)
-            {
-                dodgeCheckTimeLeft = dodgeCheckTime;
-                //check to see if I need to dodge
-                Collider2D bullet = CheckForBullets();
-                if (bullet != null && (bullet.transform.position - transform.position).magnitude < bulletCheckDist)
+                float playerDist = (Target.position - transform.position).magnitude;
+                //update anger
+                anger += (screenSize.x - playerDist) * angerWhenClose;
+                if (path != null && path.vectorPath != null && currentWaypoint < path.vectorPath.Count)
                 {
-                    //Initiate dodge
-                    state = "dodge";
-                    timeLeft = time;
+                    float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+                    cheeseAnger += (cheeseProximity - distance) * cheeseWhenClose;
+                }
+                else
+                {
+                    //path invalid, assume endpoint is 1 unit away
+                    cheeseAnger += (cheeseProximity - 1) * cheeseWhenClose;
+                }
+                if (cheeseAnger < 0)
+                {
+                    cheeseAnger = 0;
+                }
+                if (anger < 0)
+                {
+                    anger = 0;
                 }
             }
-            timeLeft--;
-            if (timeLeft <= 0)
-            {
-                state = GetNewState();
-            }
 
-            reloadLeft--;
+            if (hbox.hp <= 0)
+            {
+                movement.dead = true;
+                movement.killedBy = transform;
+            }
+            if (!movement.dead)
+            {
+                anger += angerGainPerFrame;
+                movement.xAxis = 0;
+                movement.yAxis = 0;
+                passiveShotCheckTimeLeft--;
+                if (passiveShotCheckTimeLeft <= 0)
+                {
+                    passiveShotCheckTimeLeft = passiveShotCheckTime;
+                    ShotCheck(true);
+                }
 
-            if (state == "track")
-            {
-                Track();
-            }
-            else if (state == "angry")
-            {
-                anger = baseAnger;
-                Angry();
-            }
-            else if (state == "cheesed")
-            {
-                Cheesed();
-            }
-            else if (state == "dodge")
-            {
-                dodgeCheckTimeLeft++;
-                timeLeft++;
-                Dodge();
+                dodgeCheckTimeLeft--;
+                if (dodgeCheckTimeLeft <= 0)
+                {
+                    dodgeCheckTimeLeft = dodgeCheckTime;
+                    //check to see if I need to dodge
+                    Collider2D bullet = CheckForBullets();
+                    if (bullet != null && (bullet.transform.position - transform.position).magnitude < bulletCheckDist)
+                    {
+                        //Initiate dodge
+                        state = "dodge";
+                        timeLeft = time;
+                    }
+                }
+                timeLeft--;
+                if (timeLeft <= 0)
+                {
+                    state = GetNewState();
+                }
+
+                reloadLeft--;
+
+                if (state == "track")
+                {
+                    Track();
+                }
+                else if (state == "angry")
+                {
+                    anger = baseAnger;
+                    Angry();
+                }
+                else if (state == "cheesed")
+                {
+                    Cheesed();
+                }
+                else if (state == "dodge")
+                {
+                    dodgeCheckTimeLeft++;
+                    timeLeft++;
+                    Dodge();
+                }
             }
         }
     }
