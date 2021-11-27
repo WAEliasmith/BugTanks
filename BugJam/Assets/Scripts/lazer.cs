@@ -42,7 +42,7 @@ public class lazer : MonoBehaviour
                             //add score to the player that owns me if not self hit
                             if (hit.collider.GetComponent<hurtbox>().gun.scoreNumber != ownerScoreNumber)
                             {
-                                GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>().AddScore(ownerScoreNumber);
+                                ScoreHandler.instance.AddScore(ownerScoreNumber);
                             }
 
                             dead = true;
@@ -74,7 +74,7 @@ public class lazer : MonoBehaviour
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
                             if (hit.collider.GetComponent<hurtbox>().gun.scoreNumber != ownerScoreNumber)
                             {
-                                GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>().AddScore(ownerScoreNumber);
+                                ScoreHandler.instance.AddScore(ownerScoreNumber);
                             }
                             dead = true;
                             i = 999;

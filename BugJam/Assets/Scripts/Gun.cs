@@ -43,12 +43,16 @@ public class Gun : MonoBehaviour
     public float lazerRange = 10;
 
     public LineRenderer line;
+    private int currentScore;
 
     private Vector2 screenSize;
     private Vector2 wrapOffset;
 
+    public GameObject pointExplosion;
+
     void Start()
     {
+        currentScore = ScoreHandler.instance.scores[scoreNumber];
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
         myBullets = new GameObject[bulletCount];
@@ -56,6 +60,12 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        if (currentScore != ScoreHandler.instance.scores[scoreNumber])
+        {
+            //Just got a point
+            GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
+            currentScore = ScoreHandler.instance.scores[scoreNumber];
+        }
         if (wingTimer < 200)
         {
             tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;

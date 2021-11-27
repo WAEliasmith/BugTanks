@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraHolder : MonoBehaviour
 {
@@ -84,10 +83,6 @@ public class CameraHolder : MonoBehaviour
             {
                 target = GameObject.Find("PlayerTank(Clone)").transform;
             }
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene("main");
         }
         if (prep == 0 && follow && target.GetComponent<MoveTank>().dead == false)
         {

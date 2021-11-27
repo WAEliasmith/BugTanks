@@ -510,6 +510,7 @@ MonoBehaviour:
   explodeFrag: 0
   lazerRange: 12
   line: {fileID: 8534070659885155153, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+  pointExplosion: {fileID: 4662969046882918717, guid: ca301474347cd2642b8b18a80f454a3a, type: 3}
 --- !u!120 &2626849247826132066
 LineRenderer:
   m_ObjectHideFlags: 0

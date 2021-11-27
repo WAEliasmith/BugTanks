@@ -37,12 +37,14 @@ public class MoveTank : MonoBehaviour
 
     void Awake()
     {
+        launchVector = new Vector2(0, 0);
         wings = false;
         rb.rotation = innerAngle;
         float rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
         rb.rotation = rotation;
     }
     // FixedUpdate is called once per physics frame
+
     void FixedUpdate()
     {
         launchVector -= launchVector * launchVectorDecay;

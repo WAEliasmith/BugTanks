@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // This is so that it should find the Text component 
+using UnityEngine.SceneManagement;
 
 public class ScoreHandler : MonoBehaviour
 {
+    public static ScoreHandler instance;
+
     public PvPDirector director;
 
     public Color[] colors;
@@ -13,7 +16,9 @@ public class ScoreHandler : MonoBehaviour
 
     public int[] scores;
 
-    public int tankCount;
+    public int tankCount = 8;
+    public int numPlayers = 1;
+    public bool showScores = true;
 
     public Transform[] holders;
     public Image[] bases;
@@ -22,10 +27,12 @@ public class ScoreHandler : MonoBehaviour
     //player 1 has index 1, max 8 players
 
     // Start is called before the first frame update
+
     void Awake()
     {
-        colors = director.colors;
-        tankCount = director.numTanks;
+        instance = this;
+
+        DontDestroyOnLoad(this.gameObject);
 
         for (int i = 1; i <= tankCount; i++)
         {
@@ -36,31 +43,39 @@ public class ScoreHandler : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        showScores = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene("main");
+        }
+
         for (int i = 1; i <= tankCount; i++)
         {
             texts[i].text = scores[i].ToString();
         }
-    }
 
-    void FixedUpdate()
-    {
-        if (director.time == 10)
-        {
-            for (int i = 1; i <= tankCount; i++)
-            {
-                holders[i].gameObject.SetActive(false);
-            }
-        }
-        else if (director.time == -1)
+        if (showScores == true)
         {
             for (int i = 1; i <= tankCount; i++)
             {
                 holders[i].gameObject.SetActive(true);
             }
         }
+        else
+        {
+            for (int i = 1; i <= tankCount; i++)
+            {
+                holders[i].gameObject.SetActive(false);
+            }
+        }
+
     }
 
     public void AddScore(int player, int score = 1)

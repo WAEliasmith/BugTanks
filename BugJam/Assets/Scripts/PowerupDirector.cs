@@ -6,6 +6,7 @@ public class PowerupDirector : MonoBehaviour
 {
     public float timeToSpawn;
     public float r;
+    public float rPlayerIncrease = 0.1f;
     public float rateIncrease = 0.1f;
     public float timeToSpawnLeft;
     public float initialTimeToSpawn = 100;
@@ -17,9 +18,12 @@ public class PowerupDirector : MonoBehaviour
 
     public float rangeMod = 1;
     private float range;
+    private int numTanks;
     // Start is called before the first frame update
     void Start()
     {
+        initialTimeToSpawn -= numTanks * 10f;
+        r = r + numTanks * rPlayerIncrease;
         range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y * rangeMod;
         timeToSpawn = initialTimeToSpawn;
         timeToSpawnLeft = timeToSpawn;

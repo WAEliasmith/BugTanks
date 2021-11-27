@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
     public float anger;
     public float cheeseAnger;
     private Vector2 screenSize;
-    private float reactionTime = 20f;
+    private float reactionTime = 25f;
 
     public float bulletSafeDist = 1f;
     Seeker seeker;
