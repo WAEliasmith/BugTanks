@@ -35,13 +35,13 @@ public class PvPDirector : MonoBehaviour
         maxSpawnDist = range * 0.5f;
         noPlayersNear = 3.2f;
 
-        for (int i = 1; i <= ScoreHandler.instance.tankCount; i++)
+        for (int i = 1; i <= settings.instance.tankCount; i++)
         {
-            if (i <= ScoreHandler.instance.numPlayers)
+            if (i <= settings.instance.numPlayers)
             {
                 int controls = 0;
 
-                if (ScoreHandler.instance.numPlayers > 1)
+                if (settings.instance.numPlayers > 1)
                 {
                     if (i == 1)
                     {
@@ -53,12 +53,12 @@ public class PvPDirector : MonoBehaviour
                     }
                 }
                 //create a player
-                CreateTank(PlayerTank, ScoreHandler.instance.colors[i], i, controls);
+                CreateTank(PlayerTank, settings.instance.colors[i], i, controls);
             }
             else
             {
                 //create an AI
-                CreateTank(AITank, ScoreHandler.instance.colors[i], i);
+                CreateTank(AITank, settings.instance.colors[i], i);
             }
 
         }
@@ -73,20 +73,20 @@ public class PvPDirector : MonoBehaviour
         if (time % 10 == 0)
         {
             int deadCount = 0;
-            for (int i = 1; i <= ScoreHandler.instance.tankCount; i++)
+            for (int i = 1; i <= settings.instance.tankCount; i++)
             {
                 if (tanks[i].activeSelf == false)
                 {
                     deadCount++;
                 }
             }
-            if (deadCount >= (ScoreHandler.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
+            if (deadCount >= (settings.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
             {
                 dodgeTime = time;
                 awardTime = dodgeTime + (dodgeDuration - 10) / survivorPoints;
 
             }
-            if (deadCount == ScoreHandler.instance.tankCount && dodgeTime2 == Mathf.Infinity)
+            if (deadCount == settings.instance.tankCount && dodgeTime2 == Mathf.Infinity)
             {
                 dodgeTime2 = time;
                 dodgeTime = time;
@@ -100,11 +100,11 @@ public class PvPDirector : MonoBehaviour
             survivorPointsAwarded += 1;
             if (survivorPointsAwarded <= survivorPoints)
             {
-                for (int i = 1; i <= ScoreHandler.instance.tankCount; i++)
+                for (int i = 1; i <= settings.instance.tankCount; i++)
                 {
                     if (tanks[i].activeSelf == true)
                     {
-                        ScoreHandler.instance.AddScore(i);
+                        settings.instance.AddScore(i);
                     }
                 }
             }
@@ -117,7 +117,7 @@ public class PvPDirector : MonoBehaviour
             //pause Game
             ScoreHandler.instance.showScores = true;
 
-            StartCoroutine(updateGraphDelayed());
+            StartCoroutine(delay());
             Time.timeScale = 0;
         }
         else if (time > dodgeTime2 + dodgeDuration2)
@@ -127,14 +127,12 @@ public class PvPDirector : MonoBehaviour
             //pause Game
             ScoreHandler.instance.showScores = true;
 
-            StartCoroutine(updateGraphDelayed());
+            StartCoroutine(delay());
             Time.timeScale = 0;
         }
     }
 
-
-
-    IEnumerator updateGraphDelayed()
+    IEnumerator delay()
     {
         yield return new WaitForSecondsRealtime(1.5f);
         SceneManager.LoadScene("main");
@@ -157,6 +155,7 @@ public class PvPDirector : MonoBehaviour
                 tanks[scoreNumber] = Instantiate(tankToSpawn, transform.position + position, Quaternion.identity);
                 tanks[scoreNumber].GetComponent<Gun>().tankColor = color;
                 tanks[scoreNumber].GetComponent<Gun>().scoreNumber = scoreNumber;
+
                 tanks[scoreNumber].GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
                 if (controls != -1)
                 {

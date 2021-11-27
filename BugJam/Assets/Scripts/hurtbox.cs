@@ -37,7 +37,7 @@ public class hurtbox : MonoBehaviour
                 if (other.GetComponent<bullet>().ownerScoreNumber != gun.scoreNumber)
                 {
                     //not self hitting
-                    ScoreHandler.instance.AddScore(other.GetComponent<bullet>().ownerScoreNumber);
+                    settings.instance.AddScore(other.GetComponent<bullet>().ownerScoreNumber);
                 }
 
             }

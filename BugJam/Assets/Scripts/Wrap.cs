@@ -11,7 +11,7 @@ public class Wrap : MonoBehaviour
 
     public bool holdCamera = false;
 
-    void Awake()
+    void Start()
     {
         if (holdCamera)
         {

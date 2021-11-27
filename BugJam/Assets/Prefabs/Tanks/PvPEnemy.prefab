@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 2918792352054067053}
   - component: {fileID: 2626849247826132066}
   m_Layer: 6
-  m_Name: EnemyTank
+  m_Name: PvPEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

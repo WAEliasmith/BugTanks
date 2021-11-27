@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - Powerup
   - Enemy
+  - CameraTarget
+  - EnemyToKill
   layers:
   - Default
   - TransparentFX

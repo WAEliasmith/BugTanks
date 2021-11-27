@@ -96,7 +96,7 @@ public class CameraHolder : MonoBehaviour
             prep--;
             if (prep == 1)
             {
-                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
+                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("CameraTarget"))
                 {
                     if (obj.name == "PlayerTank(Clone)")
                     {

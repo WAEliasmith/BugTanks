@@ -52,7 +52,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        currentScore = ScoreHandler.instance.scores[scoreNumber];
+        currentScore = settings.instance.scores[scoreNumber];
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
         myBullets = new GameObject[bulletCount];
@@ -60,11 +60,14 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (currentScore != ScoreHandler.instance.scores[scoreNumber])
+        if (settings.instance.pvp)
         {
-            //Just got a point
-            GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
-            currentScore = ScoreHandler.instance.scores[scoreNumber];
+            if (currentScore != settings.instance.scores[scoreNumber])
+            {
+                //Just got a point
+                GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
+                currentScore = settings.instance.scores[scoreNumber];
+            }
         }
         if (wingTimer < 200)
         {

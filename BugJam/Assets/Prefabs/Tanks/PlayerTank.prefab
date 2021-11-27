@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 8534070659885155153}
   m_Layer: 6
   m_Name: PlayerTank
-  m_TagString: Player
+  m_TagString: CameraTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,7 +666,7 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 0.78356636, y: -0.77476317}
+  launchVector: {x: 1.5789883, y: -0.4004187}
   launchStrength: 5
 --- !u!50 &897224242519615261
 Rigidbody2D:
@@ -842,19 +842,15 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.46742317, y: -2.8398051, z: 0.1}
-  - {x: 0.984514, y: -5.439394, z: 0}
-  - {x: 1.159316, y: -4.560606, z: 0}
-  - {x: 1.3341179, y: -5.439394, z: 0}
-  - {x: 1.5089198, y: -4.560606, z: 0}
-  - {x: 1.6837217, y: -5.439394, z: 0}
-  - {x: 1.8585235, y: -4.560606, z: 0}
-  - {x: 2.0333254, y: -5.439394, z: 0}
-  - {x: 2.2081273, y: -4.560606, z: 0}
-  - {x: 2.3829293, y: -5.439394, z: 0}
-  - {x: 2.5577312, y: -4.560606, z: 0}
-  - {x: 2.732533, y: -5.439394, z: 0}
-  - {x: 2.8406985, y: -4.895609, z: 0}
+  - {x: 3.8256896, y: 0.43486094, z: 0.1}
+  - {x: 2.5733519, y: -1.4393942, z: 0}
+  - {x: 1.9861643, y: -0.5606059, z: 0}
+  - {x: 1.060606, y: -1.9458015, z: 0}
+  - {x: 3.3949513, y: -5.4393945, z: 0}
+  - {x: 4.012511, y: -4.515151, z: 0}
+  - {x: 4.63007, y: -5.439394, z: 0}
+  - {x: 4.939394, y: -4.976458, z: 0}
+  - {x: 4.8580856, y: -4.8547716, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

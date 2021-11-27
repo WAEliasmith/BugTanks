@@ -34,7 +34,7 @@ public class Missile : bullet
     {
         if (lifeLeft < trackStart)
         {
-            Target = GetClosestPlayer();
+            Target = GetClosestHurtbox();
             seeker.StartPath(transform.position, Target.position, OnPathComplete);
 
             Track();
@@ -48,10 +48,23 @@ public class Missile : bullet
 
     }
 
-    Transform GetClosestPlayer()
+    Transform GetClosestHurtbox()
     {
         Transform closestHurtboxTransform = null;
         foreach (GameObject Obj in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (Obj.name == "Hurtbox")
+            {
+                if (closestHurtboxTransform == null ||
+                Vector2.Distance(transform.position, closestHurtboxTransform.position)
+                > Vector2.Distance(transform.position, Obj.transform.position))
+                {
+                    //Do Something
+                    closestHurtboxTransform = Obj.transform;
+                }
+            }
+        }
+        foreach (GameObject Obj in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             if (Obj.name == "Hurtbox")
             {

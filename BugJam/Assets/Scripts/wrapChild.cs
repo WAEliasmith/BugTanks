@@ -12,8 +12,9 @@ public class wrapChild : MonoBehaviour
 
     public Vector2 screenSize;
 
-    void Awake()
+    void Start()
     {
+        screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         clones = new GameObject[8];
         child = transform.GetChild(0).gameObject;
         for (int i = 0; i < 8; i++)

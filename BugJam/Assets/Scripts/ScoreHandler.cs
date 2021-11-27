@@ -10,14 +10,9 @@ public class ScoreHandler : MonoBehaviour
 
     public PvPDirector director;
 
-    public Color[] colors;
     //Index into these lists are score IDs
     public Text[] texts;
 
-    public int[] scores;
-
-    public int tankCount = 8;
-    public int numPlayers = 1;
     public bool showScores = true;
 
     public Transform[] holders;
@@ -34,12 +29,12 @@ public class ScoreHandler : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        for (int i = 1; i <= tankCount; i++)
+        for (int i = 1; i <= settings.instance.tankCount; i++)
         {
             holders[i].gameObject.SetActive(true); //comment out later
-            texts[i].color = colors[i];
-            bases[i].color = colors[i];
-            guns[i].color = colors[i];
+            texts[i].color = settings.instance.colors[i];
+            bases[i].color = settings.instance.colors[i];
+            guns[i].color = settings.instance.colors[i];
         }
     }
 
@@ -52,6 +47,11 @@ public class ScoreHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene("main");
+        }
+
+        if (Input.GetKeyDown("t"))
         {
             SceneManager.LoadScene("main");
         }
@@ -69,21 +69,21 @@ public class ScoreHandler : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= tankCount; i++)
+        for (int i = 1; i <= settings.instance.tankCount; i++)
         {
-            texts[i].text = scores[i].ToString();
+            texts[i].text = settings.instance.scores[i].ToString();
         }
 
         if (showScores == true)
         {
-            for (int i = 1; i <= tankCount; i++)
+            for (int i = 1; i <= settings.instance.tankCount; i++)
             {
                 holders[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 1; i <= tankCount; i++)
+            for (int i = 1; i <= settings.instance.tankCount; i++)
             {
                 holders[i].gameObject.SetActive(false);
             }
@@ -93,6 +93,6 @@ public class ScoreHandler : MonoBehaviour
 
     public void AddScore(int player, int score = 1)
     {
-        scores[player] += score;
+        settings.instance.scores[player] += score;
     }
 }

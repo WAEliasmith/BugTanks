@@ -35,14 +35,14 @@ public class lazer : MonoBehaviour
                         travelDistThisFrame -= ((Vector2)path[0] - (Vector2)transform.position).magnitude;
                         RaycastHit2D hit = Physics2D.Raycast(
                             transform.position, ((Vector2)path[0] - (Vector2)transform.position), ((Vector2)path[0] - (Vector2)transform.position).magnitude, layerMask);
-                        if (hit.collider != null && hit.collider.tag == "Player")
+                        if (hit.collider != null && (hit.collider.tag == "Player" || hit.collider.tag == "Enemy"))
                         {
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
 
                             //add score to the player that owns me if not self hit
                             if (hit.collider.GetComponent<hurtbox>().gun.scoreNumber != ownerScoreNumber)
                             {
-                                ScoreHandler.instance.AddScore(ownerScoreNumber);
+                                settings.instance.AddScore(ownerScoreNumber);
                             }
 
                             dead = true;
@@ -69,12 +69,12 @@ public class lazer : MonoBehaviour
                         Vector3 goal = transform.position + ((Vector3)direction) * travelDistThisFrame;
                         RaycastHit2D hit = Physics2D.Raycast(
                             transform.position, (goal - transform.position), (goal - transform.position).magnitude, layerMask);
-                        if (hit.collider != null && hit.collider.tag == "Player")
+                        if (hit.collider != null && (hit.collider.tag == "Player" || hit.collider.tag == "Enemy"))
                         {
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
                             if (hit.collider.GetComponent<hurtbox>().gun.scoreNumber != ownerScoreNumber)
                             {
-                                ScoreHandler.instance.AddScore(ownerScoreNumber);
+                                settings.instance.AddScore(ownerScoreNumber);
                             }
                             dead = true;
                             i = 999;
