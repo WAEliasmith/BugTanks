@@ -12,7 +12,7 @@ public class wrapChild : MonoBehaviour
 
     public Vector2 screenSize;
 
-    void Start()
+    void Awake()
     {
         clones = new GameObject[8];
         child = transform.GetChild(0).gameObject;

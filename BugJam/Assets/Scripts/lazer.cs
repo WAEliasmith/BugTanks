@@ -39,10 +39,10 @@ public class lazer : MonoBehaviour
                         {
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
                             //add score to the player that owns me
-                            GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>()
-                            .AddScore(ownerScoreNumber);
+                            GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>().AddScore(ownerScoreNumber);
 
                             dead = true;
+                            i = 999;
                             path[0] = (Vector2)transform.position + ((Vector2)path[0] - (Vector2)transform.position).normalized * hit.distance;
                         }
                         transform.position = (Vector2)path[0];
@@ -68,7 +68,10 @@ public class lazer : MonoBehaviour
                         if (hit.collider != null && hit.collider.tag == "Player")
                         {
                             hit.collider.GetComponent<hurtbox>().IHaveBeenHit(new Vector2(0, 0));
+                            GameObject.Find("ScoreHandler").GetComponent<ScoreHandler>().AddScore(ownerScoreNumber);
+
                             dead = true;
+                            i = 999;
                             goal = transform.position + (goal - transform.position).normalized * hit.distance;
                             tr.AddPosition(goal);
                         }

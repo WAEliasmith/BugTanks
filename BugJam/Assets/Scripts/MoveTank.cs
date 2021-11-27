@@ -19,12 +19,12 @@ public class MoveTank : MonoBehaviour
     public float rotDelay;
     public float rotStationaryUntilBurst;
 
-    private float innerAngle;
+    public float innerAngle;
 
     private float rotStationary;
     private float rotDelayLeft;
     public bool dead = false;
-    public Transform killedBy;
+    public Transform killedBy = null;
 
     public float launchVectorDecay = 0.05f;
     public Vector2 launchVector;
@@ -35,9 +35,11 @@ public class MoveTank : MonoBehaviour
         launchVector += recoil;
     }
 
-    void Start()
+    void Awake()
     {
-        killedBy = null;
+        rb.rotation = innerAngle;
+        float rotation = Mathf.Round(innerAngle / (360 / numAngles)) * (360 / numAngles);
+        rb.rotation = rotation;
     }
     // FixedUpdate is called once per physics frame
     void FixedUpdate()

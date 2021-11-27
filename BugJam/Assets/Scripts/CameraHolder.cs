@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CameraHolder : MonoBehaviour
 {
-    public Transform target;
-    public Transform target2;
+    public Transform target = null;
+    public Transform target2 = null;
     public bool follow = true;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
@@ -82,7 +82,7 @@ public class CameraHolder : MonoBehaviour
             prep--;
             if (prep == 1)
             {
-                target = GameObject.Find("Player").transform;
+                target = GameObject.Find("PlayerTank(Clone)").transform;
             }
         }
         if (Input.GetKeyDown("r"))
@@ -96,21 +96,10 @@ public class CameraHolder : MonoBehaviour
         }
         else
         {
-            Transform killedBy = target.GetComponent<MoveTank>().killedBy;
-            if (killedBy != null)
-            {
-                transform.position = Vector3.SmoothDamp(transform.position,
-                killedBy.position + offset, ref velocity, smoothSpeed);
-            }
-            else
             {
                 transform.position = Vector3.SmoothDamp(transform.position,
                 new Vector3(0, 0, 0) + offset, ref velocity, smoothSpeed);
             }
-
-
-
-
         }
     }
 }

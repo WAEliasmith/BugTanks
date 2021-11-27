@@ -250,7 +250,7 @@ public class Gun : MonoBehaviour
     {
         //Shoot ray
         RaycastHit2D hit;
-        Vector3 initialShotPos = transform.position;
+        Vector3 initialShotPos = gunPos.transform.position;
 
         if (initialShotPos.x > (screenSize.x / 2) + wrapOffset.x)
         {
@@ -277,7 +277,11 @@ public class Gun : MonoBehaviour
 
         List<Vector3> currPath = new List<Vector3>();
         currPath.Add(initialShotPos);
-
+        // RaycastHit2D testhit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
+        // if (testhit == null)
+        // {
+        //     return null;
+        // }
         //calculate currPath
         for (int i = 0; i < 25; i++)
         {

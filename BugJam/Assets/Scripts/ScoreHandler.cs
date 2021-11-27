@@ -22,13 +22,14 @@ public class ScoreHandler : MonoBehaviour
     //player 1 has index 1, max 8 players
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         colors = director.colors;
+        tankCount = director.numTanks;
 
         for (int i = 1; i <= tankCount; i++)
         {
-            texts[i].enabled = true;
+            //texts[i].enabled = true;
             texts[i].color = colors[i];
             tanks[i].color = colors[i];
             guns[i].color = colors[i];
