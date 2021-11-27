@@ -24,37 +24,43 @@ public class Wrap : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position.x > (screenSize.x / 2) + wrapOffset.x)
+        if (cameraTransform != null
+        && cameraTransform.GetComponent<CameraHolder>().follow)
         {
-            transform.position -= new Vector3(screenSize.x, 0f, 0f);
-            if (cameraTransform != null && cameraTransform.GetComponent<CameraHolder>().follow)
+            if (transform.position.x > (screenSize.x / 2) + wrapOffset.x)
             {
                 cameraTransform.position -= new Vector3(screenSize.x, 0f, 0f);
             }
+            else if (transform.position.x < -(screenSize.x / 2) + wrapOffset.x)
+            {
+                cameraTransform.position += new Vector3(screenSize.x, 0f, 0f);
+            }
+            if (transform.position.y > (screenSize.y / 2) + wrapOffset.y)
+            {
+                cameraTransform.position -= new Vector3(0f, screenSize.y, 0f);
+            }
+            else if (transform.position.y < -(screenSize.y / 2) + wrapOffset.y)
+            {
+                cameraTransform.position += new Vector3(0f, screenSize.y, 0f);
+            }
+        }
+
+
+        if (transform.position.x > (screenSize.x / 2) + wrapOffset.x)
+        {
+            transform.position -= new Vector3(screenSize.x, 0f, 0f);
         }
         else if (transform.position.x < -(screenSize.x / 2) + wrapOffset.x)
         {
             transform.position += new Vector3(screenSize.x, 0f, 0f);
-            if (cameraTransform != null && cameraTransform.GetComponent<CameraHolder>().follow)
-            {
-                cameraTransform.position += new Vector3(screenSize.x, 0f, 0f);
-            }
         }
         if (transform.position.y > (screenSize.y / 2) + wrapOffset.y)
         {
             transform.position -= new Vector3(0f, screenSize.y, 0f);
-            if (cameraTransform != null && cameraTransform.GetComponent<CameraHolder>().follow)
-            {
-                cameraTransform.position -= new Vector3(0f, screenSize.y, 0f);
-            }
         }
         else if (transform.position.y < -(screenSize.y / 2) + wrapOffset.y)
         {
             transform.position += new Vector3(0f, screenSize.y, 0f);
-            if (cameraTransform != null && cameraTransform.GetComponent<CameraHolder>().follow)
-            {
-                cameraTransform.position += new Vector3(0f, screenSize.y, 0f);
-            }
         }
     }
 }

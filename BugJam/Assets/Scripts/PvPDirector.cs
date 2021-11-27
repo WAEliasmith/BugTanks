@@ -39,8 +39,21 @@ public class PvPDirector : MonoBehaviour
         {
             if (i <= ScoreHandler.instance.numPlayers)
             {
+                int controls = 0;
+
+                if (ScoreHandler.instance.numPlayers > 1)
+                {
+                    if (i == 1)
+                    {
+                        controls = 1;
+                    }
+                    else if (i == 2)
+                    {
+                        controls = 2;
+                    }
+                }
                 //create a player
-                CreateTank(PlayerTank, ScoreHandler.instance.colors[i], i);
+                CreateTank(PlayerTank, ScoreHandler.instance.colors[i], i, controls);
             }
             else
             {
@@ -70,7 +83,6 @@ public class PvPDirector : MonoBehaviour
             if (deadCount >= (ScoreHandler.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
             {
                 dodgeTime = time;
-                Debug.Log("dodgeTime starts");
                 awardTime = dodgeTime + (dodgeDuration - 10) / survivorPoints;
 
             }
@@ -78,7 +90,6 @@ public class PvPDirector : MonoBehaviour
             {
                 dodgeTime2 = time;
                 dodgeTime = time;
-                Debug.Log("dodgeTime2 starts");
             }
         }
 
@@ -87,14 +98,12 @@ public class PvPDirector : MonoBehaviour
             //currently dodging
             awardTime += (dodgeDuration - 10) / survivorPoints;
             survivorPointsAwarded += 1;
-            Debug.Log("finna award");
             if (survivorPointsAwarded <= survivorPoints)
             {
                 for (int i = 1; i <= ScoreHandler.instance.tankCount; i++)
                 {
                     if (tanks[i].activeSelf == true)
                     {
-                        Debug.Log("award completed to " + i);
                         ScoreHandler.instance.AddScore(i);
                     }
                 }
@@ -115,7 +124,6 @@ public class PvPDirector : MonoBehaviour
         {
             time = -1;
             //game ends with no survivor
-            Debug.Log("game ends with no survivor");
             //pause Game
             ScoreHandler.instance.showScores = true;
 
@@ -132,7 +140,7 @@ public class PvPDirector : MonoBehaviour
         SceneManager.LoadScene("main");
     }
 
-    void CreateTank(GameObject tankToSpawn, Color color, int scoreNumber)
+    void CreateTank(GameObject tankToSpawn, Color color, int scoreNumber, int controls = -1)
     {
         int wallLayerMask = 1 << 8 | 1 << 9;
         int playerLayerMask = 1 << 6 | 1 << 7;
@@ -150,6 +158,11 @@ public class PvPDirector : MonoBehaviour
                 tanks[scoreNumber].GetComponent<Gun>().tankColor = color;
                 tanks[scoreNumber].GetComponent<Gun>().scoreNumber = scoreNumber;
                 tanks[scoreNumber].GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
+                if (controls != -1)
+                {
+                    tanks[scoreNumber].GetComponent<PlayerController>().playerControlsNumber = controls;
+
+                }
                 return;
             }
         }

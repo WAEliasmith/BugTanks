@@ -56,6 +56,19 @@ public class ScoreHandler : MonoBehaviour
             SceneManager.LoadScene("main");
         }
 
+        //move to pause screen
+        if (Input.GetKeyDown("p"))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
+
         for (int i = 1; i <= tankCount; i++)
         {
             texts[i].text = scores[i].ToString();

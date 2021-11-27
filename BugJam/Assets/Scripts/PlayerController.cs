@@ -7,18 +7,46 @@ public class PlayerController : MonoBehaviour
     public MoveTank movement;
     public Gun gun;
     public hurtbox hbox;
+    public int playerControlsNumber = 0;
 
     // public MazeHandler maze;
 
     // Update is called once per frame
     void Update()
     {
-        movement.xAxis = -Input.GetAxis("Horizontal");
-        movement.yAxis = Input.GetAxis("Vertical");
-        if (Input.GetButtonDown("Fire") && movement.dead == false)
+        if (movement.dead == false)
         {
-            gun.Shoot();
+            if (playerControlsNumber == 0)
+            {
+                movement.xAxis = -Input.GetAxis("Horizontal");
+                movement.yAxis = Input.GetAxis("Vertical");
+                if (Input.GetButtonDown("Fire"))
+                {
+                    gun.Shoot();
+                }
+            }
+            else if (playerControlsNumber == 1)
+            {
+                movement.xAxis = -Input.GetAxis("Horizontal1");
+                movement.yAxis = Input.GetAxis("Vertical1");
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    gun.Shoot();
+                }
+            }
+            else if (playerControlsNumber == 2)
+            {
+                movement.xAxis = -Input.GetAxis("Horizontal2");
+                movement.yAxis = Input.GetAxis("Vertical2");
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    gun.Shoot();
+                }
+            }
         }
+
+
+
         // if (Input.GetKeyDown("1"))
         // {
         //     maze.changeWall(transform.position, "XW");

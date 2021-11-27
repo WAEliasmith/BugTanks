@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 8534070659885155153}
   m_Layer: 6
   m_Name: PlayerTank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -746,6 +746,7 @@ MonoBehaviour:
   movement: {fileID: 897224242519615262}
   gun: {fileID: 897224242519615251}
   hbox: {fileID: 897224242200086669}
+  playerControlsNumber: 0
 --- !u!70 &897224242519615250
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

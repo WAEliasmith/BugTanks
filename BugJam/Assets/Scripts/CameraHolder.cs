@@ -24,7 +24,9 @@ public class CameraHolder : MonoBehaviour
     public GameObject S;
     public GameObject SE;
 
-    private int prep = 4;
+    private int prep = 2;
+
+    public float zoom = 4;
 
     public IEnumerator Shake(float duration, float magnitude)
     {
@@ -46,6 +48,19 @@ public class CameraHolder : MonoBehaviour
 
         transform.localPosition = originalPos;
 
+    }
+
+    void Update()
+    {
+        C.GetComponent<Camera>().orthographicSize = zoom;
+        NW.GetComponent<Camera>().orthographicSize = zoom;
+        N.GetComponent<Camera>().orthographicSize = zoom;
+        NE.GetComponent<Camera>().orthographicSize = zoom;
+        W.GetComponent<Camera>().orthographicSize = zoom;
+        E.GetComponent<Camera>().orthographicSize = zoom;
+        SW.GetComponent<Camera>().orthographicSize = zoom;
+        S.GetComponent<Camera>().orthographicSize = zoom;
+        SE.GetComponent<Camera>().orthographicSize = zoom;
     }
 
     void Start()
@@ -81,20 +96,102 @@ public class CameraHolder : MonoBehaviour
             prep--;
             if (prep == 1)
             {
-                target = GameObject.Find("PlayerTank(Clone)").transform;
+                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    if (obj.name == "PlayerTank(Clone)")
+                    {
+                        if (target == null)
+                        {
+                            target = obj.transform;
+                        }
+                        else
+                        {
+                            target2 = obj.transform;
+                        }
+                    }
+                }
+                //set the target's wrap settings
+                if (target2 != null)
+                {
+                    //2 player wrapping doesn't screenwrap
+                    target2.gameObject.GetComponent<Wrap>().cameraTransform = null;
+                }
             }
         }
-        if (prep == 0 && follow && target.GetComponent<MoveTank>().dead == false)
+        else if (follow)
         {
-            transform.position = Vector3.SmoothDamp(transform.position,
-            target.position + offset, ref velocity, smoothSpeed);
+            if (target != null && target.GetComponent<MoveTank>().dead == false)
+            {
+                if (target2 != null && target2.GetComponent<MoveTank>().dead == false)
+                {
+                    //2 alive players
+                    zoom = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
+
+                    //find closest player 2 clone to player 1
+                    Vector2 clonePos = (Vector2)target2.position;
+                    float cloneDist = (target2.position - target.position).magnitude;
+                    Vector2 newClonePos = clonePos + new Vector2(screenSize.x, 0f);
+                    float newCloneDist = ((newClonePos - (Vector2)target.position).magnitude);
+                    if (newCloneDist < cloneDist)
+                    {
+                        cloneDist = newCloneDist;
+                        clonePos = newClonePos;
+                    }
+                    newClonePos = clonePos + new Vector2(-screenSize.x, 0f);
+                    newCloneDist = ((newClonePos - (Vector2)target.position).magnitude);
+                    if (newCloneDist < cloneDist)
+                    {
+                        cloneDist = newCloneDist;
+                        clonePos = newClonePos;
+                    }
+                    newClonePos = clonePos + new Vector2(0f, screenSize.y);
+                    newCloneDist = ((newClonePos - (Vector2)target.position).magnitude);
+                    if (newCloneDist < cloneDist)
+                    {
+                        cloneDist = newCloneDist;
+                        clonePos = newClonePos;
+                    }
+                    newClonePos = clonePos + new Vector2(0f, -screenSize.y);
+                    newCloneDist = ((newClonePos - (Vector2)target.position).magnitude);
+                    if (newCloneDist < cloneDist)
+                    {
+                        cloneDist = newCloneDist;
+                        clonePos = newClonePos;
+                    }
+
+                    transform.position = Vector3.SmoothDamp(transform.position,
+                    (target.position + (Vector3)clonePos) * 0.5f + offset, ref velocity, smoothSpeed);
+                }
+                else
+                {
+                    //p1 alive
+                    transform.position = Vector3.SmoothDamp(transform.position,
+                    target.position + offset, ref velocity, smoothSpeed);
+                }
+            }
+            else if (target2 != null && target2.GetComponent<MoveTank>().dead == false)
+            {
+                // p2 alive
+                if (target2.GetComponent<Wrap>().cameraTransform == null)
+                {
+                    //2 player wrapping now screenwraps
+                    target2.GetComponent<Wrap>().cameraTransform = transform;
+                }
+                transform.position = Vector3.SmoothDamp(transform.position,
+                target2.position + offset, ref velocity, smoothSpeed);
+            }
+            else
+            {
+                //noone alive
+                follow = false;
+            }
         }
         else
         {
-            {
-                transform.position = Vector3.SmoothDamp(transform.position,
-                new Vector3(0, 0, 0) + offset, ref velocity, smoothSpeed);
-            }
+            //follow is false
+            zoom = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
+            transform.position = Vector3.SmoothDamp(transform.position,
+            new Vector3(0, 0, 0) + offset + (Vector3)wrapOffset, ref velocity, smoothSpeed);
         }
     }
 }
