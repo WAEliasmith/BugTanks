@@ -20,6 +20,9 @@ public class PowerupDirector : MonoBehaviour
 
     public float rangeMod = 1;
     private float range;
+    public float maxRate = 4;
+
+    public bool troll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,10 @@ public class PowerupDirector : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
-        r += rateIncrease;
+        if (r < maxRate)
+        {
+            r += rateIncrease;
+        }
 
         timeToSpawnLeft--;
         if (timeToSpawnLeft <= 0)
@@ -66,7 +72,15 @@ public class PowerupDirector : MonoBehaviour
             if (box == null)
             {
                 GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
-                powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
+                if (troll == false)
+                {
+                    powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
+                }
+                else
+                {
+                    powerup.GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
+                    powerup.GetComponent<Gun>().tankColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                }
                 return;
             }
         }

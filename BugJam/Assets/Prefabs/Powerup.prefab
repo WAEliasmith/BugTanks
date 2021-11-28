@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerup: lazer
-  maxLife: 500
+  maxLife: 1000
   lifeLeft: 0
 --- !u!61 &6940543436775811794
 BoxCollider2D:

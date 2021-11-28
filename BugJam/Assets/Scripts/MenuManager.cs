@@ -44,6 +44,8 @@ public class MenuManager : MonoBehaviour
 
     public int currentLevel = 0;
 
+    public bool watch = false;
+
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "TitleScreen")
@@ -74,6 +76,9 @@ public class MenuManager : MonoBehaviour
     public GameObject[] campaignScreen;
 
     public GameObject[] pauseScreen;
+
+    public GameObject[] watchScreen;
+
     public void SinglePlayer()
     {
         settingsHandler.instance.numPlayers = 1;
@@ -91,6 +96,20 @@ public class MenuManager : MonoBehaviour
         ChangeScreen(titleScreen, settingsScreen);
     }
 
+    public void Watch()
+    {
+        if (watch == false)
+        {
+            watch = true;
+            ChangeScreen(titleScreen, watchScreen);
+        }
+        else
+        {
+            watch = false;
+            ChangeScreen(watchScreen, titleScreen);
+        }
+    }
+
     public void BackToMenu()
     {
         LoadScreen(settingsScreen, false);
@@ -99,6 +118,7 @@ public class MenuManager : MonoBehaviour
         LoadScreen(battleScreen, false);
         LoadScreen(campaignScreen, false);
         LoadScreen(pauseScreen, false);
+        LoadScreen(watchScreen, false);
         LoadScreen(titleScreen);
     }
 
@@ -114,6 +134,7 @@ public class MenuManager : MonoBehaviour
             LoadScreen(campaignScreen, false);
             LoadScreen(titleScreen, false);
             LoadScreen(pauseScreen);
+            LoadScreen(watchScreen, false);
         }
         else
         {

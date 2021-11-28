@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSpawn: 0
-  r: 1
-  rPlayerIncrease: 0.1
+  r: 0.5
+  rPlayerIncrease: 0.05
   rateIncrease: 0.0005
   timeToSpawnLeft: 0
   initialTimeToSpawn: 100
@@ -63,4 +63,7 @@ MonoBehaviour:
   - shockwave
   - wings
   powerupPrefab: {fileID: 1234181511820125749, guid: 732ed4a08de70d44889104ca13a08c32, type: 3}
+  pvp: {fileID: 0}
   rangeMod: 1
+  maxRate: 4
+  troll: 0
