@@ -37,7 +37,7 @@ public class ScoreHandler : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
+        for (int i = 1; i <= 8; i++)
         {
             texts[i].color = settingsHandler.instance.colors[i];
             bases[i].color = settingsHandler.instance.colors[i];
@@ -49,6 +49,14 @@ public class ScoreHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "TitleScreen")
+        {
+            //reset scores
+            for (int i = 1; i <= 8; i++)
+            {
+                settingsHandler.instance.scores[i] = 0;
+            }
+        }
         for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
         {
             texts[i].text = settingsHandler.instance.scores[i].ToString();

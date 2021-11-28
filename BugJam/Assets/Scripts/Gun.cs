@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
 
     void Awake()
     {
-        if (settingsHandler.instance.crisp)
+        if (settingsHandler.instance && settingsHandler.instance.crisp == true)
         {
             crisp = true;
         }
