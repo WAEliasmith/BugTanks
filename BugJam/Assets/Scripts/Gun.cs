@@ -58,13 +58,16 @@ public class Gun : MonoBehaviour
 
     public GameObject pointExplosion;
 
-    void Start()
+    void Awake()
     {
-        baseColor = tankColor;
         if (settingsHandler.instance.crisp)
         {
             crisp = true;
         }
+    }
+    void Start()
+    {
+        baseColor = tankColor;
         currentScore = settingsHandler.instance.scores[scoreNumber];
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;

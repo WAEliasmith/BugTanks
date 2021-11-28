@@ -139,7 +139,7 @@ public class PvPDirector : MonoBehaviour
         yield return new WaitForSecondsRealtime(delayTime);
         if (MenuManager.instance.pause == false)
         {
-            SceneManager.LoadScene("main");
+            MenuManager.instance.loadArena();
         }
         else
         {
@@ -151,13 +151,15 @@ public class PvPDirector : MonoBehaviour
     {
         int wallLayerMask = 1 << 8 | 1 << 9;
         int playerLayerMask = 1 << 6 | 1 << 7;
-        for (int j = 0; j < 999; j++)
+        Vector2 direction;
+        Vector3 position;
+        for (int j = 0; j < 500; j++)
         {
-            Vector2 direction = Random.insideUnitCircle.normalized;
-            Vector3 position = (Vector3)direction * Random.Range(minSpawnDist, maxSpawnDist);
+            direction = Random.insideUnitCircle.normalized;
+            position = (Vector3)direction * Random.Range(minSpawnDist, maxSpawnDist);
             //see if position is on wall
-            Collider2D wall = Physics2D.OverlapBox(transform.position + position, new Vector2(noWallsNear, noWallsNear), 0f, wallLayerMask);
-            Collider2D player = Physics2D.OverlapBox(transform.position + position, new Vector2(noPlayersNear, noPlayersNear), 0f, playerLayerMask);
+            Collider2D wall = Physics2D.OverlapBox(transform.position + position, new Vector2(noWallsNear - 0.01f * j, noWallsNear - 0.01f * j), 0f, wallLayerMask);
+            Collider2D player = Physics2D.OverlapBox(transform.position + position, new Vector2(noPlayersNear - 0.01f * j, noPlayersNear - 0.01f * j), 0f, playerLayerMask);
 
             if (wall == null && player == null)
             {
@@ -174,7 +176,18 @@ public class PvPDirector : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("FATAL ERROR: Tank could not be spawned");
+        Debug.Log("error, placing tank randomly");
+        direction = Random.insideUnitCircle.normalized;
+        position = (Vector3)direction * Random.Range(minSpawnDist, maxSpawnDist);
+        tanks[scoreNumber] = Instantiate(tankToSpawn, transform.position + position, Quaternion.identity);
+        tanks[scoreNumber].GetComponent<Gun>().tankColor = color;
+        tanks[scoreNumber].GetComponent<Gun>().scoreNumber = scoreNumber;
+
+        tanks[scoreNumber].GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
+        if (controls != -1)
+        {
+            tanks[scoreNumber].GetComponent<PlayerController>().playerControlsNumber = controls;
+        }
         return;
     }
 }

@@ -240,6 +240,9 @@ public class MenuManager : MonoBehaviour
 
     public void startArena()
     {
+        LoadScreen(battleScreen, false);
+
+
         List<string> powerups = new List<string>();
         for (int i = 0; i < powerupToggle.Length; i++)
         {
@@ -248,8 +251,13 @@ public class MenuManager : MonoBehaviour
                 powerups.Add(allPowerups[i]);
             }
         }
-
         settingsHandler.instance.enabledPowerups = powerups;
+
+        loadArena();
+    }
+
+    public void loadArena()
+    {
         if (settingsHandler.instance.pvpMapSize == 1)
         {
             SceneManager.LoadScene("mainsmall");
@@ -282,6 +290,11 @@ public class MenuManager : MonoBehaviour
         settingsHandler.instance.crisp = !settingsHandler.instance.crisp;
     }
 
+    public void toggleCamera()
+    {
+        settingsHandler.instance.cameraFollow = !settingsHandler.instance.cameraFollow;
+    }
+
     public void togglePlayers()
     {
         settingsHandler.instance.tankCount++;
@@ -298,7 +311,7 @@ public class MenuManager : MonoBehaviour
         {
             settingsHandler.instance.pointsForSurvival = 0;
         }
-        if (settingsHandler.instance.pointsForSurvival > 4 && settingsHandler.instance.pointsForSurvival % 2 == 0)
+        if (settingsHandler.instance.pointsForSurvival > 4 && settingsHandler.instance.pointsForSurvival % 2 != 0)
         {
             settingsHandler.instance.pointsForSurvival++;
         }

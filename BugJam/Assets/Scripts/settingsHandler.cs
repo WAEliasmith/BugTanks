@@ -36,6 +36,8 @@ public class settingsHandler : MonoBehaviour
 
     public List<string> enabledPowerups;
 
+    public bool cameraFollow = true;
+
     // Update is called once per frame
     void Update()
     {

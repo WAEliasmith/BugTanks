@@ -28,7 +28,8 @@ public class PowerupDirector : MonoBehaviour
     {
         if (pvp)
         {
-            initialTimeToSpawn -= settingsHandler.instance.tankCount * 8f;
+            enabledPowerups = settingsHandler.instance.enabledPowerups;
+            initialTimeToSpawn -= settingsHandler.instance.tankCount * 7f;
         }
         range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y * rangeMod;
         timeToSpawn = initialTimeToSpawn;

@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSpawn: 0
-  r: 0.5
+  r: 0.2
   rPlayerIncrease: 0.05
-  rateIncrease: 0.0005
+  rateIncrease: 0.0002
   timeToSpawnLeft: 0
   initialTimeToSpawn: 100
   noWallsNear: 0.6

@@ -69,6 +69,7 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
+        follow = settingsHandler.instance.cameraFollow;
         initialZoomTarget = zoomTarget;
         if (settingsHandler.instance.numPlayers == 1)
         {
