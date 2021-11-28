@@ -14,8 +14,6 @@ public class PvPDirector : MonoBehaviour
     public float dodgeDuration = 200f;
     public float dodgeDuration2 = 100f;
 
-    public int survivorPoints = 3;
-
     public float noWallsNear;
     public float noPlayersNear;
     private float minSpawnDist;
@@ -86,7 +84,7 @@ public class PvPDirector : MonoBehaviour
             if (deadCount >= (settingsHandler.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
             {
                 dodgeTime = time;
-                awardTime = dodgeTime + (dodgeDuration - 10) / survivorPoints;
+                awardTime = dodgeTime + (dodgeDuration - 10) / settingsHandler.instance.pointsForSurvival;
 
             }
             if (deadCount == settingsHandler.instance.tankCount && dodgeTime2 == Mathf.Infinity)
@@ -100,9 +98,9 @@ public class PvPDirector : MonoBehaviour
         if (time > awardTime)
         {
             //currently dodging
-            awardTime += (dodgeDuration - 10) / survivorPoints;
+            awardTime += (dodgeDuration - 20) / settingsHandler.instance.pointsForSurvival;
             survivorPointsAwarded += 1;
-            if (survivorPointsAwarded <= survivorPoints)
+            if (survivorPointsAwarded <= settingsHandler.instance.pointsForSurvival)
             {
                 for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
                 {

@@ -290,4 +290,18 @@ public class MenuManager : MonoBehaviour
             settingsHandler.instance.tankCount = 2;
         }
     }
+
+    public void togglePointsForSurvival()
+    {
+        settingsHandler.instance.pointsForSurvival++;
+        if (settingsHandler.instance.pointsForSurvival > 10)
+        {
+            settingsHandler.instance.pointsForSurvival = 0;
+        }
+        if (settingsHandler.instance.pointsForSurvival > 4 && settingsHandler.instance.pointsForSurvival % 2 == 0)
+        {
+            settingsHandler.instance.pointsForSurvival++;
+        }
+    }
+
 }

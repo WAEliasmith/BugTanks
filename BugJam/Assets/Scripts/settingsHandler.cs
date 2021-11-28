@@ -32,6 +32,8 @@ public class settingsHandler : MonoBehaviour
     public int tankCount = 8;
     public int numPlayers = 1;
 
+    public int pointsForSurvival = 3;
+
     public List<string> enabledPowerups;
 
     // Update is called once per frame
