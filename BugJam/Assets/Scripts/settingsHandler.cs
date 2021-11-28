@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class settingsHandler : MonoBehaviour
 {
@@ -33,7 +34,12 @@ public class settingsHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
+        Time.fixedDeltaTime = 1f / 60f;
     }
 
     public void AddScore(int player, int score = 1)

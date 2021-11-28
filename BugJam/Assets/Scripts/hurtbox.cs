@@ -23,7 +23,7 @@ public class hurtbox : MonoBehaviour
 
     void FixedUpdate()
     {
-        iFrames--;
+        iFrames -= 0.7f;
         if (hp <= 0)
         {
             move.dead = true;

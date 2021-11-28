@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level2.unity
     guid: bf325004c99a3754d8ce7ff8a8255e41
+  - enabled: 1
+    path: Assets/Scenes/tutmoveandshoot.unity
+    guid: a11376b34cb0c844796d1f61968dafc8
+  - enabled: 1
+    path: Assets/Scenes/tutwallhack.unity
+    guid: c1c248a653079c04993b6f75d17264ff
   m_configObjects: {}

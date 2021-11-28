@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 450
+  life: 550
   fadeStart: 100
   sr: {fileID: 0}
   weird: 0
@@ -167,4 +167,4 @@ MonoBehaviour:
   Owner: {fileID: 0}
   Frag: {fileID: 8103846573060572774, guid: 90ce6079a6b98cd44986b27011f3adb7, type: 3}
   FragCount: 32
-  shotSpeed: 0.08
+  shotSpeed: 0.058

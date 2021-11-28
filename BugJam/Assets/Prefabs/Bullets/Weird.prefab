@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 400
+  life: 480
   fadeStart: 50
   sr: {fileID: 966619046920893348}
   weird: 1

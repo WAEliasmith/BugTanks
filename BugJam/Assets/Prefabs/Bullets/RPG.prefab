@@ -86,7 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38d454ef6d87a4ebc6ed37172f9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHolder: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  holdCamera: 0
 --- !u!114 &3190261705657778879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,12 +110,14 @@ MonoBehaviour:
   piercing: 0
   dead: 0
   speedOverride: 0
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   explosion: {fileID: 5524349361989402806, guid: 2a05bb1a3a151d24a9fc8aa2a44a9fba, type: 3}
-  maxVelocity: 0.16
+  maxVelocity: 0.15
   minVelocity: 0
   acceleration: 1.2
-  startSpeed: 0.0035
+  startSpeed: 0.003
   size: 0
   explodeStart: 10
 --- !u!114 &-2667820005332038975

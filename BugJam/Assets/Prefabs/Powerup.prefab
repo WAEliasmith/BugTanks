@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d5e3aa3dad05b4b8abf51b36b5a17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 500
+  powerup: {fileID: 6940543436775811796}
+  fadeInTime: 100
   fadeEnd: 400
   fadeStart: 100
   color: {r: 0.54509807, g: 0, b: 1, a: 0}
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerup: lazer
   maxLife: 500
+  lifeLeft: 0
 --- !u!61 &6940543436775811794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -235,4 +237,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38d454ef6d87a4ebc6ed37172f9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHolder: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  holdCamera: 0

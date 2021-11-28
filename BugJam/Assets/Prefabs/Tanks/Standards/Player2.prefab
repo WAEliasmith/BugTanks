@@ -8,12 +8,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: shotSpeed
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
       propertyPath: tankColor.b
       value: 0.082965374
       objectReference: {fileID: 0}
     - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
       propertyPath: tankColor.g
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: wingDuration
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4434875305639001542, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
       propertyPath: m_RootOrder
@@ -57,6 +65,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4434875305639001542, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001545, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: speed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001545, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: rotDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001545, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: rotationSpeed
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001545, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: launchVector.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434875305639001545, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: launchVector.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4434875305639001549, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}

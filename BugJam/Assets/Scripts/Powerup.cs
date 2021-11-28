@@ -7,7 +7,7 @@ public class Powerup : MonoBehaviour
     public string powerup = "";
     public int maxLife = 500;
 
-    private int lifeLeft;
+    public int lifeLeft;
 
     // Start is called before the first frame update
     void Start()

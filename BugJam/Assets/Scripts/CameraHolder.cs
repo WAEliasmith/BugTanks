@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraHolder : MonoBehaviour
 {
+    public Transform target0 = null;
     public Transform target = null;
     public Transform target2 = null;
     public bool follow = true;
@@ -67,6 +68,11 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
+        if (settingsHandler.instance.numPlayers == 1)
+        {
+            target = target0;
+            target2 = null;
+        }
         //disable outer cameras
         // NW.GetComponent<Camera>().enabled = false;
         // N.GetComponent<Camera>().enabled = false;
@@ -185,6 +191,7 @@ public class CameraHolder : MonoBehaviour
             else
             {
                 //noone alive
+                Debug.Log("false follow");
                 follow = false;
             }
         }

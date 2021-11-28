@@ -368,29 +368,29 @@ MonoBehaviour:
   movement: {fileID: 306223115874997225}
   gun: {fileID: 2918792352054067053}
   gunPos: {fileID: 306223116967102112}
-  reload: 20
+  reload: 25
   bulletCheckDist: 1.5
   bulletCheckAngle: 80
   nextWaypointDistance: 0.4
-  time: 25
+  time: 30
   dodgeCheckTime: 3
   passiveShotCheckTime: 3
   AngrySinSpeed: 0.2
-  angryTime: 30
-  trackTime: 20
-  chillTime: 20
+  angryTime: 35
+  trackTime: 25
+  chillTime: 25
   chillRadius: 3
-  cheeseTime: 30
-  angryAngle: 50
+  cheeseTime: 35
+  angryAngle: 55
   cheeseAngle: 0
   playerDesire: 80
-  baseAnger: 10
+  baseAnger: 9
   angerPerShot: 7
-  angerWhenClose: 0.02
+  angerWhenClose: 0.018
   cheeseWhenClose: 0.14
   angerGainPerFrame: 0
   dontShootAtWallDist: 0.6
-  aimDist: 10
+  aimDist: 13
   cheeseProximity: 1.4
   cheesingReduction: 0.2
   anger: 0
@@ -431,14 +431,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af99f4e1a651ec4e9a3184f52a823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.035
+  speed: 0.029
   xAxis: 0
   yAxis: 0
-  rotationSpeed: 5.6
+  rotationSpeed: 4.6
   wings: 0
   rb: {fileID: 306223115874997226}
   numAngles: 32
-  rotDelay: 3
+  rotDelay: 4
   rotStationaryUntilBurst: 5
   innerAngle: 0
   dead: 0

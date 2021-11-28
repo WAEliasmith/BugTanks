@@ -153,14 +153,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 500
+  life: 600
   fadeStart: 75
   sr: {fileID: 0}
   weird: 0
   strength: 1
   piercing: 1
   dead: 0
-  speedOverride: 0.04
+  speedOverride: 0.033
   maxBounces: -1
   wallCounter: 0
   color: {r: 1, g: 0.64540267, b: 0, a: 1}

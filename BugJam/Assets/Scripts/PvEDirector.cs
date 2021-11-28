@@ -62,7 +62,6 @@ public class PvEDirector : MonoBehaviour
         {
             //go to next level
             StartCoroutine(delay());
-            Time.timeScale = 0;
         }
         int playerCount = 0;
 
@@ -84,6 +83,13 @@ public class PvEDirector : MonoBehaviour
 
     IEnumerator delay(bool fail = false)
     {
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i])
+            {
+                players[i].GetComponent<Gun>().hbox.iFrames = 10001f;
+            }
+        }
         yield return new WaitForSecondsRealtime(1.5f);
         if (fail)
         {

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 292164419532985685, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: shotSpeed
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985685, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: wingDuration
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 292164419532985687, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -49,6 +57,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292164419532985687, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985688, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: speed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985688, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: rotDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985688, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: rotationSpeed
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985688, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: launchVector.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292164419532985688, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
+      propertyPath: launchVector.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 292164419532985692, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}

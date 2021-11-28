@@ -56,8 +56,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: life
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
       propertyPath: playerOnly
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: trackStart
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}

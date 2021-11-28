@@ -109,7 +109,7 @@ MonoBehaviour:
   strength: 1
   piercing: 0
   dead: 0
-  speedOverride: 0
+  speedOverride: 0.04
   maxBounces: 2
   wallCounter: 0
   color: {r: 1, g: 1, b: 1, a: 1}

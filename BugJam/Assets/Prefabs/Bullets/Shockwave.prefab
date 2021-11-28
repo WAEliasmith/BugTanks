@@ -94,14 +94,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 105
+  life: 115
   fadeStart: 50
   sr: {fileID: 2172268712702265179}
   weird: 0
   strength: 1
   piercing: 0
   dead: 0
-  speedOverride: 0.018
+  speedOverride: 0.016
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   minVelocity: 0
   maxVelocity: 0.25
@@ -252,6 +254,8 @@ MonoBehaviour:
   piercing: 0
   dead: 0
   speedOverride: 0
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   carrier: {fileID: 1519625818209419445}
   size: 1.75

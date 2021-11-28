@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
     public GameObject gunPos;
     public float shotSpeed;
     private int wallLayerMask = 1 << 8 | 1 << 9;
+    private int lazerLayerMask = 1 << 8 | 1 << 9 | 1 << 11;
+
     public MoveTank movement;
 
     public string powerup = "none";
@@ -80,13 +82,21 @@ public class Gun : MonoBehaviour
                 currentScore = settingsHandler.instance.scores[scoreNumber];
             }
         }
-        if (hbox && hbox.iFrames > 0)
+        if (hbox && hbox.iFrames > 0 && hbox.iFrames < 999)
         {
             tankColor = new Color(1f, 1f, 1f, 1f);
         }
         else
         {
             tankColor = baseColor;
+        }
+
+        if (hbox && hbox.iFrames > 999)
+        {
+            if (Mathf.Round(hbox.iFrames) % 10 == 0)
+            {
+                GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
+            }
         }
 
         if (wingTimer < 200)
@@ -320,7 +330,8 @@ public class Gun : MonoBehaviour
 
         List<Vector3> currPath = new List<Vector3>();
         currPath.Add(initialShotPos);
-        // RaycastHit2D testhit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, wallLayerMask);
+        // RaycastHit2D testhit = Physics2D.Raycast(gunPos.transform.position - 
+        //gunPos.transform.right * 0.1f, gunPos.transform.right, minShotDistance, lazerLayerMask);
         // if (testhit == null)
         // {
         //     return null;
@@ -328,31 +339,71 @@ public class Gun : MonoBehaviour
         //calculate currPath
         for (int i = 0; i < 25; i++)
         {
-            hit = Physics2D.Raycast(shotPos, prepDirection, maxDist, wallLayerMask);
+            hit = Physics2D.Raycast(shotPos, prepDirection, maxDist, lazerLayerMask);
             // Does the ray intersect
             if (hit.collider != null)
             {
-                currPath.Add((Vector3)(shotPos + prepDirection * hit.distance));
-                Debug.DrawRay(shotPos, prepDirection * hit.distance, Color.yellow);
+
+                //Debug.DrawRay(shotPos, prepDirection * hit.distance, Color.yellow);
 
                 shotPos = hit.point;
                 maxDist -= hit.distance;
+                currPath.Add((Vector3)(shotPos));
+
+
+                bool sus = false;
+                if (shotPos.x > (screenSize.x / 2) + wrapOffset.x)
+                {
+                    sus = true;
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    shotPos -= new Vector2(screenSize.x, 0f);
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, 0f));
+                }
+                else if (shotPos.x < -(screenSize.x / 2) + wrapOffset.x)
+                {
+                    sus = true;
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    shotPos += new Vector2(screenSize.x, 0f);
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, 0f));
+                }
+                else if (shotPos.y > (screenSize.y / 2) + wrapOffset.y)
+                {
+                    sus = true;
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    shotPos -= new Vector2(0f, screenSize.y);
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, 0f));
+                }
+                else if (shotPos.y < -(screenSize.y / 2) + wrapOffset.y)
+                {
+                    sus = true;
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    shotPos += new Vector2(0f, screenSize.y);
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, -999f));
+                    currPath.Add(new Vector3(shotPos.x, shotPos.y, 0f));
+                }
+
 
                 float x = hit.normal.x;
                 float y = hit.normal.y;
 
-                //Make lazer bounce
-                if (Mathf.Abs(x) > Mathf.Abs(y))
+                if (!sus)
                 {
-                    prepDirection.x = -prepDirection.x;
-                }
-                else
-                {
-                    prepDirection.y = -prepDirection.y;
-                }
+                    //Make lazer bounce
+                    if (Mathf.Abs(x) > Mathf.Abs(y))
+                    {
+                        prepDirection.x = -prepDirection.x;
+                    }
+                    else
+                    {
+                        prepDirection.y = -prepDirection.y;
+                    }
 
-                //Move new lazer point forwards a lil
-                shotPos += prepDirection * 0.015f;
+                    //Move new lazer point forwards a lil
+                    shotPos += prepDirection * 0.015f;
+                }
             }
             else
             {

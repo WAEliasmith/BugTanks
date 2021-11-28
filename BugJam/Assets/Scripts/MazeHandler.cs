@@ -153,16 +153,35 @@ public class MazeHandler : MonoBehaviour
     private Tilemap TYW;
     private Vector2Int screenSize;
 
+    public GameObject LazerWall = null;
+
     // Awake is called before any start
     void Awake()
     {
         screenSize = Vector2Int.RoundToInt(GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize);
+        Vector2 wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
 
         XW = GameObject.Find("XWalls").GetComponent<Tilemap>();
         YW = GameObject.Find("YWalls").GetComponent<Tilemap>();
         TXW = GameObject.Find("ThickXWalls").GetComponent<Tilemap>();
         TYW = GameObject.Find("ThickYWalls").GetComponent<Tilemap>();
 
+        //generate lazer wrapper -x
+        GameObject wall = Instantiate(LazerWall, new Vector3(-screenSize.x * 0.5f + wrapOffset.x - 0.51f, 0f, 0f), Quaternion.identity);
+        wall.transform.localScale = new Vector3(1f, screenSize.y + 2, 1f);
+        wall.transform.parent = gameObject.transform;
+        //generate lazer wrapper x
+        wall = Instantiate(LazerWall, new Vector3(screenSize.x * 0.5f + wrapOffset.x + 0.51f, 0f, 0f), Quaternion.identity);
+        wall.transform.localScale = new Vector3(1f, screenSize.y + 2, 1f);
+        wall.transform.parent = gameObject.transform;
+        //generate lazer wrapper -y
+        wall = Instantiate(LazerWall, new Vector3(0f, -screenSize.y * 0.5f + wrapOffset.y - 0.51f, 0f), Quaternion.identity);
+        wall.transform.localScale = new Vector3(screenSize.x + 2, 1f, 1f);
+        wall.transform.parent = gameObject.transform;
+        //generate lazer wrapper y
+        wall = Instantiate(LazerWall, new Vector3(0f, screenSize.y * 0.5f + wrapOffset.y + 0.51f, 0f), Quaternion.identity);
+        wall.transform.localScale = new Vector3(screenSize.x + 2, 1f, 1f);
+        wall.transform.parent = gameObject.transform;
 
         if (generateMaze)
         {

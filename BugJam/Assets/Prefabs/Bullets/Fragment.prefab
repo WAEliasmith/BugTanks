@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38d454ef6d87a4ebc6ed37172f9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHolder: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  holdCamera: 0
 --- !u!114 &8359550260958636997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,13 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d61c982caa58846a3671fc020130a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 100
   fadeStart: 25
   sr: {fileID: 0}
   weird: 0
   strength: 1
+  piercing: 0
   dead: 0
-  velocityOverride: 0
+  speedOverride: 0.033
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   collider: {fileID: 0}
