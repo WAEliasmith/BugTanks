@@ -32,7 +32,7 @@ public class PvPDirector : MonoBehaviour
     {
         aliveCount = settingsHandler.instance.tankCount;
         ScoreHandler.instance.showScores = false;
-        Time.timeScale = 1;
+        MenuManager.instance.menuTimeScaleMult = 1;
         float range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y;
         minSpawnDist = range * 0.25f;
         maxSpawnDist = range * 0.5f;
@@ -122,7 +122,7 @@ public class PvPDirector : MonoBehaviour
             ScoreHandler.instance.showScores = true;
 
             StartCoroutine(delay());
-            Time.timeScale = 0;
+            MenuManager.instance.menuTimeScaleMult = 0;
         }
         else if (time > dodgeTime2 + dodgeDuration2)
         {
@@ -132,14 +132,21 @@ public class PvPDirector : MonoBehaviour
             ScoreHandler.instance.showScores = true;
 
             StartCoroutine(delay());
-            Time.timeScale = 0;
+            MenuManager.instance.menuTimeScaleMult = 0;
         }
     }
 
-    IEnumerator delay()
+    IEnumerator delay(float delayTime = 1.5f)
     {
-        yield return new WaitForSecondsRealtime(1.5f);
-        SceneManager.LoadScene("main");
+        yield return new WaitForSecondsRealtime(delayTime);
+        if (MenuManager.instance.pause == false)
+        {
+            SceneManager.LoadScene("main");
+        }
+        else
+        {
+            StartCoroutine(delay(0.5f));
+        }
     }
 
     void CreateTank(GameObject tankToSpawn, Color color, int scoreNumber, int controls = -1)

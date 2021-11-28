@@ -8,13 +8,11 @@ public class PvEDirector : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> players;
 
-    public string nextLevel = "level1";
-
     //private int time;
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
+        MenuManager.instance.menuTimeScaleMult = 1;
 
         enemies = new List<GameObject>();
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("EnemyToKill"))
@@ -61,6 +59,13 @@ public class PvEDirector : MonoBehaviour
         if (aliveCount == 0)
         {
             //go to next level
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i])
+                {
+                    players[i].GetComponent<Gun>().hbox.iFrames = 10001f;
+                }
+            }
             StartCoroutine(delay());
         }
         int playerCount = 0;
@@ -81,23 +86,24 @@ public class PvEDirector : MonoBehaviour
         //}
     }
 
-    IEnumerator delay(bool fail = false)
+    IEnumerator delay(bool fail = false, float delayTime = 1.5f)
     {
-        for (int i = 0; i < players.Count; i++)
+        if (MenuManager.instance.pause == false)
         {
-            if (players[i])
+            yield return new WaitForSecondsRealtime(delayTime);
+            if (fail)
             {
-                players[i].GetComponent<Gun>().hbox.iFrames = 10001f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-        }
-        yield return new WaitForSecondsRealtime(1.5f);
-        if (fail)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            else
+            {
+                MenuManager.instance.goToNextLevel();
+            }
         }
         else
         {
-            SceneManager.LoadScene(nextLevel);
+            StartCoroutine(delay(fail, 0.5f));
         }
+
     }
 }

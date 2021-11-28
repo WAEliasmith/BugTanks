@@ -49,29 +49,6 @@ public class ScoreHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene("main");
-        }
-
-        if (Input.GetKeyDown("t"))
-        {
-            SceneManager.LoadScene("main");
-        }
-
-        //move to pause screen
-        if (Input.GetKeyDown("p"))
-        {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-            else
-            {
-                Time.timeScale = 0;
-            }
-        }
-
         for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
         {
             texts[i].text = settingsHandler.instance.scores[i].ToString();
