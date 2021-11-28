@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class settings : MonoBehaviour
+public class settingsHandler : MonoBehaviour
 {
     public float pvpMapSize = 1;
 
-    public static settings instance;
+    public static settingsHandler instance;
+
+    public bool crisp;
 
     public int[] scores;
     public Color[] colors;

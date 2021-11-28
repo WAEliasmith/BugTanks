@@ -35,13 +35,13 @@ public class PvPDirector : MonoBehaviour
         maxSpawnDist = range * 0.5f;
         noPlayersNear = 3.2f;
 
-        for (int i = 1; i <= settings.instance.tankCount; i++)
+        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
         {
-            if (i <= settings.instance.numPlayers)
+            if (i <= settingsHandler.instance.numPlayers)
             {
                 int controls = 0;
 
-                if (settings.instance.numPlayers > 1)
+                if (settingsHandler.instance.numPlayers > 1)
                 {
                     if (i == 1)
                     {
@@ -53,12 +53,12 @@ public class PvPDirector : MonoBehaviour
                     }
                 }
                 //create a player
-                CreateTank(PlayerTank, settings.instance.colors[i], i, controls);
+                CreateTank(PlayerTank, settingsHandler.instance.colors[i], i, controls);
             }
             else
             {
                 //create an AI
-                CreateTank(AITank, settings.instance.colors[i], i);
+                CreateTank(AITank, settingsHandler.instance.colors[i], i);
             }
 
         }
@@ -73,20 +73,20 @@ public class PvPDirector : MonoBehaviour
         if (time % 10 == 0)
         {
             int deadCount = 0;
-            for (int i = 1; i <= settings.instance.tankCount; i++)
+            for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
             {
                 if (tanks[i].activeSelf == false)
                 {
                     deadCount++;
                 }
             }
-            if (deadCount >= (settings.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
+            if (deadCount >= (settingsHandler.instance.tankCount - 1) && dodgeTime == Mathf.Infinity)
             {
                 dodgeTime = time;
                 awardTime = dodgeTime + (dodgeDuration - 10) / survivorPoints;
 
             }
-            if (deadCount == settings.instance.tankCount && dodgeTime2 == Mathf.Infinity)
+            if (deadCount == settingsHandler.instance.tankCount && dodgeTime2 == Mathf.Infinity)
             {
                 dodgeTime2 = time;
                 dodgeTime = time;
@@ -100,11 +100,11 @@ public class PvPDirector : MonoBehaviour
             survivorPointsAwarded += 1;
             if (survivorPointsAwarded <= survivorPoints)
             {
-                for (int i = 1; i <= settings.instance.tankCount; i++)
+                for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
                 {
                     if (tanks[i].activeSelf == true)
                     {
-                        settings.instance.AddScore(i);
+                        settingsHandler.instance.AddScore(i);
                     }
                 }
             }

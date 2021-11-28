@@ -19,6 +19,9 @@ public class bullet : MonoBehaviour
     public bool dead = false;
     public float speedOverride = 0;
 
+    public int maxBounces = -1;
+    public int wallCounter = 0;
+
     public Color color = new Color(0f, 0f, 0f, 1f);
 
     void Start()
@@ -74,6 +77,10 @@ public class bullet : MonoBehaviour
     public virtual void SpecificAction()
     {
         //here so it can be overrided
+        if (maxBounces != -1 && wallCounter >= maxBounces)
+        {
+            hit();
+        }
     }
 
     public virtual void hit()
@@ -92,6 +99,7 @@ public class bullet : MonoBehaviour
         {
             if (xFlip == false)
             {
+                wallCounter += 1;
                 velocity.x = -velocity.x;
                 xFlip = true;
             }
@@ -102,10 +110,15 @@ public class bullet : MonoBehaviour
             {
                 velocity.y = -velocity.y;
                 yFlip = true;
+                wallCounter += 1;
             }
         }
         else
         {
+            if (xFlip == false || yFlip == false)
+            {
+                wallCounter += 1;
+            }
             if (yFlip == false)
             {
                 velocity.y = -velocity.y;

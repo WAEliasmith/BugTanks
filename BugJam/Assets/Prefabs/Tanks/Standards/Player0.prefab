@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 897224242200086669, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: maxHp
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 897224242519615249, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 897224242519615257, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
       propertyPath: m_Name
-      value: PlayerTank
+      value: Player0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}

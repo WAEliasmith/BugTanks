@@ -27,6 +27,7 @@ public class CameraHolder : MonoBehaviour
     private int prep = 2;
 
     public float zoom = 4;
+    public float zoomTarget = 4;
 
     public IEnumerator Shake(float duration, float magnitude)
     {
@@ -52,6 +53,7 @@ public class CameraHolder : MonoBehaviour
 
     void Update()
     {
+        zoom = zoom * 0.95f + zoomTarget * 0.05f;
         C.GetComponent<Camera>().orthographicSize = zoom;
         NW.GetComponent<Camera>().orthographicSize = zoom;
         N.GetComponent<Camera>().orthographicSize = zoom;
@@ -125,7 +127,7 @@ public class CameraHolder : MonoBehaviour
                 if (target2 != null && target2.GetComponent<MoveTank>().dead == false)
                 {
                     //2 alive players
-                    zoom = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
+                    zoomTarget = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
 
                     //find closest player 2 clone to player 1
                     Vector2 clonePos = (Vector2)target2.position;
@@ -189,7 +191,7 @@ public class CameraHolder : MonoBehaviour
         else
         {
             //follow is false
-            zoom = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
+            zoomTarget = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
             transform.position = Vector3.SmoothDamp(transform.position,
             new Vector3(0, 0, 0) + offset + (Vector3)wrapOffset, ref velocity, smoothSpeed);
         }

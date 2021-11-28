@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!114 &5957366923167797066
 MonoBehaviour:
@@ -86,7 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38d454ef6d87a4ebc6ed37172f9496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHolder: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  holdCamera: 0
 --- !u!114 &7110671906012439250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +110,8 @@ MonoBehaviour:
   piercing: 0
   dead: 0
   speedOverride: 0
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   explosion: {fileID: 454893980812287957, guid: 8275cb68291a45342bdbe5ad8bce4e59, type: 3}
   maxVelocity: 9

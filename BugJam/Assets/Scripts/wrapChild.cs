@@ -20,6 +20,7 @@ public class wrapChild : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             clones[i] = Instantiate(child);
+            clones[i].transform.eulerAngles = child.transform.eulerAngles;
             clones[i].transform.parent = gameObject.transform;
         }
     }

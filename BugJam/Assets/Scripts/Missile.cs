@@ -14,6 +14,9 @@ public class Missile : bullet
     public Seeker seeker;
     private float xAxis;
 
+    public bool playerOnly = false;
+
+
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
@@ -64,19 +67,23 @@ public class Missile : bullet
                 }
             }
         }
-        foreach (GameObject Obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        if (playerOnly == false)
         {
-            if (Obj.name == "Hurtbox")
+            foreach (GameObject Obj in GameObject.FindGameObjectsWithTag("Enemy"))
             {
-                if (closestHurtboxTransform == null ||
-                Vector2.Distance(transform.position, closestHurtboxTransform.position)
-                > Vector2.Distance(transform.position, Obj.transform.position))
+                if (Obj.name == "Hurtbox")
                 {
-                    //Do Something
-                    closestHurtboxTransform = Obj.transform;
+                    if (closestHurtboxTransform == null ||
+                    Vector2.Distance(transform.position, closestHurtboxTransform.position)
+                    > Vector2.Distance(transform.position, Obj.transform.position))
+                    {
+                        //Do Something
+                        closestHurtboxTransform = Obj.transform;
+                    }
                 }
             }
         }
+
 
         return (closestHurtboxTransform);
     }

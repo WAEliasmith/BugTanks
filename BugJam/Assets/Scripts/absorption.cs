@@ -13,6 +13,7 @@ public class absorption : bullet
         if (other.gameObject.tag == "Bullet")
         {
             other.gameObject.GetComponent<bullet>().hit();
+            hit();
         }
     }
 }

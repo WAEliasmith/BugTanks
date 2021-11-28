@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class hurtbox : MonoBehaviour
 {
+    public float maxIframes = 10;
+    public float iFrames = 0;
+
     public float maxHp = 3;
 
     public float hp;
@@ -18,37 +21,50 @@ public class hurtbox : MonoBehaviour
         hp = maxHp;
     }
 
+    void FixedUpdate()
+    {
+        iFrames--;
+        if (hp <= 0)
+        {
+            move.dead = true;
+        }
+    }
+
     public void IHaveBeenHit(Vector2 enemyPos, float hitStrength = 0)
     {
-        //tell the hurtbox they have been hit
+        //tell the movement they have been hit
+        iFrames = maxIframes;
         hp -= 1;
         move.launchVector += hitStrength * ((Vector2)transform.position - enemyPos).normalized;
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Bullet")
+        if (iFrames <= 0)
         {
-            if (other.GetComponent<bullet>().dead == false)
+            if (other.tag == "Bullet")
             {
-                IHaveBeenHit(other.transform.position, other.GetComponent<bullet>().strength);
-                other.GetComponent<bullet>().hit();
-                //add score to the player that hit me
-                if (other.GetComponent<bullet>().ownerScoreNumber != gun.scoreNumber)
+                if (other.GetComponent<bullet>().dead == false)
                 {
-                    //not self hitting
-                    settings.instance.AddScore(other.GetComponent<bullet>().ownerScoreNumber);
+                    IHaveBeenHit(other.transform.position, other.GetComponent<bullet>().strength);
+                    other.GetComponent<bullet>().hit();
+                    //add score to the player that hit me
+                    if (other.GetComponent<bullet>().ownerScoreNumber != gun.scoreNumber)
+                    {
+                        //not self hitting
+                        settingsHandler.instance.AddScore(other.GetComponent<bullet>().ownerScoreNumber);
+                    }
+
                 }
-
             }
-        }
 
-        if (other.tag == "Powerup")
-        {
-            if (gun.powerup == "none")
+            if (other.tag == "Powerup")
             {
-                gun.powerup = other.GetComponent<Powerup>().powerup;
-                other.GetComponent<Powerup>().Collected();
+                if (gun.powerup == "none")
+                {
+                    gun.powerup = other.GetComponent<Powerup>().powerup;
+                    other.GetComponent<Powerup>().Collected();
+                }
             }
         }
     }

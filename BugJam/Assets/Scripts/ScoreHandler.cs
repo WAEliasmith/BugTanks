@@ -29,12 +29,12 @@ public class ScoreHandler : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        for (int i = 1; i <= settings.instance.tankCount; i++)
+        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
         {
             holders[i].gameObject.SetActive(true); //comment out later
-            texts[i].color = settings.instance.colors[i];
-            bases[i].color = settings.instance.colors[i];
-            guns[i].color = settings.instance.colors[i];
+            texts[i].color = settingsHandler.instance.colors[i];
+            bases[i].color = settingsHandler.instance.colors[i];
+            guns[i].color = settingsHandler.instance.colors[i];
         }
     }
 
@@ -69,21 +69,21 @@ public class ScoreHandler : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= settings.instance.tankCount; i++)
+        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
         {
-            texts[i].text = settings.instance.scores[i].ToString();
+            texts[i].text = settingsHandler.instance.scores[i].ToString();
         }
 
         if (showScores == true)
         {
-            for (int i = 1; i <= settings.instance.tankCount; i++)
+            for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
             {
                 holders[i].gameObject.SetActive(true);
             }
         }
         else
         {
-            for (int i = 1; i <= settings.instance.tankCount; i++)
+            for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
             {
                 holders[i].gameObject.SetActive(false);
             }
@@ -93,6 +93,6 @@ public class ScoreHandler : MonoBehaviour
 
     public void AddScore(int player, int score = 1)
     {
-        settings.instance.scores[player] += score;
+        settingsHandler.instance.scores[player] += score;
     }
 }

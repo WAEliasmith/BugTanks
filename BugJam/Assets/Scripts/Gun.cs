@@ -16,6 +16,10 @@ public class Gun : MonoBehaviour
 
     public string powerup = "none";
 
+    public bool crisp = false;
+
+    public hurtbox hbox = null;
+
     public GameObject weird = null;
     public GameObject lazer = null;
     public GameObject missile = null;
@@ -25,9 +29,11 @@ public class Gun : MonoBehaviour
     public GameObject rpg = null;
     public GameObject grenade = null;
     public GameObject absorbShot = null;
+    public GameObject crispShot = null;
     public float wingDuration = 350;
 
     public Color tankColor;
+    public Color baseColor;
 
     public int scoreNumber = -1;
 
@@ -52,7 +58,12 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        currentScore = settings.instance.scores[scoreNumber];
+        baseColor = tankColor;
+        if (settingsHandler.instance.crisp)
+        {
+            crisp = true;
+        }
+        currentScore = settingsHandler.instance.scores[scoreNumber];
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
         myBullets = new GameObject[bulletCount];
@@ -60,19 +71,29 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (settings.instance.pvp)
+        if (settingsHandler.instance.pvp)
         {
-            if (currentScore != settings.instance.scores[scoreNumber])
+            if (currentScore != settingsHandler.instance.scores[scoreNumber])
             {
                 //Just got a point
                 GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
-                currentScore = settings.instance.scores[scoreNumber];
+                currentScore = settingsHandler.instance.scores[scoreNumber];
             }
         }
+        if (hbox && hbox.iFrames > 0)
+        {
+            tankColor = new Color(1f, 1f, 1f, 1f);
+        }
+        else
+        {
+            tankColor = baseColor;
+        }
+
         if (wingTimer < 200)
         {
             tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;
         }
+
 
         if (powerup == "lazer")
         {
@@ -174,7 +195,16 @@ public class Gun : MonoBehaviour
                 }
                 if (shotIndex != -1)
                 {
-                    GameObject p = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
+                    GameObject p;
+                    if (crisp)
+                    {
+                        p = Instantiate(crispShot, gunPos.transform.position, Quaternion.identity);
+
+                    }
+                    else
+                    {
+                        p = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
+                    }
                     p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                     myBullets[shotIndex] = p;
                     p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;

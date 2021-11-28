@@ -25,7 +25,7 @@ public class PvEDirector : MonoBehaviour
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("CameraTarget"))
         {
             players.Add(obj);
-            if (settings.instance.numPlayers == 1)
+            if (settingsHandler.instance.numPlayers == 1)
             {
                 //disable 2 player controllers
                 if (obj.name == "Player1" || obj.name == "Player2")
@@ -78,7 +78,6 @@ public class PvEDirector : MonoBehaviour
         {
             //go to current level
             StartCoroutine(delay(true));
-            Time.timeScale = 0;
         }
         //}
     }

@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
     public float bulletCheckAngle = 80;
 
     private float reloadLeft;
-    public hurtbox hbox;
     public Path path;
     private int currentWaypoint = 0;
     public float nextWaypointDistance = 0.3f;
@@ -53,6 +52,9 @@ public class EnemyController : MonoBehaviour
     public float cheeseAnger;
     private Vector2 screenSize;
     private float reactionTime = 25f;
+    private int aimTime;
+
+    public int WallBounceAim = 25;
 
     public float bulletSafeDist = 1f;
     Seeker seeker;
@@ -61,6 +63,10 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        if (gun.crisp)
+        {
+            WallBounceAim = 2;
+        }
         reactionTime += Random.Range(0, 10f);
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         anger = baseAnger;
@@ -112,6 +118,7 @@ public class EnemyController : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
+        aimTime++;
         if (reactionTime > 0)
         {
             reactionTime--;
@@ -144,11 +151,6 @@ public class EnemyController : MonoBehaviour
                 }
             }
 
-            if (hbox.hp <= 0)
-            {
-                movement.dead = true;
-                movement.killedBy = transform;
-            }
             if (!movement.dead)
             {
                 anger += angerGainPerFrame;
@@ -232,7 +234,7 @@ public class EnemyController : MonoBehaviour
         }
 
 
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < WallBounceAim; i++)
         {
             hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
             // Does the ray intersect
@@ -340,7 +342,7 @@ public class EnemyController : MonoBehaviour
             direction = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
         }
         float dangle = Mathf.DeltaAngle(transform.eulerAngles.z, Vector2.SignedAngle(new Vector2(1f, 0f), direction));
-        dangle += angryAngle * (Mathf.Sin((timeLeft - angryTime) * AngrySinSpeed));
+        dangle += angryAngle * (Mathf.Sin(aimTime * AngrySinSpeed));
         if (dangle > 10)
         {
             movement.xAxis = 1f;
