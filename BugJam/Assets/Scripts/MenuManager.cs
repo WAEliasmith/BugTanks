@@ -46,6 +46,10 @@ public class MenuManager : MonoBehaviour
 
     public bool watch = false;
 
+    public bool[] powerupToggle;
+
+    public string[] allPowerups;
+
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "TitleScreen")
@@ -229,4 +233,61 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void togglePowerup(int index)
+    {
+        powerupToggle[index] = !powerupToggle[index];
+    }
+
+    public void startArena()
+    {
+        List<string> powerups = new List<string>();
+        for (int i = 0; i < powerupToggle.Length; i++)
+        {
+            if (powerupToggle[i])
+            {
+                powerups.Add(allPowerups[i]);
+            }
+        }
+
+        settingsHandler.instance.enabledPowerups = powerups;
+        if (settingsHandler.instance.pvpMapSize == 1)
+        {
+            SceneManager.LoadScene("mainsmall");
+        }
+        else if (settingsHandler.instance.pvpMapSize == 2)
+        {
+            SceneManager.LoadScene("mainmedium");
+        }
+        else if (settingsHandler.instance.pvpMapSize == 3)
+        {
+            SceneManager.LoadScene("main"); //large
+        }
+        else if (settingsHandler.instance.pvpMapSize == 4)
+        {
+            SceneManager.LoadScene("mainmassive");
+        }
+    }
+
+    public void toggleArenaSize()
+    {
+        settingsHandler.instance.pvpMapSize++;
+        if (settingsHandler.instance.pvpMapSize > 4)
+        {
+            settingsHandler.instance.pvpMapSize = 1;
+        }
+    }
+
+    public void toggleCrisp()
+    {
+        settingsHandler.instance.crisp = !settingsHandler.instance.crisp;
+    }
+
+    public void togglePlayers()
+    {
+        settingsHandler.instance.tankCount++;
+        if (settingsHandler.instance.tankCount > 8)
+        {
+            settingsHandler.instance.tankCount = 2;
+        }
+    }
 }

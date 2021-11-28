@@ -12,7 +12,7 @@ public class PowerupDirector : MonoBehaviour
     public float initialTimeToSpawn = 100;
     public float noWallsNear = 1f;
 
-    public string[] enabledPowerups;
+    public List<string> enabledPowerups;
 
     public GameObject powerupPrefab = null;
 
@@ -74,7 +74,10 @@ public class PowerupDirector : MonoBehaviour
                 GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
                 if (troll == false)
                 {
-                    powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Length)];
+                    if (enabledPowerups.Count > 0)
+                    {
+                        powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Count)];
+                    }
                 }
                 else
                 {

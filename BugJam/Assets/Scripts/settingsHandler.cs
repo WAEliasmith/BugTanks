@@ -21,9 +21,9 @@ public class settingsHandler : MonoBehaviour
         }
     }
 
-    public float pvpMapSize = 1;
+    public float pvpMapSize = 2;
 
-    public bool crisp;
+    public bool crisp = false;
 
     public int[] scores;
     public Color[] colors;
@@ -32,14 +32,11 @@ public class settingsHandler : MonoBehaviour
     public int tankCount = 8;
     public int numPlayers = 1;
 
+    public List<string> enabledPowerups;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
         Time.fixedDeltaTime = 1f / 60f;
     }
 
