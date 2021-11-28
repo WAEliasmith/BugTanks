@@ -8,8 +8,6 @@ public class ScoreHandler : MonoBehaviour
 {
     public static ScoreHandler instance;
 
-    public PvPDirector director;
-
     //Index into these lists are score IDs
     public Text[] texts;
 
@@ -25,21 +23,26 @@ public class ScoreHandler : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-
-        DontDestroyOnLoad(this.gameObject);
-
-        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
+        if (instance)
         {
-            holders[i].gameObject.SetActive(true); //comment out later
-            texts[i].color = settingsHandler.instance.colors[i];
-            bases[i].color = settingsHandler.instance.colors[i];
-            guns[i].color = settingsHandler.instance.colors[i];
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
     void Start()
     {
+        for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
+        {
+            texts[i].color = settingsHandler.instance.colors[i];
+            bases[i].color = settingsHandler.instance.colors[i];
+            guns[i].color = settingsHandler.instance.colors[i];
+        }
         showScores = false;
     }
 

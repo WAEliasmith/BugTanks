@@ -16,14 +16,17 @@ public class PowerupDirector : MonoBehaviour
 
     public GameObject powerupPrefab = null;
 
+    public PvPDirector pvp;
+
     public float rangeMod = 1;
     private float range;
-    private int numTanks;
     // Start is called before the first frame update
     void Start()
     {
-        initialTimeToSpawn -= numTanks * 10f;
-        r = r + numTanks * rPlayerIncrease;
+        if (pvp)
+        {
+            initialTimeToSpawn -= settingsHandler.instance.tankCount * 8f;
+        }
         range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y * rangeMod;
         timeToSpawn = initialTimeToSpawn;
         timeToSpawnLeft = timeToSpawn;
@@ -37,7 +40,15 @@ public class PowerupDirector : MonoBehaviour
         timeToSpawnLeft--;
         if (timeToSpawnLeft <= 0)
         {
-            timeToSpawn = initialTimeToSpawn / r;
+            if (pvp)
+            {
+                timeToSpawn = initialTimeToSpawn / (r + pvp.aliveCount * rPlayerIncrease);
+            }
+            else
+            {
+                timeToSpawn = initialTimeToSpawn / r;
+            }
+
             timeToSpawnLeft = timeToSpawn;
             CreatePowerup();
         }

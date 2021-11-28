@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
     public float anger;
     public float cheeseAnger;
     private Vector2 screenSize;
-    private float reactionTime = 25f;
+    private float reactionTime = 38f;
     private int aimTime;
 
     public int WallBounceAim = 25;
@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
         {
             WallBounceAim = 2;
         }
-        reactionTime += Random.Range(0, 10f);
+        reactionTime += Random.Range(0, 15f);
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
         anger = baseAnger;
         seeker = GetComponent<Seeker>();

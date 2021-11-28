@@ -23,7 +23,7 @@ public class hurtbox : MonoBehaviour
 
     void FixedUpdate()
     {
-        iFrames -= 0.7f;
+        iFrames -= 0.4f;
         if (hp <= 0)
         {
             move.dead = true;
@@ -33,8 +33,12 @@ public class hurtbox : MonoBehaviour
     public void IHaveBeenHit(Vector2 enemyPos, float hitStrength = 0)
     {
         //tell the movement they have been hit
-        iFrames = maxIframes;
+
         hp -= 1;
+        if (hp != 0)
+        {
+            iFrames = maxIframes;
+        }
         move.launchVector += hitStrength * ((Vector2)transform.position - enemyPos).normalized;
     }
 

@@ -27,7 +27,7 @@ public class PvEDirector : MonoBehaviour
             players.Add(obj);
             if (settingsHandler.instance.numPlayers == 1)
             {
-                //disable 2 player controllers
+                //disable 2 player controllers and hearts
                 if (obj.name == "Player1" || obj.name == "Player2")
                 {
                     obj.SetActive(false);
@@ -35,7 +35,7 @@ public class PvEDirector : MonoBehaviour
             }
             else
             {
-                //disable 1 player controller
+                //disable 1 player controller and hearts
                 if (obj.name == "Player0")
                 {
                     obj.SetActive(false);

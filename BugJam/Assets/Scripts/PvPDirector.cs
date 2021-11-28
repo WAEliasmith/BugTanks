@@ -22,12 +22,15 @@ public class PvPDirector : MonoBehaviour
     private float maxSpawnDist;
     public GameObject PlayerTank = null;
     public GameObject AITank = null;
+    public int aliveCount;
 
     public GameObject[] tanks;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        aliveCount = settingsHandler.instance.tankCount;
         ScoreHandler.instance.showScores = false;
         Time.timeScale = 1;
         float range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y;
@@ -91,6 +94,7 @@ public class PvPDirector : MonoBehaviour
                 dodgeTime2 = time;
                 dodgeTime = time;
             }
+            aliveCount = settingsHandler.instance.tankCount - deadCount;
         }
 
         if (time > awardTime)

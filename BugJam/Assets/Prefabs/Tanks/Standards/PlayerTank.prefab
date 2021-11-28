@@ -658,7 +658,7 @@ MonoBehaviour:
   xAxis: 0
   yAxis: 0
   rotationSpeed: 4.6
-  wings: 0
+  wings: 1
   rb: {fileID: 897224242519615261}
   numAngles: 32
   rotDelay: 4
@@ -667,7 +667,7 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 0, y: 0}
+  launchVector: {x: 1.3050681, y: -1.4382107}
   launchStrength: 5
 --- !u!50 &897224242519615261
 Rigidbody2D:
@@ -847,15 +847,16 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 3.8256896, y: 0.43486094, z: 0.1}
-  - {x: 2.5733519, y: -1.4393942, z: 0}
-  - {x: 1.9861643, y: -0.5606059, z: 0}
-  - {x: 1.060606, y: -1.9458015, z: 0}
-  - {x: 3.3949513, y: -5.4393945, z: 0}
-  - {x: 4.012511, y: -4.515151, z: 0}
-  - {x: 4.63007, y: -5.439394, z: 0}
-  - {x: 4.939394, y: -4.976458, z: 0}
-  - {x: 4.8580856, y: -4.8547716, z: 0}
+  - {x: 0.54856944, y: -2.370814, z: 0.1}
+  - {x: 0.060606062, y: -2.8587775, z: 0}
+  - {x: 1.641223, y: -4.439394, z: 0}
+  - {x: 2.939394, y: -3.141223, z: 0}
+  - {x: 2.060606, y: -2.2624354, z: 0}
+  - {x: 3.9393942, y: -0.38364804, z: 0}
+  - {x: 3.060606, y: 0.4951399, z: 0}
+  - {x: 3.939394, y: 1.3739278, z: 0}
+  - {x: 3.873928, y: 1.439394, z: 0}
+  - {x: 3.2511625, y: 0.8166287, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

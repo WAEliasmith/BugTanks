@@ -27,6 +27,7 @@ public class CameraHolder : MonoBehaviour
 
     private int prep = 2;
 
+    private float initialZoomTarget;
     public float zoom = 4;
     public float zoomTarget = 4;
 
@@ -68,6 +69,7 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
+        initialZoomTarget = zoomTarget;
         if (settingsHandler.instance.numPlayers == 1)
         {
             target = target0;
@@ -172,6 +174,7 @@ public class CameraHolder : MonoBehaviour
                 }
                 else
                 {
+                    zoomTarget = initialZoomTarget;
                     //p1 alive
                     transform.position = Vector3.SmoothDamp(transform.position,
                     target.position + offset, ref velocity, smoothSpeed);
@@ -179,6 +182,7 @@ public class CameraHolder : MonoBehaviour
             }
             else if (target2 != null && target2.GetComponent<MoveTank>().dead == false)
             {
+                zoomTarget = initialZoomTarget;
                 // p2 alive
                 if (target2.GetComponent<Wrap>().cameraTransform == null)
                 {
