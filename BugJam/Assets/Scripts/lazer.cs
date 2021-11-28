@@ -41,12 +41,15 @@ public class lazer : MonoBehaviour
                     {
                         GameObject child = transform.GetChild(0).gameObject;
                         tr.AddPosition(transform.position);
-                        GameObject child2 = Instantiate(child);
-                        child2.transform.parent = gameObject.transform;
-                        child.transform.parent = null;
-                        child2.transform.localPosition = new Vector3(0, 0, 0);
+                        if (child != null)
+                        {
+                            GameObject child2 = Instantiate(child);
+                            child2.transform.parent = gameObject.transform;
+                            child.transform.parent = null;
+                            child2.transform.localPosition = new Vector3(0, 0, 0);
 
-                        tr = child2.GetComponent<TrailRenderer>();
+                            tr = child2.GetComponent<TrailRenderer>();
+                        }
                         //next three nodes should be skipped
                         //transform.position = new Vector3(path[0].x, path[0].y, 120f);
                         path.RemoveAt(0);

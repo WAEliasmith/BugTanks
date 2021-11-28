@@ -191,7 +191,6 @@ public class CameraHolder : MonoBehaviour
             else
             {
                 //noone alive
-                Debug.Log("false follow");
                 follow = false;
             }
         }
