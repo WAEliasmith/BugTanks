@@ -220,6 +220,7 @@ public class MenuManager : MonoBehaviour
 
     public void goToLevel(int level)
     {
+        settingsHandler.instance.pvp = false;
         LoadScreen(campaignScreen, false);
         currentLevel = level;
         SceneManager.LoadScene(levelNames[level]);
@@ -258,6 +259,8 @@ public class MenuManager : MonoBehaviour
 
     public void loadArena()
     {
+        settingsHandler.instance.pvp = true;
+
         if (settingsHandler.instance.pvpMapSize == 1)
         {
             SceneManager.LoadScene("mainsmall");

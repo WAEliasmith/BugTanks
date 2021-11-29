@@ -67,10 +67,5 @@ public class PlayerController : MonoBehaviour
         // {
         //     maze.changeWall(transform.position);
         // }
-
-        if (hbox.hp <= 0)
-        {
-            movement.dead = true;
-        }
     }
 }

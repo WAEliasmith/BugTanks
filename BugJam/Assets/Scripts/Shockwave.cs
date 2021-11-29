@@ -5,7 +5,6 @@ using UnityEngine;
 public class Shockwave : Explosion
 {
     public float explodeStart = 75;
-
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
@@ -51,11 +50,6 @@ public class Shockwave : Explosion
             Destroy(gameObject);
         }
 
-
-        if (lifeLeft <= 1)
-        {
-            hit();
-        }
         if (lifeLeft < explodeStart)
         {
             float scale = Mathf.Max((lifeLeft / explodeStart) * size, 0.01f);

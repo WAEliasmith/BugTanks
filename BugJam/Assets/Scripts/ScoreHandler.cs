@@ -62,7 +62,7 @@ public class ScoreHandler : MonoBehaviour
             texts[i].text = settingsHandler.instance.scores[i].ToString();
         }
 
-        if (showScores == true)
+        if (showScores == true || (MenuManager.instance.pause == true && settingsHandler.instance.pvp))
         {
             for (int i = 1; i <= settingsHandler.instance.tankCount; i++)
             {

@@ -38,6 +38,10 @@ public class settingsHandler : MonoBehaviour
 
     public bool cameraFollow = true;
 
+    public Vector2 screenSize;
+    public Vector2 wrapOffset;
+    public CameraHolder camera;
+
     // Update is called once per frame
     void Update()
     {

@@ -12,6 +12,10 @@ PrefabInstance:
       value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 8746710770699297446, guid: 3deedd12cbaab8941b9fac1a2beedc35, type: 3}
+    - target: {fileID: 4434875305639001540, guid: 2d9f3cce32594cc419090caae1cc9f99, type: 3}
       propertyPath: tankColor.b
       value: 0.082965374
       objectReference: {fileID: 0}

@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af99f4e1a651ec4e9a3184f52a823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 3414796838854090855, guid: 950cede0121d06941b895a917244d878, type: 3}
   speed: 0
   xAxis: 0
   yAxis: 0
@@ -523,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d567c5d76a024d855b3baea889bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 8746710770699297446, guid: 3deedd12cbaab8941b9fac1a2beedc35, type: 3}
   fire: 0
   bulletCount: 5
   myBullets: []

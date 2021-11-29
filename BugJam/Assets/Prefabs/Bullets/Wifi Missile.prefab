@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1009687702737571192}
   - component: {fileID: 7885506154081703573}
   - component: {fileID: 450448189042917616}
+  - component: {fileID: 1442715453852206090}
   m_Layer: 3
   m_Name: Wifi Missile
   m_TagString: Bullet
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3387095103126682605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caec632698d20945aa7fa551f6ac634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedsplosion: {fileID: 211408927983817910, guid: 98595e479a77e1141a4c8ac039ab73d1, type: 3}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 600
@@ -166,3 +168,17 @@ MonoBehaviour:
   color: {r: 1, g: 0.64540267, b: 0, a: 1}
   movement: {fileID: 0}
   rotateSpeed: 5.6
+--- !u!114 &1442715453852206090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387095103126682605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040fb6a985d03c479659a64a777d2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 3504410317363472258, guid: 475973f4ec916f544b047dba6190dd41, type: 3}
+  life: 600

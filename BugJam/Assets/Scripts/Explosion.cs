@@ -12,9 +12,13 @@ public class Explosion : bullet
     public Vector2 screenSize;
     public MazeHandler maze;
 
+    public float shakeLength = 0.2f;
+    public float shakeMag = 0.15f;
+
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(settingsHandler.instance.camera.Shake(shakeLength, shakeMag));
         ownerScoreNumber = carrier.ownerScoreNumber;
         maze = GameObject.Find("MazeHandler").GetComponent<MazeHandler>();
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;

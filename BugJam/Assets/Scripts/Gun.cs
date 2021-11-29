@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public GameObject muzzleFlash = null;
+
     public bool fire;
     public int bulletCount = 5;
     public GameObject[] myBullets;
@@ -81,7 +83,8 @@ public class Gun : MonoBehaviour
             if (currentScore != settingsHandler.instance.scores[scoreNumber])
             {
                 //Just got a point
-                GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
+                GameObject p = Instantiate(pointExplosion, Vector3.zero, Quaternion.identity);
+                p.transform.position = transform.position;
                 currentScore = settingsHandler.instance.scores[scoreNumber];
             }
         }
@@ -98,7 +101,8 @@ public class Gun : MonoBehaviour
         {
             if (Mathf.Round(hbox.iFrames) % 10 == 0)
             {
-                GameObject p = Instantiate(pointExplosion, transform.position, Quaternion.identity);
+                GameObject p = Instantiate(pointExplosion, Vector3.zero, Quaternion.identity);
+                p.transform.position = transform.position;
             }
         }
 
@@ -169,9 +173,16 @@ public class Gun : MonoBehaviour
 
     }
 
+    public void Flash()
+    {
+        GameObject p = Instantiate(muzzleFlash, gunPos.transform.position, Quaternion.identity);
+        p.transform.position = gunPos.transform.position;
+        float targetAngle = Vector2.SignedAngle(new Vector2(1f, 0f), gunPos.transform.right);
+        p.transform.eulerAngles = new Vector3(0f, 0f, targetAngle);
+    }
+
     public void Shoot()
     {
-
         if (powerup == "frag exploder")
         {
             powerup = "none";
@@ -221,6 +232,7 @@ public class Gun : MonoBehaviour
                     p.GetComponent<bullet>().velocity = gunPos.transform.right * shotSpeed;
                     myBullets[shotIndex] = p;
                     p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                    Flash();
                 }
             }
             else if (powerup == "lazer")
@@ -241,6 +253,7 @@ public class Gun : MonoBehaviour
                 p.GetComponent<Missile>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
                 p.GetComponent<Missile>().ownerScoreNumber = scoreNumber;
+                Flash();
             }
             else if (powerup == "wifi missile")
             {
@@ -250,6 +263,7 @@ public class Gun : MonoBehaviour
                 p.GetComponent<WifiMissile>().movement = movement;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                Flash();
             }
             else if (powerup == "frag shot")
             {
@@ -259,6 +273,7 @@ public class Gun : MonoBehaviour
                 powerup = "frag exploder";
                 p.GetComponent<FragGrenade>().Owner = gameObject;
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                Flash();
             }
             else if (powerup == "rpg")
             {
@@ -267,6 +282,7 @@ public class Gun : MonoBehaviour
                 p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                Flash();
             }
             else if (powerup == "grenade")
             {
@@ -275,6 +291,7 @@ public class Gun : MonoBehaviour
                 p.GetComponent<Grenade>().velocity = gunPos.transform.right * shotSpeed;
                 powerup = "none";
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                Flash();
             }
             else if (powerup == "weird")
             {
@@ -298,6 +315,7 @@ public class Gun : MonoBehaviour
                 {
                     powerup = "none";
                 }
+                Flash();
             }
         }
     }

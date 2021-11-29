@@ -69,6 +69,9 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
+        settingsHandler.instance.screenSize = screenSize;
+        settingsHandler.instance.wrapOffset = wrapOffset;
+        settingsHandler.instance.camera = GetComponent<CameraHolder>();
         follow = settingsHandler.instance.cameraFollow;
         initialZoomTarget = zoomTarget;
         if (settingsHandler.instance.numPlayers == 1)
@@ -136,8 +139,6 @@ public class CameraHolder : MonoBehaviour
                 if (target2 != null && target2.GetComponent<MoveTank>().dead == false)
                 {
                     //2 alive players
-                    zoomTarget = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
-
                     //find closest player 2 clone to player 1
                     Vector2 clonePos = (Vector2)target2.position;
                     float cloneDist = (target2.position - target.position).magnitude;
@@ -169,6 +170,7 @@ public class CameraHolder : MonoBehaviour
                         cloneDist = newCloneDist;
                         clonePos = newClonePos;
                     }
+                    zoomTarget = Mathf.Max(cloneDist * 0.5f + 2f, initialZoomTarget - 1f);
 
                     transform.position = Vector3.SmoothDamp(transform.position,
                     (target.position + (Vector3)clonePos) * 0.5f + offset, ref velocity, smoothSpeed);

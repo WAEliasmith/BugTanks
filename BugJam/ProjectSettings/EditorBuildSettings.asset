@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
+    path: Assets/Scenes/TitleScreen/TitleScreen.unity
     guid: 23a19d6f2d3491546815e7783bf85219
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Battle Arena/Main.unity
     guid: 13eae0d2cc54272428034470fc4b9d65
   - enabled: 1
     path: Assets/Scenes/level1.unity
@@ -33,12 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/4firstwrap.unity
     guid: 23a0b71b16d87a94d8651b688c118e34
   - enabled: 1
-    path: Assets/Scenes/mainmassive.unity
+    path: Assets/Scenes/Battle Arena/mainmassive.unity
     guid: 603119943b3447044b1644623c09924f
   - enabled: 1
-    path: Assets/Scenes/mainsmall.unity
+    path: Assets/Scenes/Battle Arena/mainsmall.unity
     guid: 6af8b2e8e3448fb4d83f143c84a61fe4
   - enabled: 1
-    path: Assets/Scenes/mainmedium.unity
+    path: Assets/Scenes/Battle Arena/mainmedium.unity
     guid: 858309cd63c04aa4f970f98257d70568
   m_configObjects: {}

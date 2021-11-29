@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 8970707034384322306}
   - component: {fileID: 8583268855856472116}
   - component: {fileID: 602201780486708331}
+  - component: {fileID: 5999026696143641729}
   m_Layer: 3
   m_Name: Explosion
   m_TagString: Bullet
@@ -263,3 +264,19 @@ MonoBehaviour:
   maxLife: 90
   screenSize: {x: 0, y: 0}
   maze: {fileID: 0}
+  shakeLength: 0.2
+  shakeMag: 0.15
+--- !u!114 &5999026696143641729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158743937008722336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040fb6a985d03c479659a64a777d2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 7968882615415364952, guid: 340d434ccda478e419c0b7cfb479c754, type: 3}
+  life: 220

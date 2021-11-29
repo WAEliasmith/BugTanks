@@ -263,6 +263,8 @@ MonoBehaviour:
   maxLife: 105
   screenSize: {x: 0, y: 0}
   maze: {fileID: 0}
+  shakeLength: 2
+  shakeMag: 0.005
   explodeStart: 45
   stretchFromVelocityMod: 35
   stretchMax: 8

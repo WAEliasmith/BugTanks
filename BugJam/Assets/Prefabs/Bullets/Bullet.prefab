@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22c3d3f1d3dbf41930717deeb0743a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedsplosion: {fileID: 211408927983817910, guid: 98595e479a77e1141a4c8ac039ab73d1, type: 3}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 400

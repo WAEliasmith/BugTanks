@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveTank : MonoBehaviour
 {
+    public GameObject explosion = null;
     public float speed;
     private float backwardsMultiplier = 0.75f;
     public float xAxis;
@@ -127,6 +128,9 @@ public class MoveTank : MonoBehaviour
         }
         else
         {
+            GameObject p = Instantiate(explosion, transform.position, Quaternion.identity);
+            p.transform.position = transform.position;
+            StartCoroutine(settingsHandler.instance.camera.Shake(0.1f, 0.1f));
             gameObject.SetActive(false);
         }
         rb.MovePosition(rb.position + displacementThisFrame + launchVector * launchStrength * Time.deltaTime);

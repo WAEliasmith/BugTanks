@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5570540056476499957}
   - component: {fileID: 5469261798547510408}
   - component: {fileID: -4060462831217976901}
+  - component: {fileID: 7264219545770572265}
   m_Layer: 3
   m_Name: Missile
   m_TagString: Bullet
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e7e500d4826134aa77012f70c02911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedsplosion: {fileID: 211408927983817910, guid: 98595e479a77e1141a4c8ac039ab73d1, type: 3}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 500
@@ -197,3 +199,17 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &7264219545770572265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090183058788405901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040fb6a985d03c479659a64a777d2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 3241310407280271736, guid: 79e1422e5d9c58e41ba97fe58b4e9ecd, type: 3}
+  life: 500

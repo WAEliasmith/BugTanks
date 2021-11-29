@@ -11,6 +11,8 @@ public class FragGrenade : bullet
 
     public override void hit()
     {
+        StartCoroutine(settingsHandler.instance.camera.Shake(0.1f, 0.08f));
+
         if (Owner != null)
         {
             Owner.GetComponent<Gun>().powerup = "none";

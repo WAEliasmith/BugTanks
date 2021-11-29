@@ -18,8 +18,8 @@ public class Wrap : MonoBehaviour
             cameraTransform = GameObject.Find("CameraHolder").transform;
 
         }
-        screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
-        wrapOffset = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().wrapOffset;
+        screenSize = settingsHandler.instance.screenSize;
+        wrapOffset = settingsHandler.instance.wrapOffset;
     }
     // Update is called once per frame
     void FixedUpdate()

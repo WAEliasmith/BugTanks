@@ -102,6 +102,8 @@ MonoBehaviour:
   piercing: 0
   dead: 0
   speedOverride: 0
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   minVelocity: 0
   maxVelocity: 1.6
@@ -119,6 +121,7 @@ GameObject:
   - component: {fileID: 3928316826636521569}
   - component: {fileID: 4460692696795774807}
   - component: {fileID: 4801125858021196552}
+  - component: {fileID: 8384648339144463582}
   m_Layer: 3
   m_Name: Explosion
   m_TagString: Bullet
@@ -252,6 +255,8 @@ MonoBehaviour:
   piercing: 0
   dead: 0
   speedOverride: 0
+  maxBounces: -1
+  wallCounter: 0
   color: {r: 0.764151, g: 0.35640803, b: 0, a: 1}
   carrier: {fileID: 304224953843960937}
   size: 3
@@ -259,3 +264,19 @@ MonoBehaviour:
   maxLife: 80
   screenSize: {x: 0, y: 0}
   maze: {fileID: 0}
+  shakeLength: 0.3
+  shakeMag: 0.2
+--- !u!114 &8384648339144463582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306527224678956739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040fb6a985d03c479659a64a777d2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 484396555633379445, guid: 68d14bc9c3a6fc64b82b9ca36e96d12b, type: 3}
+  life: 180

@@ -654,11 +654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af99f4e1a651ec4e9a3184f52a823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 3414796838854090855, guid: 950cede0121d06941b895a917244d878, type: 3}
   speed: 0.03
   xAxis: 0
   yAxis: 0
   rotationSpeed: 4.6
-  wings: 1
+  wings: 0
   rb: {fileID: 897224242519615261}
   numAngles: 32
   rotDelay: 4
@@ -667,7 +668,7 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 4.989685, y: -2.7860713}
+  launchVector: {x: -4.87903, y: -16.811195}
   launchStrength: 5
 --- !u!50 &897224242519615261
 Rigidbody2D:
@@ -776,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d567c5d76a024d855b3baea889bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 8746710770699297446, guid: 3deedd12cbaab8941b9fac1a2beedc35, type: 3}
   fire: 0
   bulletCount: 5
   myBullets: []
@@ -847,17 +849,12 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.02219221, y: 1.1587032, z: 0.1}
-  - {x: -2.939394, y: -1.8028831, z: 0}
-  - {x: -1.3028835, y: -3.439394, z: 0}
-  - {x: -0.42409557, y: -2.560606, z: 0}
-  - {x: 0.52529854, y: -3.5100002, z: 0}
-  - {x: 0.52529854, y: -3.5100002, z: -999}
-  - {x: 0.52529854, y: 2.4899998, z: -999}
-  - {x: 0.52529854, y: 2.4899998, z: 0}
-  - {x: 1.4546921, y: 1.560606, z: 0}
-  - {x: 2.3334801, y: 2.439394, z: 0}
-  - {x: 2.6373332, y: 2.135541, z: 0}
+  - {x: 1.0088232, y: -0.03830865, z: 0.1}
+  - {x: 0.060606062, y: 2.250893, z: 0}
+  - {x: 0.9848485, y: 4.482215, z: 0}
+  - {x: 0.5883726, y: 5.439394, z: 0}
+  - {x: -1.432485, y: 0.56060606, z: 0}
+  - {x: -1.757849, y: 1.3461053, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

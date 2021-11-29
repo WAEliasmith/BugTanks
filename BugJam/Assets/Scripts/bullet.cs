@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    public GameObject destroyedsplosion = null;
+
     public int ownerScoreNumber;
     public Vector3 velocity;
     public float life = 200;
@@ -87,6 +89,13 @@ public class bullet : MonoBehaviour
     {
         if (!piercing)
         {
+            if (destroyedsplosion)
+            {
+                GameObject p = Instantiate(destroyedsplosion, transform.position, Quaternion.identity);
+                p.transform.position = transform.position;
+                float targetAngle = Vector2.SignedAngle(new Vector2(1f, 0f), velocity);
+                p.transform.eulerAngles = new Vector3(0f, 0f, targetAngle);
+            }
             Destroy(gameObject);
         }
     }
