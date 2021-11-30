@@ -2214,6 +2214,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b4c07a745a5a5744bd56e66e2b98b80, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2249,6 +2269,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3273,6 +3301,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7754c169e8a3a7d438d6efce4bffbde3, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3308,6 +3356,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4435,6 +4491,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9cca248fc552c54da806f43e016cccf, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4470,6 +4546,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6067,6 +6151,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d76f43fff581e6645979812050c615ee, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6102,6 +6206,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6427,6 +6539,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 31f60dbe6c0c4b142999c0eebe6655c5, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6462,6 +6594,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6802,6 +6942,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c8eebd6fa9214548b859f3ffe4f1b96, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6837,6 +6997,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7007,6 +7175,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94a2a56a071745242ac8f3f0ffa96fbd, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7042,6 +7230,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9216,6 +9412,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc7f7ab30d4467343ae4989bd6911c12, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9251,6 +9467,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10451,7 +10675,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Multiplayer
+  m_Text: 2 Player
 --- !u!222 &1941644981
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10628,6 +10852,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95e336d2a1ff65240bd0139207d902c4, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10663,6 +10907,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11274,6 +11526,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupButton (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ada8a9a531e8e24da8c6de41fef79a9, type: 3}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754924, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11309,6 +11581,14 @@ PrefabInstance:
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3645650264667754926, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
       propertyPath: m_LocalPosition.x

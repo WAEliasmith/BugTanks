@@ -67,6 +67,10 @@ public class MenuManager : MonoBehaviour
                 TogglePause();
             }
         }
+        else
+        {
+            pause = false;
+        }
         if (pause == false)
         {
             Time.timeScale = menuTimeScaleMult;
@@ -161,6 +165,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             pause = false;
+            LoadScreen(settingsScreen, false);
             LoadScreen(pauseScreen, false);
 
         }

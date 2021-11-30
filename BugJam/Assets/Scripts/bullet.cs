@@ -104,7 +104,7 @@ public class bullet : MonoBehaviour
 
     public void bonk()
     {
-        if (bonkSound && wallCounter < maxBounces)
+        if (bonkSound && (wallCounter < maxBounces || maxBounces == -1))
         {
             bonkSound.pitch = Random.Range(0.8f, 1f);
             bonkSound.Play();

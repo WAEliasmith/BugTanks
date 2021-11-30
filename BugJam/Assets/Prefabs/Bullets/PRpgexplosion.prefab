@@ -72,6 +72,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7494357587588639035, guid: 35ade308f768cc848827c73ba9f4884b, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494357587588639035, guid: 35ade308f768cc848827c73ba9f4884b, type: 3}
       propertyPath: SizeModule.enabled
       value: 1
       objectReference: {fileID: 0}
@@ -178,7 +182,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 59943822cf6ff824c85205caf8fe077f, type: 2}
   m_audioClip: {fileID: 8300000, guid: d4d9d41818744774c8db613bc7795bae, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.362
+  m_Volume: 0.284
   m_Pitch: 0.98
   Loop: 0
   Mute: 0
