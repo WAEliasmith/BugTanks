@@ -23,14 +23,22 @@ public class MenuManager : MonoBehaviour
             //create level select
             CreateLevelSelect();
 
-            BackToMenu();
-            //bounce.Play();
+            LoadScreen(settingsScreen, false);
+            LoadScreen(singlePlayerScreen, false);
+            LoadScreen(multiPlayerScreen, false);
+            LoadScreen(battleScreen, false);
+            LoadScreen(campaignScreen, false);
+            LoadScreen(pauseScreen, false);
+            LoadScreen(watchScreen, false);
+            LoadScreen(titleScreen);
             music.Play();
         }
     }
 
     public AudioSource music;
     public AudioSource bounce;
+    public AudioSource click;
+
 
     public string[] levelNames;
 
@@ -97,6 +105,7 @@ public class MenuManager : MonoBehaviour
 
     public void Settings()
     {
+        LoadScreen(pauseScreen, false);
         ChangeScreen(titleScreen, settingsScreen);
     }
 
@@ -116,6 +125,7 @@ public class MenuManager : MonoBehaviour
 
     public void BackToMenu()
     {
+        Noise2();
         LoadScreen(settingsScreen, false);
         LoadScreen(singlePlayerScreen, false);
         LoadScreen(multiPlayerScreen, false);
@@ -123,11 +133,19 @@ public class MenuManager : MonoBehaviour
         LoadScreen(campaignScreen, false);
         LoadScreen(pauseScreen, false);
         LoadScreen(watchScreen, false);
-        LoadScreen(titleScreen);
+        if (pause == false)
+        {
+            LoadScreen(titleScreen);
+        }
+        else
+        {
+            LoadScreen(pauseScreen);
+        }
     }
 
     public void TogglePause()
     {
+
         if (pause == false)
         {
             pause = true;
@@ -151,6 +169,7 @@ public class MenuManager : MonoBehaviour
 
     public void loadMenu()
     {
+        Noise2();
         pause = false;
         LoadScreen(titleScreen);
         LoadScreen(pauseScreen, false);
@@ -161,7 +180,7 @@ public class MenuManager : MonoBehaviour
     {
         pause = false;
         LoadScreen(pauseScreen, false);
-
+        Noise2();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -180,6 +199,7 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeScreen(GameObject[] oldScreen, GameObject[] newScreen)
     {
+        Noise2();
         LoadScreen(oldScreen, false);
         LoadScreen(newScreen);
     }
@@ -237,6 +257,7 @@ public class MenuManager : MonoBehaviour
     public void togglePowerup(int index)
     {
         powerupToggle[index] = !powerupToggle[index];
+        Noise();
     }
 
     public void startArena()
@@ -278,9 +299,21 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene("mainmassive");
         }
     }
+    public void Noise()
+    {
+        bounce.pitch = Random.Range(0.8f, 1f);
+        bounce.Play();
+    }
+
+    public void Noise2()
+    {
+        click.pitch = Random.Range(0.8f, 1f);
+        click.Play();
+    }
 
     public void toggleArenaSize()
     {
+        Noise();
         settingsHandler.instance.pvpMapSize++;
         if (settingsHandler.instance.pvpMapSize > 4)
         {
@@ -290,16 +323,19 @@ public class MenuManager : MonoBehaviour
 
     public void toggleCrisp()
     {
+        Noise();
         settingsHandler.instance.crisp = !settingsHandler.instance.crisp;
     }
 
     public void toggleCamera()
     {
+        Noise();
         settingsHandler.instance.cameraFollow = !settingsHandler.instance.cameraFollow;
     }
 
     public void togglePlayers()
     {
+        Noise();
         settingsHandler.instance.tankCount++;
         if (settingsHandler.instance.tankCount > 8)
         {
@@ -309,6 +345,7 @@ public class MenuManager : MonoBehaviour
 
     public void togglePointsForSurvival()
     {
+        Noise();
         settingsHandler.instance.pointsForSurvival++;
         if (settingsHandler.instance.pointsForSurvival > 10)
         {

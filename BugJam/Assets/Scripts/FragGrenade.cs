@@ -5,6 +5,7 @@ using UnityEngine;
 public class FragGrenade : bullet
 {
     public GameObject Owner = null;
+    public GameObject FragSplosion = null;
     public GameObject Frag = null;
     public float FragCount = 64;
     public float shotSpeed = 0.1f;
@@ -26,6 +27,8 @@ public class FragGrenade : bullet
             p.GetComponent<Fragment>().ownerScoreNumber = ownerScoreNumber;
 
         }
+        Instantiate(FragSplosion, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 

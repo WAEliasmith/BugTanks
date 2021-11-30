@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 897224242200086669, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: ouch
+      value: 
+      objectReference: {fileID: 4332568792592588121}
+    - target: {fileID: 897224242200086669, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
       propertyPath: maxHp
       value: 3
       objectReference: {fileID: 0}
@@ -59,5 +63,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player0
       objectReference: {fileID: 0}
+    - target: {fileID: 3773467902811385631, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: m_Volume
+      value: 0.489
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773467902811385631, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d9aff2117146198499cacbf78ec0bfd4, type: 3}
+    - target: {fileID: 3773467902811385631, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773467902811385631, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 59943822cf6ff824c85205caf8fe077f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+--- !u!82 &4332568792592588121 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3773467902811385631, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
+  m_PrefabInstance: {fileID: 612046773510582854}
+  m_PrefabAsset: {fileID: 0}

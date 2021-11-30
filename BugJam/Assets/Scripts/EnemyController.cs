@@ -65,6 +65,7 @@ public class EnemyController : MonoBehaviour
     {
         if (gun.crisp)
         {
+            reload -= 10f;
             WallBounceAim = 2;
         }
         reactionTime += Random.Range(0, 15f);

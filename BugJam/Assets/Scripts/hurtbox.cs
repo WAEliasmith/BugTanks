@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class hurtbox : MonoBehaviour
 {
+    public AudioSource ouch;
     public float maxIframes = 10;
     public float iFrames = 0;
 
@@ -37,6 +38,9 @@ public class hurtbox : MonoBehaviour
         hp -= 1;
         if (hp != 0)
         {
+            ouch.pitch = Random.Range(0.8f, 1f);
+
+            ouch.Play();
             iFrames = maxIframes;
         }
         move.launchVector += hitStrength * ((Vector2)transform.position - enemyPos).normalized;

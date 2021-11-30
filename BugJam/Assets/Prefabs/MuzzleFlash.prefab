@@ -83,6 +83,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1656705844374775263, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_Pitch
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656705844374775263, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_Volume
+      value: 0.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656705844374775263, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a24550dc4b7042b44aa12e855ba27ab0, type: 3}
+    - target: {fileID: 1656705844374775263, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3414796838854090855, guid: 950cede0121d06941b895a917244d878, type: 3}
       propertyPath: m_Name
       value: MuzzleFlash
@@ -289,3 +305,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 950cede0121d06941b895a917244d878, type: 3}
+--- !u!1 &8746710770699297446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3414796838854090855, guid: 950cede0121d06941b895a917244d878, type: 3}
+  m_PrefabInstance: {fileID: 6197310133943075521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4682768944797230878 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1656705844374775263, guid: 950cede0121d06941b895a917244d878, type: 3}
+  m_PrefabInstance: {fileID: 6197310133943075521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-854172526790174218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746710770699297446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529447bac70a93c4a87c553c98322223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 4682768944797230878}
+  soundTop: 1
+  soundBottom: 0.8

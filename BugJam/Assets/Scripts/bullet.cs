@@ -6,6 +6,8 @@ public class bullet : MonoBehaviour
 {
     public GameObject destroyedsplosion = null;
 
+    public AudioSource bonkSound;
+
     public int ownerScoreNumber;
     public Vector3 velocity;
     public float life = 200;
@@ -100,6 +102,15 @@ public class bullet : MonoBehaviour
         }
     }
 
+    public void bonk()
+    {
+        if (bonkSound && wallCounter < maxBounces)
+        {
+            bonkSound.pitch = Random.Range(0.8f, 1f);
+            bonkSound.Play();
+        }
+    }
+
     public virtual void wallBounce(Collision2D other)
     {
         float x = other.GetContact(0).normal.x;
@@ -109,6 +120,7 @@ public class bullet : MonoBehaviour
             if (xFlip == false)
             {
                 wallCounter += 1;
+                bonk();
                 velocity.x = -velocity.x;
                 xFlip = true;
             }
@@ -120,6 +132,7 @@ public class bullet : MonoBehaviour
                 velocity.y = -velocity.y;
                 yFlip = true;
                 wallCounter += 1;
+                bonk();
             }
         }
         else
@@ -127,6 +140,7 @@ public class bullet : MonoBehaviour
             if (xFlip == false || yFlip == false)
             {
                 wallCounter += 1;
+                bonk();
             }
             if (yFlip == false)
             {

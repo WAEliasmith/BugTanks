@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
+    public GameObject collectedExplosion = null;
     public string powerup = "";
     public int maxLife = 500;
 
@@ -27,6 +28,8 @@ public class Powerup : MonoBehaviour
 
     public void Collected()
     {
+        Instantiate(collectedExplosion, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

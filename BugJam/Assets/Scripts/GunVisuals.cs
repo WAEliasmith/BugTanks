@@ -54,5 +54,10 @@ public class GunVisuals : MonoBehaviour
                 sr.sprite = spriteArray[0];
                 break;
         }
+
+        if (Gun.powerup == "none" && Gun.crisp == true)
+        {
+            sr.sprite = spriteArray[12];
+        }
     }
 }

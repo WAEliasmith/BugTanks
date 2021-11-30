@@ -95,5 +95,6 @@ PrefabInstance:
       propertyPath: maxHp
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7444520510160508519, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32aec4add77dbee4fa2fe5d6262a1d64, type: 3}
