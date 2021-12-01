@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     private Transform Target;
 
+    public float powerupGreed = 1.5f;
     public float reload = 20;
 
     public float bulletCheckDist = 3;
@@ -113,6 +114,21 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+        hitColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, bulletCheckDist * 2, layerMask);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i].GetComponent<bullet>().dead == false
+            && hitColliders[i].GetComponent<bullet>().veryDangerous == true)
+            {
+                //see bullet
+                //Debug.DrawRay(hitColliders[i].transform.position, bvel * 4f, Color.yellow);
+                if (closestBullet == null || (hitColliders[i].transform.position - transform.position).magnitude < (closestBullet.transform.position - transform.position).magnitude)
+                {
+                    closestBullet = hitColliders[i];
+                }
+            }
+        }
+
         return (closestBullet);
     }
 
@@ -208,91 +224,125 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void ShotCheck(bool passive)
+    void ShotCheck(bool passive, bool fragPos = false)
     {
-        //Shoot ray
-        float maxDist = aimDist;
-        if (passive) { maxDist -= 2; }
-        Vector2 shotPos = (Vector2)gunPos.position;
-
-        RaycastHit2D hit;
-
-        int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;
-        int wallLayerMask = 1 << 8 | 1 << 9;
-
-        Vector2 direction = gunPos.right;
-
-        Debug.DrawRay(shotPos, direction, Color.green);
-        // subtract a small amount to avoid attempting to shoot over walls
-        hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
-        if (hit.distance < dontShootAtWallDist)
+        if (gun.fragOut == null || (gun.fragOut.position - transform.position).magnitude > 1.5f)
         {
-            //allow AI to pointblank player
-            if (hit.collider != null && hit.collider.tag != "Player")
+            //Shoot ray
+            float maxDist = aimDist;
+            if (passive) { maxDist -= 2; }
+            Vector2 shotPos = (Vector2)gunPos.position;
+            if (!fragPos && gun.fragOut != null)
             {
-                return;
+                ShotCheck(false, true);
+                passive = false;
             }
-        }
 
-
-        for (int i = 0; i < WallBounceAim; i++)
-        {
-            hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
-            // Does the ray intersect
-            if (hit.collider != null)
+            if (fragPos)
             {
-                float selfDist = 0.2f;
-                if (passive) { selfDist += 0.6f; }
-                if (hit.collider.tag == "Player")
+                shotPos = gun.fragOut.position;
+            }
+            RaycastHit2D hit;
+
+            int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;
+            int wallLayerMask = 1 << 8 | 1 << 9;
+
+            Vector2 direction = gunPos.right;
+
+            Debug.DrawRay(shotPos, direction, Color.green);
+            // subtract a small amount to avoid attempting to shoot over walls
+            hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
+            if (hit.distance < dontShootAtWallDist)
+            {
+                //allow AI to pointblank player
+                if (hit.collider != null && hit.collider.tag != "Player")
                 {
-                    i = 999;
-                    if ((hit.collider.transform.position - transform.position).magnitude > selfDist)
+                    return;
+                }
+            }
+
+            float tempWallBounce = WallBounceAim;
+            if (fragPos)
+            {
+                tempWallBounce = 1;
+            }
+            for (int i = 0; i < tempWallBounce; i++)
+            {
+                hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
+                // Does the ray intersect
+                if (hit.collider != null)
+                {
+                    float selfDist = 0.2f;
+                    if (passive) { selfDist += 0.6f; }
+                    if (hit.collider.tag == "Player")
                     {
-                        if (reloadLeft <= 0)
+                        i = 999;
+                        if ((hit.collider.transform.position - transform.position).magnitude > selfDist)
                         {
-                            //passive shot
-                            gun.Shoot();
-                            anger += angerPerShot;
-                            reloadLeft = reload;
-                            if (passive) { reloadLeft += reload; }
+                            if (reloadLeft <= 0)
+                            {
+                                //passive shot
+                                gun.Shoot();
+                                anger += angerPerShot;
+                                reloadLeft = reload;
+                                if (passive) { reloadLeft += reload; }
+                            }
+
                         }
-
                     }
-                }
-                Debug.DrawRay(shotPos, direction * hit.distance, Color.yellow, Mathf.Min(reloadLeft, 2));
+                    Debug.DrawRay(shotPos, direction * hit.distance, Color.yellow, Mathf.Min(reloadLeft, 2));
 
-                shotPos = hit.point;
-                maxDist -= hit.distance;
+                    shotPos = hit.point;
+                    maxDist -= hit.distance;
 
-                float x = hit.normal.x;
-                float y = hit.normal.y;
+                    float x = hit.normal.x;
+                    float y = hit.normal.y;
 
-                //Make lazer bounce
-                if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
-                {
-                    direction.x = -direction.x;
-                }
-                else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
-                {
-                    direction.y = -direction.y;
+                    //Make lazer bounce
+                    if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
+                    {
+                        if (gun.powerup == "weird")
+                        {
+                            direction.y = -direction.y;
+                        }
+                        else
+                        {
+                            direction.x = -direction.x;
+                        }
+                    }
+                    else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
+                    {
+                        if (gun.powerup == "weird")
+                        {
+                            direction.x = -direction.x;
+                        }
+                        else
+                        {
+                            direction.y = -direction.y;
+                        }
+                    }
+                    else
+                    {
+                        direction.y = -direction.y;
+                        direction.x = -direction.x;
+                    }
+
+                    //Move new lazer point forwards a lil
+                    shotPos += direction * 0.015f;
+                    if (gun.powerup == "weird")
+                    {
+                        shotPos += direction * 0.25f;
+                    }
+                    layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
+
                 }
                 else
                 {
-                    direction.y = -direction.y;
-                    direction.x = -direction.x;
+                    i = 999;
                 }
-
-                //Move new lazer point forwards a lil
-                shotPos += direction * 0.015f;
-                layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
-
             }
-            else
-            {
-                i = 999;
-            }
+
         }
-
     }
 
     string GetNewState()
@@ -321,11 +371,28 @@ public class EnemyController : MonoBehaviour
             timeLeft = trackTime;
             if (Target)
             {
+                Transform powerupTransform = null;
+                if (gun.powerup == "none")
+                {
+                    powerupTransform = GetClosestPowerup();
+                }
+                if (powerupTransform != null && (powerupTransform.position - transform.position).magnitude < powerupGreed)
+                {
+                    Target = powerupTransform;
+                }
                 seeker.StartPath(transform.position, Target.position, OnPathComplete);
             }
             return ("track");
         }
+        r1 = Random.value * 100;
+        if (r1 < 50)
+        {
+            if (gun.powerup == "none")
+            {
+                Target = GetClosestPowerup();
+            }
 
+        }
         timeLeft = chillTime;
         seeker.StartPath(transform.position, new Vector2(Random.value * chillRadius, Random.value * chillRadius), OnPathComplete);
         return ("track");
@@ -333,10 +400,15 @@ public class EnemyController : MonoBehaviour
 
     void Angry()
     {
+        Vector3 pos = transform.position;
+        if (gun.fragOut != null)
+        {
+            pos = gun.fragOut.position;
+        }
         Vector2 direction;
         if (Target)
         {
-            direction = (Vector2)(Target.position - transform.position).normalized;
+            direction = (Vector2)(Target.position - pos).normalized;
         }
         else
         {
@@ -475,6 +547,27 @@ public class EnemyController : MonoBehaviour
                     //Do Something
                     closestHurtboxTransform = Obj.transform;
                 }
+            }
+        }
+
+        return (closestHurtboxTransform);
+    }
+
+    Transform GetClosestPowerup()
+    {
+        Transform closestHurtboxTransform = null;
+        foreach (GameObject Obj in GameObject.FindGameObjectsWithTag("Powerup"))
+        {
+            if (Vector2.Distance(transform.position, Obj.transform.position) < 0.1f)
+            {
+                //stop targeting yourself
+            }
+            else if (closestHurtboxTransform == null ||
+            Vector2.Distance(transform.position, closestHurtboxTransform.position)
+            > Vector2.Distance(transform.position, Obj.transform.position))
+            {
+                //Do Something
+                closestHurtboxTransform = Obj.transform;
             }
         }
 

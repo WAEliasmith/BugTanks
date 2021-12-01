@@ -62,4 +62,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/13swarm.unity
     guid: c6c5abbb83d857442b48087507a1b5bb
+  - enabled: 1
+    path: Assets/14frag.unity
+    guid: 22ec560390c77194796ac342aefa28cb
+  - enabled: 1
+    path: Assets/Scenes/15airraid.unity
+    guid: 8f4c3203c107b9342a605575227a4bce
+  - enabled: 1
+    path: Assets/Scenes/16boss2.unity
+    guid: 35a46fee9d98c0b46ad8afeab4659754
+  - enabled: 1
+    path: Assets/Scenes/14frag.unity
+    guid: 48a3a157f46cc6c419b62c647a836795
+  - enabled: 1
+    path: Assets/Scenes/17missile.unity
+    guid: 925b40c5199f18442a119678e0076f3c
   m_configObjects: {}

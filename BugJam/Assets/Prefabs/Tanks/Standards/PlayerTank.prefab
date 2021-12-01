@@ -511,7 +511,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 60
-  m_PointLightOuterAngle: 60
+  m_PointLightOuterAngle: 65
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 3
   m_ShapeLightParametricSides: 5
@@ -673,7 +673,7 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 21.636835, y: -19.910902}
+  launchVector: {x: 22.232351, y: -18.407227}
   launchStrength: 5
 --- !u!50 &897224242519615261
 Rigidbody2D:
@@ -805,6 +805,7 @@ MonoBehaviour:
   absorbShot: {fileID: 7317735712965344925, guid: cb930599208813d4caf58b66dbc0f818, type: 3}
   crispShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
   wingDuration: 400
+  fragOut: {fileID: 0}
   tankColor: {r: 0, g: 0.9521344, b: 1, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   scoreNumber: 0
@@ -855,14 +856,21 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.87249744, y: -0.82524246, z: 0.1}
-  - {x: 0.23360896, y: -0.560606, z: 0}
-  - {x: -1.9977087, y: -1.4848485, z: 0}
-  - {x: -2.939394, y: -1.0947894, z: 0}
-  - {x: -1.6497624, y: -0.560606, z: 0}
-  - {x: 0.4718182, y: -1.439394, z: 0}
-  - {x: 2.9393938, y: -0.41729006, z: 0}
-  - {x: 1.4603705, y: 0.19534183, z: 0}
+  - {x: 1.7337725, y: 0.9480037, z: 0.1}
+  - {x: 1.939394, y: 0.98890436, z: 0}
+  - {x: 0.06060624, y: 1.3626182, z: 0}
+  - {x: 0.939394, y: 1.5374198, z: 0}
+  - {x: 0.060606062, y: 1.7122214, z: 0}
+  - {x: 0.93939406, y: 1.8870231, z: 0}
+  - {x: 0.060606062, y: 2.0618248, z: 0}
+  - {x: 0.93939394, y: 2.2366264, z: 0}
+  - {x: 0.060606062, y: 2.411428, z: 0}
+  - {x: 0.939394, y: 2.5862296, z: 0}
+  - {x: 0.060606062, y: 2.7610312, z: 0}
+  - {x: 0.939394, y: 2.9358327, z: 0}
+  - {x: 0.060606033, y: 3.1106343, z: 0}
+  - {x: 0.93939406, y: 3.285436, z: 0}
+  - {x: 0.72979385, y: 3.327128, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

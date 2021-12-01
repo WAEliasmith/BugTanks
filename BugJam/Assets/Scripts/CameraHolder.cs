@@ -28,6 +28,9 @@ public class CameraHolder : MonoBehaviour
 
     private int prep = 2;
 
+    public float boss2offset = -0.5f;
+
+
     private float initialZoomTarget;
     public float zoom = 4;
     public float zoomTarget = 4;
@@ -216,7 +219,7 @@ public class CameraHolder : MonoBehaviour
         {
             //follow is false
             transform.position = Vector3.SmoothDamp(transform.position,
-            new Vector3(0, 0, 0) + offset + (Vector3)wrapOffset, ref velocity, smoothSpeed);
+            new Vector3(boss2offset, boss2offset * 5, 0) + offset + (Vector3)wrapOffset, ref velocity, smoothSpeed);
         }
     }
 }

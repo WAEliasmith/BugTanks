@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80308fb59a3c5f9469affaa61f4ffb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 1
+  destroyedsplosion: {fileID: 0}
+  bonkSound: {fileID: 0}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 200

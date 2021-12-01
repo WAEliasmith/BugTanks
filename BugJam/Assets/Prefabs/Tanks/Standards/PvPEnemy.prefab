@@ -237,6 +237,7 @@ MonoBehaviour:
   hp: 1
   gun: {fileID: 2918792352054067053}
   move: {fileID: 306223115874997225}
+  boss1: 0
 --- !u!82 &1260307863134046301
 AudioSource:
   m_ObjectHideFlags: 0
@@ -418,6 +419,7 @@ MonoBehaviour:
   movement: {fileID: 306223115874997225}
   gun: {fileID: 2918792352054067053}
   gunPos: {fileID: 306223116967102112}
+  powerupGreed: 1.5
   reload: 25
   bulletCheckDist: 1.5
   bulletCheckAngle: 80
@@ -540,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 8746710770699297446, guid: 3deedd12cbaab8941b9fac1a2beedc35, type: 3}
+  infiniteSpecial: 0
   fire: 0
   bulletCount: 5
   myBullets: []
@@ -561,6 +564,7 @@ MonoBehaviour:
   absorbShot: {fileID: 7317735712965344925, guid: cb930599208813d4caf58b66dbc0f818, type: 3}
   crispShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
   wingDuration: 350
+  fragOut: {fileID: 0}
   tankColor: {r: 1, g: 0.072832614, b: 0, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   scoreNumber: 0
@@ -958,7 +962,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 60
-  m_PointLightOuterAngle: 60
+  m_PointLightOuterAngle: 65
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 3
   m_ShapeLightParametricSides: 5

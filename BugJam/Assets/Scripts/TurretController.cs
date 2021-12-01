@@ -73,10 +73,15 @@ public class TurretController : MonoBehaviour
 
     void Angry()
     {
+        Vector3 pos = transform.position;
+        if (gun.fragOut != null)
+        {
+            pos = gun.fragOut.position;
+        }
         Vector2 direction;
         if (Target)
         {
-            direction = (Vector2)(Target.position - transform.position).normalized;
+            direction = (Vector2)(Target.position - pos).normalized;
         }
         else
         {
@@ -111,103 +116,119 @@ public class TurretController : MonoBehaviour
         return ("chill");
     }
 
-    void ShotCheck(bool passive)
+    void ShotCheck(bool passive, bool fragPos = false)
     {
-        //Shoot ray
-        float maxDist = aimDist;
-        if (passive) { maxDist -= 2; }
-        Vector2 shotPos = (Vector2)gunPos.position;
-
-        RaycastHit2D hit;
-
-        int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;
-        int wallLayerMask = 1 << 8 | 1 << 9;
-
-        Vector2 direction = gunPos.right;
-
-        Debug.DrawRay(shotPos, direction, Color.green);
-        // subtract a small amount to avoid attempting to shoot over walls
-        hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
-        if (hit.distance < dontShootAtWallDist)
+        if (gun.fragOut == null || (gun.fragOut.position - transform.position).magnitude > 1.5f)
         {
-            //allow AI to pointblank player
-            if (hit.collider != null && hit.collider.tag != "Player")
+            if (!fragPos && gun.fragOut != null)
             {
-                return;
+                ShotCheck(false, true);
+                passive = false;
             }
-        }
+            //Shoot ray
+            float maxDist = aimDist;
+            if (passive) { maxDist -= 2; }
+            Vector2 shotPos = (Vector2)gunPos.position;
 
-
-        for (int i = 0; i < WallBounceAim; i++)
-        {
-            hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
-            // Does the ray intersect
-            if (hit.collider != null)
+            if (fragPos)
             {
-                float selfDist = 0.2f;
-                if (passive) { selfDist += 0.6f; }
-                if (hit.collider.tag == "Player")
+                shotPos = gun.fragOut.position;
+            }
+            RaycastHit2D hit;
+
+            int layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;
+            int wallLayerMask = 1 << 8 | 1 << 9;
+
+            Vector2 direction = gunPos.right;
+
+            Debug.DrawRay(shotPos, direction, Color.green);
+            // subtract a small amount to avoid attempting to shoot over walls
+            hit = Physics2D.Raycast(shotPos - (direction.normalized * 0.1f), direction, maxDist, wallLayerMask);
+            if (hit.distance < dontShootAtWallDist)
+            {
+                //allow AI to pointblank player
+                if (hit.collider != null && hit.collider.tag != "Player")
                 {
-                    i = 999;
-                    if ((hit.collider.transform.position - transform.position).magnitude > selfDist)
+                    return;
+                }
+            }
+
+            float tempWallBounce = WallBounceAim;
+            if (fragPos)
+            {
+                tempWallBounce = 1;
+            }
+            for (int i = 0; i < tempWallBounce; i++)
+            {
+                hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
+                // Does the ray intersect
+                if (hit.collider != null)
+                {
+                    float selfDist = 0.2f;
+                    if (passive) { selfDist += 0.6f; }
+                    if (hit.collider.tag == "Player")
                     {
-                        if (reloadLeft <= 0)
+                        i = 999;
+                        if ((hit.collider.transform.position - transform.position).magnitude > selfDist)
                         {
-                            //passive shot
-                            gun.Shoot();
-                            reloadLeft = reload;
-                            if (passive) { reloadLeft += reload; }
+                            if (reloadLeft <= 0)
+                            {
+                                //passive shot
+                                gun.Shoot();
+                                reloadLeft = reload;
+                                if (passive) { reloadLeft += reload; }
+                            }
+
                         }
-
                     }
-                }
-                Debug.DrawRay(shotPos, direction * hit.distance, Color.yellow, Mathf.Min(reloadLeft, 2));
+                    Debug.DrawRay(shotPos, direction * hit.distance, Color.yellow, Mathf.Min(reloadLeft, 2));
 
-                shotPos = hit.point;
-                maxDist -= hit.distance;
+                    shotPos = hit.point;
+                    maxDist -= hit.distance;
 
-                float x = hit.normal.x;
-                float y = hit.normal.y;
+                    float x = hit.normal.x;
+                    float y = hit.normal.y;
 
-                //Make lazer bounce
-                if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
-                {
-                    direction.x = -direction.x;
-                }
-                else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
-                {
-                    direction.y = -direction.y;
+                    //Make lazer bounce
+                    if (Mathf.Abs(x) > Mathf.Abs(y) + 0.05)
+                    {
+                        direction.x = -direction.x;
+                    }
+                    else if (Mathf.Abs(x) < Mathf.Abs(y) - 0.05)
+                    {
+                        direction.y = -direction.y;
+                    }
+                    else
+                    {
+                        direction.y = -direction.y;
+                        direction.x = -direction.x;
+                    }
+
+                    //Move new lazer point forwards a lil
+                    shotPos += direction * 0.015f;
+                    layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
+
                 }
                 else
                 {
-                    direction.y = -direction.y;
-                    direction.x = -direction.x;
+                    i = 999;
                 }
-
-                //Move new lazer point forwards a lil
-                shotPos += direction * 0.015f;
-                layerMask = 1 << 8 | 1 << 9 | 1 << 6 | 1 << 7;// | 1 << 10
-
             }
-            else
+            if (mad == true)
             {
-                i = 999;
-            }
-        }
-        if (mad == true)
-        {
-            if (reloadLeft <= 0)
-            {
-                shotPos = (Vector2)gunPos.position;
-
-                hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
-
-                float selfDist = 0.2f;
-                if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude > selfDist)
+                if (reloadLeft <= 0)
                 {
-                    gun.Shoot();
-                    reloadLeft = reload;
-                    reloadLeft += reload * 0.5f;
+                    shotPos = (Vector2)gunPos.position;
+
+                    hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
+
+                    float selfDist = 0.2f;
+                    if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude > selfDist)
+                    {
+                        gun.Shoot();
+                        reloadLeft = reload;
+                        reloadLeft += reload * 0.5f;
+                    }
                 }
             }
         }

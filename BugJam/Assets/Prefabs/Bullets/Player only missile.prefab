@@ -55,9 +55,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3324601168875693084, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
       propertyPath: life
       value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
+      propertyPath: color.r
+      value: 0.38679248
       objectReference: {fileID: 0}
     - target: {fileID: 5469261798547510408, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
       propertyPath: playerOnly

@@ -1179,25 +1179,18 @@ MonoBehaviour:
   - 11nade
   - 12dark
   - 13swarm
+  - 14frag
+  - 15airraid
+  - 16boss2
+  - 17missile
+  - 18weird
+  - 19hunt
+  - 20gang
   - 1tutmove
   - 1tutmove
   - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
-  - 1tutmove
+  - 24boss3
+  - 25end
   levelSelectButton: {fileID: 3645650264667754921, guid: 8694a5f072892b94c992623bf060f32b, type: 3}
   menuTimeScaleMult: 1
   pause: 0
@@ -1276,14 +1269,6 @@ MonoBehaviour:
   campaignScreen:
   - {fileID: 2122889325}
   - {fileID: 1069587631}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -9935,6 +9920,7 @@ MonoBehaviour:
   SW: {fileID: 434518975}
   S: {fileID: 1738218472}
   SE: {fileID: 1941871125}
+  boss2offset: -0.5
   zoom: 4
   zoomTarget: 3
 --- !u!4 &1327147686

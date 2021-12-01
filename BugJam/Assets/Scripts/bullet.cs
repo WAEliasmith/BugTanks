@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    public bool veryDangerous = false;
     public GameObject destroyedsplosion = null;
 
     public AudioSource bonkSound;
@@ -25,6 +26,7 @@ public class bullet : MonoBehaviour
 
     public int maxBounces = -1;
     public int wallCounter = 0;
+    public int noweirdnextframe = 0;
 
     public Color color = new Color(0f, 0f, 0f, 1f);
 
@@ -52,6 +54,7 @@ public class bullet : MonoBehaviour
     // FixedUpdate is called once per physics
     void FixedUpdate()
     {
+        noweirdnextframe--;
         lifeLeft -= 1;
         if (lifeLeft < fadeStart)
         {
@@ -156,12 +159,20 @@ public class bullet : MonoBehaviour
 
     }
 
+    void LateUpdate()
+    {
+
+    }
+
     // called when the bullet hits a wall
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "YWall" || other.gameObject.tag == "XWall")
         {
-            wallBounce(other);
+            if (noweirdnextframe <= 0)
+            {
+                wallBounce(other);
+            }
         }
     }
 }

@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7988b288bc5529841a8c102b488df05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 0
+  destroyedsplosion: {fileID: 0}
+  bonkSound: {fileID: 0}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 115
@@ -244,6 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2859ad4bcfb3446b38244372ba1f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 0
+  destroyedsplosion: {fileID: 0}
+  bonkSound: {fileID: 0}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 105
@@ -263,7 +269,7 @@ MonoBehaviour:
   maxLife: 105
   screenSize: {x: 0, y: 0}
   maze: {fileID: 0}
-  shakeLength: 2
+  shakeLength: 1.5
   shakeMag: 0.005
   explodeStart: 45
   stretchFromVelocityMod: 35

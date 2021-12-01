@@ -375,6 +375,7 @@ MonoBehaviour:
   movement: {fileID: 6624182736992798318}
   gun: {fileID: 8598389258665470698}
   gunPos: {fileID: 6624182735870317351}
+  powerupGreed: 0
   reload: 32
   bulletCheckDist: 1.5
   bulletCheckAngle: 80
@@ -453,7 +454,7 @@ MonoBehaviour:
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
   launchVector: {x: 0, y: 0}
-  launchStrength: 5
+  launchStrength: 6
 --- !u!114 &6624182736992798291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ MonoBehaviour:
   movement: {fileID: 897224242519615262, guid: eca722cd63f93804cb3ae8a635448c15, type: 3}
   powerup: none
   crisp: 0
-  hbox: {fileID: 0}
+  hbox: {fileID: 6624182737295252976}
   weird: {fileID: 966619046920893350, guid: 2f18c37e7ac51d74f8ae268e8159e068, type: 3}
   lazer: {fileID: 4759223488101248938, guid: 3dae0963ec331cb4a812842d4f4220b6, type: 3}
   missile: {fileID: 1090183058788405901, guid: ba1beca6d644c804989dddbef3bcd139, type: 3}
@@ -519,6 +520,7 @@ MonoBehaviour:
   absorbShot: {fileID: 7317735712965344925, guid: cb930599208813d4caf58b66dbc0f818, type: 3}
   crispShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
   wingDuration: 400
+  fragOut: {fileID: 0}
   tankColor: {r: 1, g: 0.52497584, b: 0, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   scoreNumber: 0

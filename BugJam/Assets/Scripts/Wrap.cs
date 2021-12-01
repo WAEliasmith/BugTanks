@@ -11,6 +11,8 @@ public class Wrap : MonoBehaviour
 
     public bool holdCamera = false;
 
+    public bullet weirdBullet = null;
+
     void Start()
     {
         if (holdCamera)
@@ -49,18 +51,34 @@ public class Wrap : MonoBehaviour
         if (transform.position.x > (screenSize.x / 2) + wrapOffset.x)
         {
             transform.position -= new Vector3(screenSize.x, 0f, 0f);
+            if (weirdBullet != null)
+            {
+                weirdBullet.noweirdnextframe = 2;
+            }
         }
         else if (transform.position.x < -(screenSize.x / 2) + wrapOffset.x)
         {
             transform.position += new Vector3(screenSize.x, 0f, 0f);
+            if (weirdBullet != null)
+            {
+                weirdBullet.noweirdnextframe = 2;
+            }
         }
         if (transform.position.y > (screenSize.y / 2) + wrapOffset.y)
         {
             transform.position -= new Vector3(0f, screenSize.y, 0f);
+            if (weirdBullet != null)
+            {
+                weirdBullet.noweirdnextframe = 2;
+            }
         }
         else if (transform.position.y < -(screenSize.y / 2) + wrapOffset.y)
         {
             transform.position += new Vector3(0f, screenSize.y, 0f);
+            if (weirdBullet != null)
+            {
+                weirdBullet.noweirdnextframe = 2;
+            }
         }
     }
 }

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22c3d3f1d3dbf41930717deeb0743a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 0
   destroyedsplosion: {fileID: 211408927983817910, guid: 98595e479a77e1141a4c8ac039ab73d1, type: 3}
   bonkSound: {fileID: 6491911365249104083}
   ownerScoreNumber: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
   speedOverride: 0
   maxBounces: -1
   wallCounter: 0
+  noweirdnextframe: 0
   color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!58 &3199911402878584119
 CircleCollider2D:
@@ -117,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  weirdBullet: {fileID: 966619046920893351}
 --- !u!114 &7911008549497489810
 MonoBehaviour:
   m_ObjectHideFlags: 0

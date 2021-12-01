@@ -236,7 +236,7 @@ public class MenuManager : MonoBehaviour
 
     void CreateLevelSelect()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 8; j++)
             {
@@ -270,7 +270,7 @@ public class MenuManager : MonoBehaviour
 
     public void goToNextLevel()
     {
-        if (currentLevel < 32)
+        if (currentLevel < 24)
         {
             goToLevel(currentLevel + 1);
         }

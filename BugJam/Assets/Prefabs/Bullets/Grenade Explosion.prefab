@@ -92,9 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7988b288bc5529841a8c102b488df05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 1
+  destroyedsplosion: {fileID: 0}
+  bonkSound: {fileID: 0}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
-  life: 200
+  life: 160
   fadeStart: 50
   sr: {fileID: 0}
   weird: 0
@@ -245,6 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5811ed242051a7e41a37f37087c7899c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veryDangerous: 0
+  destroyedsplosion: {fileID: 0}
+  bonkSound: {fileID: 0}
   ownerScoreNumber: 0
   velocity: {x: 0, y: 0, z: 0}
   life: 0
@@ -260,8 +266,8 @@ MonoBehaviour:
   color: {r: 0.764151, g: 0.35640803, b: 0, a: 1}
   carrier: {fileID: 304224953843960937}
   size: 3
-  fadeEnd: 70
-  maxLife: 80
+  fadeEnd: 62
+  maxLife: 70
   screenSize: {x: 0, y: 0}
   maze: {fileID: 0}
   shakeLength: 0.3

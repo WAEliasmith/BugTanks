@@ -38,6 +38,8 @@ public class Gun : MonoBehaviour
     public GameObject crispShot = null;
     public float wingDuration = 350;
 
+    public Transform fragOut = null;
+
     public Color tankColor;
     public Color baseColor;
 
@@ -301,6 +303,7 @@ public class Gun : MonoBehaviour
                 powerup = "frag exploder";
                 p.GetComponent<FragGrenade>().Owner = gameObject;
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
+                fragOut = p.transform;
                 Flash();
             }
             else if (powerup == "rpg")
