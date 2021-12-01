@@ -60,11 +60,6 @@ public class CameraHolder : MonoBehaviour
     void Update()
     {
         smoothSpeed = 0.075f;
-        //TESTING ONLY:
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene("TitleScreen");
-        }
         zoom = zoom * 0.95f + zoomTarget * 0.05f;
         C.GetComponent<Camera>().orthographicSize = zoom;
         NW.GetComponent<Camera>().orthographicSize = zoom;

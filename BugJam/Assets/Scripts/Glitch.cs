@@ -9,6 +9,7 @@ public class Glitch : MonoBehaviour
     public AudioSource sound = null;
     public float soundTop = 1f;
     public float soundBottom = 0.8f;
+    public bool protag = false;
 
     void FixedUpdate()
     {
@@ -18,6 +19,10 @@ public class Glitch : MonoBehaviour
     // Start is called before the first frame update
     void Particle()
     {
+        if (protag)
+        {
+            MenuManager.instance.currChrome = 0.6f;
+        }
         if (particles)
         {
             GameObject p = Instantiate(particles, transform.position, Quaternion.identity);

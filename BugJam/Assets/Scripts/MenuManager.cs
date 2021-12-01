@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject peepee = null;
+
     public static MenuManager instance;
+    UnityEngine.Rendering.Universal.ChromaticAberration myChromaticAberration;
+    public float defaultChromaticAberration = 0.2f;
+    public float currChrome = 1f;
 
     void Awake()
     {
@@ -34,6 +39,12 @@ public class MenuManager : MonoBehaviour
             LoadScreen(watchScreen, false);
             LoadScreen(titleScreen);
         }
+    }
+
+    void Start()
+    {
+        UnityEngine.Rendering.VolumeProfile profile = peepee.GetComponent<UnityEngine.Rendering.Volume>()?.profile;
+        profile.TryGet(out myChromaticAberration);
     }
 
     public int currMusic = -1;
@@ -64,6 +75,11 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (currChrome > defaultChromaticAberration)
+        {
+            currChrome -= 0.05f;
+            myChromaticAberration.intensity.Override(currChrome);
+        }
         if (SceneManager.GetActiveScene().name == "TitleScreen")
         {
             if (currMusic != 0)

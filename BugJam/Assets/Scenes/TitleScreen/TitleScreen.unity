@@ -1163,6 +1163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfc23de62119974e9743c88061a9113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  peepee: {fileID: 118102008}
+  defaultChromaticAberration: 0.144
+  currChrome: 1
   currMusic: -1
   menuMusic: {fileID: 113959215}
   campaignMusic: {fileID: 113959218}

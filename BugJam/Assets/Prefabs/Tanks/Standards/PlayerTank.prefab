@@ -675,6 +675,7 @@ MonoBehaviour:
   launchVectorDecay: 0.08
   launchVector: {x: 31.304493, y: -21.082994}
   launchStrength: 5
+  nochangelayer: 0
 --- !u!50 &897224242519615261
 Rigidbody2D:
   serializedVersion: 4
@@ -1113,6 +1114,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 897224242200086667}
+    - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
+      propertyPath: protag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
       propertyPath: soundTop
       value: 1.5
