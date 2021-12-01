@@ -16,6 +16,8 @@ public class hurtbox : MonoBehaviour
 
     public MoveTank move;
 
+    public bool boss1 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,10 @@ public class hurtbox : MonoBehaviour
             {
                 if (other.GetComponent<bullet>().dead == false)
                 {
-                    IHaveBeenHit(other.transform.position, other.GetComponent<bullet>().strength);
+                    if (boss1 == false)
+                    {
+                        IHaveBeenHit(other.transform.position, other.GetComponent<bullet>().strength);
+                    }
                     other.GetComponent<bullet>().hit();
                     //add score to the player that hit me
                     if (other.GetComponent<bullet>().ownerScoreNumber != gun.scoreNumber)
@@ -63,6 +68,10 @@ public class hurtbox : MonoBehaviour
                         settingsHandler.instance.AddScore(other.GetComponent<bullet>().ownerScoreNumber);
                     }
 
+                }
+                if (boss1)
+                {
+                    Destroy(other.gameObject);
                 }
             }
 

@@ -11,6 +11,7 @@ public class PowerupDirector : MonoBehaviour
     public float timeToSpawnLeft;
     public float initialTimeToSpawn = 100;
     public float noWallsNear = 1f;
+    public float extraInitialWait = 20f;
 
     public List<string> enabledPowerups;
 
@@ -34,6 +35,7 @@ public class PowerupDirector : MonoBehaviour
         range = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize.y * rangeMod;
         timeToSpawn = initialTimeToSpawn;
         timeToSpawnLeft = timeToSpawn;
+        timeToSpawnLeft += extraInitialWait;
     }
 
     // FixedUpdate is called once per physics

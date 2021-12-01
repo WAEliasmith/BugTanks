@@ -18,7 +18,10 @@ public class Explosion : bullet
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(settingsHandler.instance.camera.Shake(shakeLength, shakeMag));
+        if (settingsHandler.instance.camera)
+        {
+            StartCoroutine(settingsHandler.instance.camera.Shake(shakeLength, shakeMag));
+        }
         ownerScoreNumber = carrier.ownerScoreNumber;
         maze = GameObject.Find("MazeHandler").GetComponent<MazeHandler>();
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;

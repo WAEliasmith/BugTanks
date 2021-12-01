@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8469625834254994365
+--- !u!1 &3517970349261106494
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,79 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2991412519778675056}
-  - component: {fileID: 4961857398450406155}
-  - component: {fileID: 5055576311498271855}
-  m_Layer: 0
-  m_Name: Fragsplosion
+  - component: {fileID: 3988498207193569453}
+  - component: {fileID: 2787011803271502217}
+  - component: {fileID: 4514920094078228747}
+  - component: {fileID: 4959529827666931056}
+  - component: {fileID: 8027602691833390673}
+  m_Layer: 6
+  m_Name: GSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2991412519778675056
+--- !u!4 &3988498207193569453
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8469625834254994365}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 3517970349261106494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4961857398450406155
+--- !u!58 &2787011803271502217
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517970349261106494}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.01
+--- !u!114 &4514920094078228747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8469625834254994365}
+  m_GameObject: {fileID: 3517970349261106494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529447bac70a93c4a87c553c98322223, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d7716db3898b0c49b3bcc07e01d40d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 5055576311498271855}
+  owner: {fileID: 0}
+  particles: {fileID: 7832974597598884514, guid: 477db55bbf44d2b4981754f30505fd63, type: 3}
+  sound: {fileID: 4959529827666931056}
   soundTop: 1
   soundBottom: 0.8
---- !u!82 &5055576311498271855
+--- !u!82 &4959529827666931056
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8469625834254994365}
+  m_GameObject: {fileID: 3517970349261106494}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 59943822cf6ff824c85205caf8fe077f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 10f9537a49615ad41965d8e5b9e57786, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e6cc0c6c163b7cd418a05e31ff9fc832, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.975
+  m_Volume: 0.645
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -144,3 +164,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &8027602691833390673
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517970349261106494}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7

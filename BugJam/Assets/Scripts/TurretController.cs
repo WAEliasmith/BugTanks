@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
+    public bool mad = false;
     public Gun gun;
     public Transform gunPos;
     public float reload = 20;
@@ -191,6 +192,23 @@ public class TurretController : MonoBehaviour
             else
             {
                 i = 999;
+            }
+        }
+        if (mad == true)
+        {
+            if (reloadLeft <= 0)
+            {
+                shotPos = (Vector2)gunPos.position;
+
+                hit = Physics2D.Raycast(shotPos, direction, maxDist, layerMask);
+
+                float selfDist = 0.2f;
+                if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude > selfDist)
+                {
+                    gun.Shoot();
+                    reloadLeft = reload;
+                    reloadLeft += reload * 0.5f;
+                }
             }
         }
     }

@@ -17,11 +17,11 @@ public class powerupButton : MonoBehaviour
     {
         if (MenuManager.instance.powerupToggle[toLookFor])
         {
-            image.color = new Color(1f, 1f, 1f, 1f);
+            image.color = new Color(0.5859375f, 0.2734375f, 1f, 1f);
         }
         else
         {
-            image.color = new Color(1f, 1f, 1f, 0.5f);
+            image.color = new Color(0.5859375f, 0.2734375f, 1f, 0.5f);
         }
     }
 }

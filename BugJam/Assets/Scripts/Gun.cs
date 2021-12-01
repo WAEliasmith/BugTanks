@@ -6,6 +6,8 @@ public class Gun : MonoBehaviour
 {
     public GameObject muzzleFlash = null;
 
+    public bool infiniteSpecial = false;
+
     public bool fire;
     public int bulletCount = 5;
     public GameObject[] myBullets;
@@ -108,7 +110,10 @@ public class Gun : MonoBehaviour
 
         if (wingTimer < 200)
         {
-            tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;
+            if (!infiniteSpecial)
+            {
+                tankColor.a = (wingTimer / 200) * 1f;// + 0.5f;
+            }
         }
 
 
@@ -161,7 +166,11 @@ public class Gun : MonoBehaviour
             {
                 tankColor.a = 1f;
                 wingTimer = 999;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
+
                 movement.wings = false;
             }
             else
@@ -185,7 +194,14 @@ public class Gun : MonoBehaviour
     {
         if (powerup == "frag exploder")
         {
-            powerup = "none";
+            if (!infiniteSpecial)
+            {
+                powerup = "none";
+            }
+            else
+            {
+                powerup = "frag shot";
+            }
             return;
         }
         else if (powerup == "shockwave")
@@ -196,7 +212,10 @@ public class Gun : MonoBehaviour
             {
                 GameObject p = Instantiate(shockwave, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<bullet>().velocity = Rotate((Vector2)gunPos.transform.right, (i - 1) * 8f) * shotSpeed;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
             }
             return;
@@ -241,7 +260,10 @@ public class Gun : MonoBehaviour
                 if (lazerArray != null)
                 {
                     GameObject p = Instantiate(lazer, gunPos.transform.position, Quaternion.identity);
-                    powerup = "none";
+                    if (!infiniteSpecial)
+                    {
+                        powerup = "none";
+                    }
                     p.GetComponent<lazer>().path = lazerArray;
                     p.GetComponent<lazer>().ownerScoreNumber = scoreNumber;
                     p.transform.position = lazerArray[0];
@@ -251,7 +273,10 @@ public class Gun : MonoBehaviour
             {
                 GameObject p = Instantiate(missile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<Missile>().velocity = gunPos.transform.right * shotSpeed;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
                 p.GetComponent<Missile>().ownerScoreNumber = scoreNumber;
                 Flash();
             }
@@ -261,7 +286,10 @@ public class Gun : MonoBehaviour
                 GameObject p = Instantiate(wifimissile, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<WifiMissile>().velocity = gunPos.transform.right * shotSpeed;
                 p.GetComponent<WifiMissile>().movement = movement;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
                 Flash();
             }
@@ -280,7 +308,10 @@ public class Gun : MonoBehaviour
                 movement.recoil(-1f * gunPos.transform.right);
                 GameObject p = Instantiate(rpg, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
                 Flash();
             }
@@ -289,7 +320,10 @@ public class Gun : MonoBehaviour
                 movement.recoil(-0.2f * gunPos.transform.right);
                 GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<Grenade>().velocity = gunPos.transform.right * shotSpeed;
-                powerup = "none";
+                if (!infiniteSpecial)
+                {
+                    powerup = "none";
+                }
                 p.GetComponent<bullet>().ownerScoreNumber = scoreNumber;
                 Flash();
             }
@@ -301,7 +335,10 @@ public class Gun : MonoBehaviour
                 weirdCount++;
                 if (weirdCount % weirdShots == 0)
                 {
-                    powerup = "none";
+                    if (!infiniteSpecial)
+                    {
+                        powerup = "none";
+                    }
                 }
             }
             else if (powerup == "absorb shot")
@@ -313,7 +350,10 @@ public class Gun : MonoBehaviour
                 absorbCount++;
                 if (absorbCount % absorbShots == 0)
                 {
-                    powerup = "none";
+                    if (!infiniteSpecial)
+                    {
+                        powerup = "none";
+                    }
                 }
                 Flash();
             }

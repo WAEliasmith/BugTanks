@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraHolder : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class CameraHolder : MonoBehaviour
 
     void Update()
     {
+        //TESTING ONLY:
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene("TitleScreen");
+        }
         zoom = zoom * 0.95f + zoomTarget * 0.05f;
         C.GetComponent<Camera>().orthographicSize = zoom;
         NW.GetComponent<Camera>().orthographicSize = zoom;
@@ -72,7 +78,11 @@ public class CameraHolder : MonoBehaviour
         settingsHandler.instance.screenSize = screenSize;
         settingsHandler.instance.wrapOffset = wrapOffset;
         settingsHandler.instance.camera = GetComponent<CameraHolder>();
-        follow = settingsHandler.instance.cameraFollow;
+        if (settingsHandler.instance.pvp == true)
+        {
+            follow = settingsHandler.instance.cameraFollow;
+
+        }
         initialZoomTarget = zoomTarget;
         if (settingsHandler.instance.numPlayers == 1)
         {
@@ -132,7 +142,7 @@ public class CameraHolder : MonoBehaviour
                 }
             }
         }
-        else if (follow)
+        else if (follow == true)
         {
             if (target != null && target.GetComponent<MoveTank>().dead == false)
             {
@@ -199,12 +209,12 @@ public class CameraHolder : MonoBehaviour
             {
                 //noone alive
                 follow = false;
+                zoomTarget = Mathf.Max(screenSize.x, screenSize.y) * 0.5f + 0.2f;
             }
         }
         else
         {
             //follow is false
-            zoomTarget = Mathf.Max(screenSize.x, screenSize.y) * 0.5f;
             transform.position = Vector3.SmoothDamp(transform.position,
             new Vector3(0, 0, 0) + offset + (Vector3)wrapOffset, ref velocity, smoothSpeed);
         }

@@ -23,6 +23,8 @@ public class MenuManager : MonoBehaviour
             //create level select
             CreateLevelSelect();
 
+            LoadScreen(Controls, false);
+            LoadScreen(Dictionary, false);
             LoadScreen(settingsScreen, false);
             LoadScreen(singlePlayerScreen, false);
             LoadScreen(multiPlayerScreen, false);
@@ -95,6 +97,9 @@ public class MenuManager : MonoBehaviour
 
     public GameObject[] watchScreen;
 
+    public GameObject[] Dictionary;
+    public GameObject[] Controls;
+
     public void SinglePlayer()
     {
         settingsHandler.instance.numPlayers = 1;
@@ -127,9 +132,21 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void DictionaryButton()
+    {
+        ChangeScreen(settingsScreen, Dictionary);
+    }
+
+    public void ControlsButton()
+    {
+        ChangeScreen(settingsScreen, Controls);
+    }
+
     public void BackToMenu()
     {
         Noise2();
+        LoadScreen(Dictionary, false);
+        LoadScreen(Controls, false);
         LoadScreen(settingsScreen, false);
         LoadScreen(singlePlayerScreen, false);
         LoadScreen(multiPlayerScreen, false);

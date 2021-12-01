@@ -10,6 +10,8 @@ public class powerupWillSpawn : MonoBehaviour
     public string powerup = "none";
     public GameObject powerUp;
 
+    public bool troll = false;
+
     public bool powerUpDespawns = true;
 
     // Start is called before the first frame update
@@ -25,10 +27,13 @@ public class powerupWillSpawn : MonoBehaviour
         if (timerLeft == 0)
         {
             GameObject currPowerup = Instantiate(powerUp, transform.position, Quaternion.identity);
-            currPowerup.GetComponent<Powerup>().powerup = powerup;
-            if (powerUpDespawns == false)
+            if (!troll)
             {
-                currPowerup.GetComponent<Powerup>().maxLife = 999999;
+                currPowerup.GetComponent<Powerup>().powerup = powerup;
+                if (powerUpDespawns == false)
+                {
+                    currPowerup.GetComponent<Powerup>().maxLife = 999999;
+                }
             }
             Destroy(gameObject);
         }

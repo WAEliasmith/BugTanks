@@ -431,6 +431,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheeseAnger
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: angerPerShot
       value: 0
       objectReference: {fileID: 0}
@@ -443,8 +447,16 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheeseProximity
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: cheeseWhenClose
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheesingReduction
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: dontShootAtWallDist
@@ -651,6 +663,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheeseAnger
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: angerPerShot
       value: 0
       objectReference: {fileID: 0}
@@ -663,8 +679,16 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheeseProximity
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: cheeseWhenClose
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
+      propertyPath: cheesingReduction
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8133029396500627300, guid: 817faf8611dc49741a483b554f880ab0, type: 3}
       propertyPath: dontShootAtWallDist
@@ -2126,6 +2150,9 @@ MonoBehaviour:
   pointsForSurvival: 3
   enabledPowerups: []
   cameraFollow: 1
+  screenSize: {x: 0, y: 0}
+  wrapOffset: {x: 0, y: 0}
+  camera: {fileID: 0}
 --- !u!4 &562190015
 Transform:
   m_ObjectHideFlags: 0
