@@ -3296,8 +3296,9 @@ MonoBehaviour:
   SW: {fileID: 1754915508}
   S: {fileID: 604356787}
   SE: {fileID: 446699533}
+  boss2offset2: 0
   zoom: 4
-  zoomTarget: 4
+  zoomTarget: 3
 --- !u!1 &1754915508
 GameObject:
   m_ObjectHideFlags: 0

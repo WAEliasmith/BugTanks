@@ -216,7 +216,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.3}
+  m_Size: {x: 0.35, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &306223115573594231
 MonoBehaviour:
@@ -419,30 +419,30 @@ MonoBehaviour:
   movement: {fileID: 306223115874997225}
   gun: {fileID: 2918792352054067053}
   gunPos: {fileID: 306223116967102112}
-  powerupGreed: 1.5
-  reload: 25
+  powerupGreed: 2
+  reload: 24
   bulletCheckDist: 1.5
-  bulletCheckAngle: 80
+  bulletCheckAngle: 85
   nextWaypointDistance: 0.4
-  time: 30
-  dodgeCheckTime: 3
-  passiveShotCheckTime: 3
+  time: 25
+  dodgeCheckTime: 2
+  passiveShotCheckTime: 2
   AngrySinSpeed: 0.2
   angryTime: 35
   trackTime: 25
   chillTime: 25
   chillRadius: 3
-  cheeseTime: 35
+  cheeseTime: 30
   angryAngle: 55
   cheeseAngle: 0
-  playerDesire: 80
+  playerDesire: 70
   baseAnger: 9
   angerPerShot: 7
   angerWhenClose: 0.018
-  cheeseWhenClose: 0.14
+  cheeseWhenClose: 0.16
   angerGainPerFrame: 0
   dontShootAtWallDist: 0.6
-  aimDist: 13
+  aimDist: 15
   cheeseProximity: 1.4
   cheesingReduction: 0.2
   anger: 0
@@ -513,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  weirdBullet: {fileID: 0}
 --- !u!70 &306223115874997231
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -848,7 +849,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c5578bc39a0fd3646801a0b3fd6600a1, type: 3}
   - {fileID: 21300000, guid: 85eb908790dd9194e82c6c6e52c3b2a9, type: 3}
   - {fileID: 21300000, guid: fb9c3df7bf54a5543b93152d072dd980, type: 3}
-  - {fileID: 21300000, guid: feb7318028b42144989f9927b828682b, type: 3}
+  - {fileID: 21300000, guid: 1eabd7e9f70929a498c5922e5dc7d828, type: 3}
   - {fileID: 21300000, guid: 19124ab8da4d62c42a8b3cf215f2a62e, type: 3}
   - {fileID: 21300000, guid: e116f9e759c3312428e7cfa8a7865a6b, type: 3}
 --- !u!114 &4060201414522520275

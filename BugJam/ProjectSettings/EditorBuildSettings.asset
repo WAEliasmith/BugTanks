@@ -62,9 +62,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/13swarm.unity
     guid: c6c5abbb83d857442b48087507a1b5bb
-  - enabled: 1
-    path: Assets/14frag.unity
-    guid: 22ec560390c77194796ac342aefa28cb
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/15airraid.unity
     guid: 8f4c3203c107b9342a605575227a4bce
@@ -77,4 +77,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/17missile.unity
     guid: 925b40c5199f18442a119678e0076f3c
+  - enabled: 1
+    path: Assets/Scenes/20gang.unity
+    guid: 17b5c68042eceb74ba149f58f37a8c41
+  - enabled: 1
+    path: Assets/Scenes/23massive.unity
+    guid: 30372e434f6cb7746bb37e57df39edf9
+  - enabled: 1
+    path: Assets/Scenes/18weird.unity
+    guid: 5ccafd40175384040b37fe9d2fd370d5
+  - enabled: 1
+    path: Assets/Scenes/19hunt.unity
+    guid: 3e57bc5fbc5771a44a669655cf21a0f8
+  - enabled: 1
+    path: Assets/Scenes/21flight.unity
+    guid: 57c7de9b7feece04a99738428ab04855
+  - enabled: 1
+    path: Assets/Scenes/22meme.unity
+    guid: fa4ee791b3eb54041a40132e43c709dd
   m_configObjects: {}

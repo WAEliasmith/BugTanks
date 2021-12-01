@@ -31,6 +31,8 @@ public class MoveTank : MonoBehaviour
     public Vector2 launchVector;
     public float launchStrength = 1f;
 
+    public bool nochangelayer = false;
+
     public void recoil(Vector2 recoil)
     {
         launchVector += recoil;
@@ -110,11 +112,18 @@ public class MoveTank : MonoBehaviour
 
             if ((rb.rotation % 90 < 1 && rb.rotation % 90 > -1) || rb.rotation % 90 > 89 || rb.rotation % 90 < -89)
             {
-                gameObject.layer = 7;
+                if (nochangelayer == false)
+                {
+                    gameObject.layer = 7;
+
+                }
             }
             else
             {
-                gameObject.layer = 6;
+                if (nochangelayer == false)
+                {
+                    gameObject.layer = 6;
+                }
             }
 
             if (xAxis == 0)

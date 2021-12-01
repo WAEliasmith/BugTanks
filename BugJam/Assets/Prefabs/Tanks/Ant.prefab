@@ -565,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  weirdBullet: {fileID: 0}
 --- !u!70 &8133029396500627294
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1022,7 +1023,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c5578bc39a0fd3646801a0b3fd6600a1, type: 3}
   - {fileID: 21300000, guid: 85eb908790dd9194e82c6c6e52c3b2a9, type: 3}
   - {fileID: 21300000, guid: fb9c3df7bf54a5543b93152d072dd980, type: 3}
-  - {fileID: 21300000, guid: feb7318028b42144989f9927b828682b, type: 3}
+  - {fileID: 21300000, guid: 1eabd7e9f70929a498c5922e5dc7d828, type: 3}
   - {fileID: 21300000, guid: 19124ab8da4d62c42a8b3cf215f2a62e, type: 3}
   - {fileID: 21300000, guid: e116f9e759c3312428e7cfa8a7865a6b, type: 3}
 --- !u!114 &5528455260129193570

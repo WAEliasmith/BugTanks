@@ -4436,7 +4436,7 @@ MonoBehaviour:
   SW: {fileID: 1754915508}
   S: {fileID: 604356787}
   SE: {fileID: 446699533}
-  boss2offset: -0.5
+  boss2offset2: -0.5
   zoom: 2
   zoomTarget: 4
 --- !u!1001 &1613930932

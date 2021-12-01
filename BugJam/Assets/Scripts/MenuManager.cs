@@ -33,11 +33,13 @@ public class MenuManager : MonoBehaviour
             LoadScreen(pauseScreen, false);
             LoadScreen(watchScreen, false);
             LoadScreen(titleScreen);
-            music.Play();
         }
     }
 
-    public AudioSource music;
+    public int currMusic = -1;
+    public AudioSource menuMusic;
+    public AudioSource campaignMusic;
+
     public AudioSource bounce;
     public AudioSource click;
 
@@ -62,6 +64,24 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "TitleScreen")
+        {
+            if (currMusic != 0)
+            {
+                menuMusic.Play();
+                campaignMusic.Stop();
+                currMusic = 0;
+            }
+        }
+        else
+        {
+            if (currMusic != 1)
+            {
+                currMusic = 1;
+                campaignMusic.Play();
+                menuMusic.Stop();
+            }
+        }
         if (SceneManager.GetActiveScene().name != "TitleScreen")
         {
             if (Input.GetKeyDown("p") || Input.GetKeyDown("escape"))

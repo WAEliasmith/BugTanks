@@ -397,7 +397,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c5578bc39a0fd3646801a0b3fd6600a1, type: 3}
   - {fileID: 21300000, guid: 85eb908790dd9194e82c6c6e52c3b2a9, type: 3}
   - {fileID: 21300000, guid: fb9c3df7bf54a5543b93152d072dd980, type: 3}
-  - {fileID: 21300000, guid: feb7318028b42144989f9927b828682b, type: 3}
+  - {fileID: 21300000, guid: 1eabd7e9f70929a498c5922e5dc7d828, type: 3}
   - {fileID: 21300000, guid: 19124ab8da4d62c42a8b3cf215f2a62e, type: 3}
   - {fileID: 21300000, guid: e116f9e759c3312428e7cfa8a7865a6b, type: 3}
 --- !u!114 &897224241998891864
@@ -582,7 +582,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.3}
+  m_Size: {x: 0.35, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &897224242200086669
 MonoBehaviour:
@@ -673,7 +673,7 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 22.232351, y: -18.407227}
+  launchVector: {x: 31.304493, y: -21.082994}
   launchStrength: 5
 --- !u!50 &897224242519615261
 Rigidbody2D:
@@ -710,6 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 1
+  weirdBullet: {fileID: 0}
 --- !u!114 &897224242519615259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,21 +857,17 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 1.7337725, y: 0.9480037, z: 0.1}
-  - {x: 1.939394, y: 0.98890436, z: 0}
-  - {x: 0.06060624, y: 1.3626182, z: 0}
-  - {x: 0.939394, y: 1.5374198, z: 0}
-  - {x: 0.060606062, y: 1.7122214, z: 0}
-  - {x: 0.93939406, y: 1.8870231, z: 0}
-  - {x: 0.060606062, y: 2.0618248, z: 0}
-  - {x: 0.93939394, y: 2.2366264, z: 0}
-  - {x: 0.060606062, y: 2.411428, z: 0}
-  - {x: 0.939394, y: 2.5862296, z: 0}
-  - {x: 0.060606062, y: 2.7610312, z: 0}
-  - {x: 0.939394, y: 2.9358327, z: 0}
-  - {x: 0.060606033, y: 3.1106343, z: 0}
-  - {x: 0.93939406, y: 3.285436, z: 0}
-  - {x: 0.72979385, y: 3.327128, z: 0}
+  - {x: -0.67946297, y: -1.14816, z: 0.1}
+  - {x: -0.060606122, y: -1.2712584, z: 0}
+  - {x: -0.9848485, y: -1.4551015, z: 0}
+  - {x: -0.060606062, y: -1.6389449, z: 0}
+  - {x: -0.9393938, y: -1.8137466, z: 0}
+  - {x: -0.060606062, y: -1.9885483, z: 0}
+  - {x: -0.93939394, y: -2.16335, z: 0}
+  - {x: -0.060606003, y: -2.338152, z: 0}
+  - {x: -0.93939394, y: -2.5129538, z: 0}
+  - {x: 1.939394, y: -3.0855803, z: 0}
+  - {x: -0.22236645, y: -3.5155811, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
