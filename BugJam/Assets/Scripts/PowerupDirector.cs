@@ -24,6 +24,7 @@ public class PowerupDirector : MonoBehaviour
     public float maxRate = 4;
 
     public bool troll = false;
+    public bool troll2 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,8 +85,11 @@ public class PowerupDirector : MonoBehaviour
                 }
                 else
                 {
-                    powerup.GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
-                    powerup.GetComponent<Gun>().tankColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                    if (troll2 == false)
+                    {
+                        powerup.GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
+                        powerup.GetComponent<Gun>().tankColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                    }
                 }
                 return;
             }
