@@ -226,7 +226,7 @@ public class Gun : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f + gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
         RaycastHit2D hit2 = Physics2D.Raycast(gunPos.transform.position - gunPos.transform.right * 0.1f - gunPos.transform.up * 0.06f, gunPos.transform.right, minShotDistance, wallLayerMask);
 
-        if (hit.collider == null && hit2.collider == null)
+        if (hit.collider == null && hit2.collider == null || powerup == "weird")
         {
             if (powerup == "none" || powerup == "wings")
             {

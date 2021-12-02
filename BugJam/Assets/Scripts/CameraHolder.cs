@@ -57,7 +57,7 @@ public class CameraHolder : MonoBehaviour
             yield return null;
         }
 
-        screenShakeTarget.transform.localPosition = originalPos;
+        screenShakeTarget.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     void Update()

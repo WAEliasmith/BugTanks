@@ -56,6 +56,7 @@ public class MenuManager : MonoBehaviour
     public AudioSource bounce;
     public AudioSource click;
 
+    public int difficultyLevelHearts = 1;
 
     public string[] levelNames;
 
@@ -386,6 +387,16 @@ public class MenuManager : MonoBehaviour
         if (settingsHandler.instance.pvpMapSize > 4)
         {
             settingsHandler.instance.pvpMapSize = 1;
+        }
+    }
+
+    public void toggleDifficulty()
+    {
+        Noise();
+        difficultyLevelHearts++;
+        if (difficultyLevelHearts > 2)
+        {
+            difficultyLevelHearts = -1;
         }
     }
 

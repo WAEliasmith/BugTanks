@@ -51,7 +51,7 @@ public class Wrap : MonoBehaviour
         if (transform.position.x > (screenSize.x / 2) + wrapOffset.x)
         {
             transform.position -= new Vector3(screenSize.x, 0f, 0f);
-            if (weirdBullet != null)
+            if (weirdBullet != null && weirdBullet.lifeLeft != weirdBullet.life - 1)
             {
                 weirdBullet.noweirdnextframe = 2;
             }
@@ -59,7 +59,7 @@ public class Wrap : MonoBehaviour
         else if (transform.position.x < -(screenSize.x / 2) + wrapOffset.x)
         {
             transform.position += new Vector3(screenSize.x, 0f, 0f);
-            if (weirdBullet != null)
+            if (weirdBullet != null && weirdBullet.lifeLeft != weirdBullet.life - 1)
             {
                 weirdBullet.noweirdnextframe = 2;
             }
@@ -67,7 +67,7 @@ public class Wrap : MonoBehaviour
         if (transform.position.y > (screenSize.y / 2) + wrapOffset.y)
         {
             transform.position -= new Vector3(0f, screenSize.y, 0f);
-            if (weirdBullet != null)
+            if (weirdBullet != null && weirdBullet.lifeLeft != weirdBullet.life - 1)
             {
                 weirdBullet.noweirdnextframe = 2;
             }
@@ -75,7 +75,7 @@ public class Wrap : MonoBehaviour
         else if (transform.position.y < -(screenSize.y / 2) + wrapOffset.y)
         {
             transform.position += new Vector3(0f, screenSize.y, 0f);
-            if (weirdBullet != null)
+            if (weirdBullet != null && weirdBullet.lifeLeft != weirdBullet.life - 1)
             {
                 weirdBullet.noweirdnextframe = 2;
             }

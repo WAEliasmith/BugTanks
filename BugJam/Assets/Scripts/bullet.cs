@@ -16,7 +16,7 @@ public class bullet : MonoBehaviour
     public SpriteRenderer sr = null;
 
     public bool weird = false;
-    protected float lifeLeft;
+    public float lifeLeft;
     protected bool xFlip;
     protected bool yFlip;
     public float strength = 1f;

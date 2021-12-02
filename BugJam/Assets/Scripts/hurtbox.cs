@@ -22,6 +22,14 @@ public class hurtbox : MonoBehaviour
     void Start()
     {
         hp = maxHp;
+        if (tag == "Player" && hp > 1)
+        {
+            hp += MenuManager.instance.difficultyLevelHearts;
+        }
+        if (MenuManager.instance.difficultyLevelHearts == -1)
+        {
+            hp = 1;
+        }
     }
 
     void FixedUpdate()
