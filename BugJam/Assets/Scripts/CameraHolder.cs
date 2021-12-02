@@ -16,6 +16,8 @@ public class CameraHolder : MonoBehaviour
     public Vector2 screenSize;
     public Vector2 wrapOffset;
 
+    public Transform screenShakeTarget;
+
     public GameObject NW;
     public GameObject N;
     public GameObject NE;
@@ -25,6 +27,8 @@ public class CameraHolder : MonoBehaviour
     public GameObject SW;
     public GameObject S;
     public GameObject SE;
+
+    public Camera RenderCamera;
 
     private int prep = 2;
 
@@ -37,7 +41,7 @@ public class CameraHolder : MonoBehaviour
 
     public IEnumerator Shake(float duration, float magnitude)
     {
-        Vector3 originalPos = transform.localPosition;
+        Vector3 originalPos = screenShakeTarget.transform.localPosition;
 
         float elapsed = 0.0f;
 
@@ -46,15 +50,14 @@ public class CameraHolder : MonoBehaviour
             float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
             float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
-            transform.localPosition = originalPos + new Vector3(x, y, 0);
+            screenShakeTarget.transform.localPosition = originalPos + new Vector3(x, y, 0);
 
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        transform.localPosition = originalPos;
-
+        screenShakeTarget.transform.localPosition = originalPos;
     }
 
     void Update()
@@ -62,14 +65,6 @@ public class CameraHolder : MonoBehaviour
         smoothSpeed = 0.075f;
         zoom = zoom * 0.95f + zoomTarget * 0.05f;
         C.GetComponent<Camera>().orthographicSize = zoom;
-        NW.GetComponent<Camera>().orthographicSize = zoom;
-        N.GetComponent<Camera>().orthographicSize = zoom;
-        NE.GetComponent<Camera>().orthographicSize = zoom;
-        W.GetComponent<Camera>().orthographicSize = zoom;
-        E.GetComponent<Camera>().orthographicSize = zoom;
-        SW.GetComponent<Camera>().orthographicSize = zoom;
-        S.GetComponent<Camera>().orthographicSize = zoom;
-        SE.GetComponent<Camera>().orthographicSize = zoom;
     }
 
     void Start()
@@ -88,28 +83,29 @@ public class CameraHolder : MonoBehaviour
             target = target0;
             target2 = null;
         }
-        //disable outer cameras
-        // NW.GetComponent<Camera>().enabled = false;
-        // N.GetComponent<Camera>().enabled = false;
-        // NE.GetComponent<Camera>().enabled = false;
-        // W.GetComponent<Camera>().enabled = false;
-        // E.GetComponent<Camera>().enabled = false;
-        // SW.GetComponent<Camera>().enabled = false;
-        // S.GetComponent<Camera>().enabled = false;
-        // SE.GetComponent<Camera>().enabled = false;
 
         float w = screenSize.x;
         float h = screenSize.y;
 
-        NW.transform.localPosition = new Vector3(-w, h, 0);
-        N.transform.localPosition = new Vector3(0, h, 0);
-        NE.transform.localPosition = new Vector3(w, h, 0);
-        W.transform.localPosition = new Vector3(-w, 0, 0);
-        C.transform.localPosition = new Vector3(0, 0, 0);
-        E.transform.localPosition = new Vector3(w, 0, 0);
-        SW.transform.localPosition = new Vector3(-w, -h, 0);
-        S.transform.localPosition = new Vector3(0, -h, 0);
-        SE.transform.localPosition = new Vector3(w, -h, 0);
+        RenderCamera.orthographicSize = h * 0.5f;
+
+        NW.transform.localScale = new Vector3(w, h, 1f);
+        N.transform.localScale = new Vector3(w, h, 1f);
+        NE.transform.localScale = new Vector3(w, h, 1f);
+        W.transform.localScale = new Vector3(w, h, 1f);
+        E.transform.localScale = new Vector3(w, h, 1f);
+        SW.transform.localScale = new Vector3(w, h, 1f);
+        S.transform.localScale = new Vector3(w, h, 1f);
+        SE.transform.localScale = new Vector3(w, h, 1f);
+
+        NW.transform.localPosition = new Vector3(-w, h, 1) + (Vector3)wrapOffset;
+        N.transform.localPosition = new Vector3(0, h, 1) + (Vector3)wrapOffset;
+        NE.transform.localPosition = new Vector3(w, h, 1) + (Vector3)wrapOffset;
+        W.transform.localPosition = new Vector3(-w, 0, 1) + (Vector3)wrapOffset;
+        E.transform.localPosition = new Vector3(w, 0, 1) + (Vector3)wrapOffset;
+        SW.transform.localPosition = new Vector3(-w, -h, 1) + (Vector3)wrapOffset;
+        S.transform.localPosition = new Vector3(0, -h, 1) + (Vector3)wrapOffset;
+        SE.transform.localPosition = new Vector3(w, -h, 1) + (Vector3)wrapOffset;
     }
     // Fixed is called once per physics
     void FixedUpdate()

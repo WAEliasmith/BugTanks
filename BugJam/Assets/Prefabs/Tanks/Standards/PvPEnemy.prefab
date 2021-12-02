@@ -499,6 +499,7 @@ MonoBehaviour:
   launchVectorDecay: 0.08
   launchVector: {x: 0, y: 0}
   launchStrength: 5
+  nochangelayer: 0
 --- !u!114 &306223115874997204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +529,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.3}
+  m_Size: {x: 0.35, y: 0.25}
   m_Direction: 1
 --- !u!114 &2918792352054067053
 MonoBehaviour:

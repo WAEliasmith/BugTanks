@@ -47,6 +47,8 @@ public class MenuManager : MonoBehaviour
         profile.TryGet(out myChromaticAberration);
     }
 
+    public bool chrome = true;
+
     public int currMusic = -1;
     public AudioSource menuMusic;
     public AudioSource campaignMusic;
@@ -75,10 +77,18 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (chrome == false)
+        {
+            myChromaticAberration.intensity.Override(0);
+        }
         if (currChrome > defaultChromaticAberration)
         {
             currChrome -= 0.05f;
-            myChromaticAberration.intensity.Override(currChrome);
+            if (chrome)
+            {
+                myChromaticAberration.intensity.Override(currChrome);
+            }
+
         }
         if (SceneManager.GetActiveScene().name == "TitleScreen")
         {
@@ -377,6 +387,12 @@ public class MenuManager : MonoBehaviour
         {
             settingsHandler.instance.pvpMapSize = 1;
         }
+    }
+
+    public void toggleChrome()
+    {
+        chrome = !chrome;
+        currChrome = 0.8f;
     }
 
     public void toggleCrisp()
