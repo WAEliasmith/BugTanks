@@ -14,15 +14,33 @@ public class Boss3tail : MonoBehaviour
 
     public MoveTank movement = null;
     public bool goTime = true;
+    public bool goTime2 = true;
 
     public GameObject airRaid = null;
+
+    public GameObject airRaid2 = null;
+
+    public hurtbox hbox = null;
 
     public int heart1 = 1;
     public int heart2 = 3;
     public int heart3 = 5;
-    public hurtbox hbox = null;
+
+    public int fakehp = 6;
+
+    public float fakeTime = 0;
     void FixedUpdate()
     {
+        fakeTime++;
+        if (hbox && hbox.hp < fakehp)
+        {
+            fakeTime -= 0.3f;
+        }
+        if (fakeTime > 300)
+        {
+            fakeTime = 0;
+            fakehp--;
+        }
         movement.xAxis = 1f;
         reload1Left--;
         reload2Left--;
@@ -33,13 +51,13 @@ public class Boss3tail : MonoBehaviour
             gun.powerup = "none";
             gun.Shoot();
         }
-        if (reload2Left <= 0 && hbox.hp <= heart1)
+        if (reload2Left <= 0 && fakehp <= heart1)
         {
             reload2Left = reload2;
             gun.powerup = "absorb shot";
             gun.Shoot();
         }
-        if (reload3Left <= 0 && hbox.hp <= heart2)
+        if (reload3Left <= 0 && fakehp <= heart2)
         {
             reload3Left = reload3;
             reload2Left = reload2;
@@ -48,13 +66,22 @@ public class Boss3tail : MonoBehaviour
             gun.Shoot();
         }
 
-        if (hbox && hbox.hp <= heart3 && goTime)
+        if (fakehp <= heart3 && goTime)
         {
             goTime = false;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 6; i++)
             {
                 GameObject p = Instantiate(airRaid, new Vector3(i, -4.3f, 0f), Quaternion.identity);
                 p.GetComponent<powerupWillSpawn>().timer += -20 + i * 5;
+
+            }
+        }
+        if (fakehp <= 1 && goTime2)
+        {
+            goTime = false;
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject p = Instantiate(airRaid2, new Vector3(i, -2.5f, 0f), Quaternion.identity);
 
             }
         }

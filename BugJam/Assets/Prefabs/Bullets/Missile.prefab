@@ -106,7 +106,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.075
 --- !u!50 &3324601168875693080
 Rigidbody2D:
   serializedVersion: 4
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  weirdBullet: {fileID: 0}
 --- !u!114 &5469261798547510408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   speedOverride: 0.033
   maxBounces: -1
   wallCounter: 0
+  noweirdnextframe: 0
   color: {r: 0, g: 0, b: 0, a: 1}
   trackStart: 400
   rotateSpeed: 5.6
