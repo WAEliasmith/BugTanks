@@ -384,6 +384,7 @@ MonoBehaviour:
   hp: 1
   gun: {fileID: 3755751320100140579}
   move: {fileID: 1774793798374972071}
+  boss1: 0
 --- !u!114 &1245421290448121355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +583,7 @@ MonoBehaviour:
   launchVectorDecay: 0.12
   launchVector: {x: 0, y: 0}
   launchStrength: 3
+  nochangelayer: 0
 --- !u!114 &1774793798374972058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  justWrapped: 1
+  weirdBullet: {fileID: 0}
 --- !u!70 &1774793798374972065
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -625,6 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 8746710770699297446, guid: 3deedd12cbaab8941b9fac1a2beedc35, type: 3}
+  infiniteSpecial: 0
   fire: 0
   bulletCount: 5
   myBullets: []
@@ -646,6 +651,7 @@ MonoBehaviour:
   absorbShot: {fileID: 7317735712965344925, guid: cb930599208813d4caf58b66dbc0f818, type: 3}
   crispShot: {fileID: 2290384367521587732, guid: c00a2043f0654cf4f8531329da73683b, type: 3}
   wingDuration: 350
+  fragOut: {fileID: 0}
   tankColor: {r: 1, g: 0.072832614, b: 0, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   scoreNumber: 0
@@ -765,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959fcb09cb50973479325eaa62edf09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mad: 0
   gun: {fileID: 3755751320100140579}
   gunPos: {fileID: 1774793797253500910}
   reload: 40
@@ -1219,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
       propertyPath: owner
       value: 
-      objectReference: {fileID: 1774793798141722939}
+      objectReference: {fileID: 1774793798374972067}
     - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
       propertyPath: soundTop
       value: 1.5

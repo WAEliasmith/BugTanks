@@ -8,10 +8,15 @@ public class PvEDirector : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> players;
 
+    public bool victory = false;
+
+    public int currentLevel;
+
     //private int time;
     // Start is called before the first frame update
     void Start()
     {
+        currentLevel = MenuManager.instance.currentLevel;
         MenuManager.instance.menuTimeScaleMult = 1;
 
         enemies = new List<GameObject>();
@@ -48,26 +53,30 @@ public class PvEDirector : MonoBehaviour
         //time++;
         //if (time % 10 == 0)
         //{
-        int aliveCount = 0;
-        for (int i = 0; i < enemies.Count; i++)
+        if (victory == false)
         {
-            if (enemies[i].activeSelf == true)
+            int aliveCount = 0;
+            for (int i = 0; i < enemies.Count; i++)
             {
-                aliveCount++;
-            }
-        }
-        if (aliveCount == 0)
-        {
-            //go to next level
-            for (int i = 0; i < players.Count; i++)
-            {
-                if (players[i])
+                if (enemies[i].activeSelf == true)
                 {
-                    players[i].GetComponent<Gun>().hbox.iFrames = 10001f;
+                    aliveCount++;
                 }
             }
-            StartCoroutine(delay());
+            if (aliveCount == 0)
+            {
+                //go to next level
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (players[i])
+                    {
+                        players[i].GetComponent<Gun>().hbox.iFrames = 10001f;
+                    }
+                }
+                StartCoroutine(delay());
+            }
         }
+
         int playerCount = 0;
 
         for (int i = 0; i < players.Count; i++)
@@ -97,7 +106,7 @@ public class PvEDirector : MonoBehaviour
             }
             else
             {
-                MenuManager.instance.goToNextLevel();
+                MenuManager.instance.goToNextLevel(currentLevel);
             }
         }
         else

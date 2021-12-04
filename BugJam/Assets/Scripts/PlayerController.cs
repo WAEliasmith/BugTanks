@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public hurtbox hbox;
     public int playerControlsNumber = 0;
 
+    public bool turnLock = false;
+
     // public MazeHandler maze;
 
     // Update is called once per frame
@@ -42,6 +44,10 @@ public class PlayerController : MonoBehaviour
                 {
                     gun.Shoot();
                 }
+            }
+            if (turnLock && MenuManager.instance.turnLockEnabled)
+            {
+                movement.xAxis = 0f;
             }
         }
 

@@ -51,20 +51,20 @@ EditorBuildSettings:
     path: Assets/Scenes/9wifi.unity
     guid: 85da0606aa7d0a942b34c01870977bc9
   - enabled: 1
-    path: Assets/Scenes/12dark.unity
-    guid: 808cf2a9a98ffbe46a6b3ac2d69ae3fc
-  - enabled: 1
     path: Assets/Scenes/10small.unity
     guid: 85f2084c3622d7244bd5b8899fe66805
   - enabled: 1
     path: Assets/Scenes/11nade.unity
     guid: 210f522c0d121254a9c9e111116290ab
   - enabled: 1
+    path: Assets/Scenes/12dark.unity
+    guid: 808cf2a9a98ffbe46a6b3ac2d69ae3fc
+  - enabled: 1
     path: Assets/Scenes/13swarm.unity
     guid: c6c5abbb83d857442b48087507a1b5bb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/14frag.unity
+    guid: 48a3a157f46cc6c419b62c647a836795
   - enabled: 1
     path: Assets/Scenes/15airraid.unity
     guid: 8f4c3203c107b9342a605575227a4bce
@@ -72,17 +72,8 @@ EditorBuildSettings:
     path: Assets/Scenes/16boss2.unity
     guid: 35a46fee9d98c0b46ad8afeab4659754
   - enabled: 1
-    path: Assets/Scenes/14frag.unity
-    guid: 48a3a157f46cc6c419b62c647a836795
-  - enabled: 1
     path: Assets/Scenes/17missile.unity
     guid: 925b40c5199f18442a119678e0076f3c
-  - enabled: 1
-    path: Assets/Scenes/20gang.unity
-    guid: 17b5c68042eceb74ba149f58f37a8c41
-  - enabled: 1
-    path: Assets/Scenes/23massive.unity
-    guid: 30372e434f6cb7746bb37e57df39edf9
   - enabled: 1
     path: Assets/Scenes/18weird.unity
     guid: 5ccafd40175384040b37fe9d2fd370d5
@@ -90,15 +81,24 @@ EditorBuildSettings:
     path: Assets/Scenes/19hunt.unity
     guid: 3e57bc5fbc5771a44a669655cf21a0f8
   - enabled: 1
+    path: Assets/Scenes/20gang.unity
+    guid: 17b5c68042eceb74ba149f58f37a8c41
+  - enabled: 1
     path: Assets/Scenes/21flight.unity
     guid: 57c7de9b7feece04a99738428ab04855
   - enabled: 1
     path: Assets/Scenes/22meme.unity
     guid: fa4ee791b3eb54041a40132e43c709dd
   - enabled: 1
+    path: Assets/Scenes/23massive.unity
+    guid: 30372e434f6cb7746bb37e57df39edf9
+  - enabled: 1
     path: Assets/Scenes/25end.unity
     guid: ef634474bc157c94ea8abaa05b566e28
   - enabled: 1
     path: Assets/Scenes/24boss3.unity
     guid: ec8c546491bf91d4ebcbfc98d8141146
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

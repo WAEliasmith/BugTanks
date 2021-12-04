@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager instance;
+
+    public bool turnLockEnabled = true;
     public GameObject peepee = null;
 
-    public static MenuManager instance;
     UnityEngine.Rendering.Universal.ChromaticAberration myChromaticAberration;
     public float defaultChromaticAberration = 0.2f;
     public float currChrome = 1f;
@@ -111,7 +113,7 @@ public class MenuManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name != "TitleScreen")
         {
-            if (Input.GetKeyDown("p") || Input.GetKeyDown("escape"))
+            if (Input.GetKeyDown("p") || Input.GetKeyDown("escape") || Input.GetKeyDown("tab"))
             {
                 TogglePause();
             }
@@ -315,11 +317,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(levelNames[level]);
     }
 
-    public void goToNextLevel()
+    public void goToNextLevel(int level)
     {
         if (currentLevel < 24)
         {
-            goToLevel(currentLevel + 1);
+            goToLevel(level + 1);
         }
     }
 
@@ -402,6 +404,7 @@ public class MenuManager : MonoBehaviour
 
     public void toggleChrome()
     {
+        Noise();
         chrome = !chrome;
         currChrome = 0.8f;
     }
@@ -410,6 +413,12 @@ public class MenuManager : MonoBehaviour
     {
         Noise();
         settingsHandler.instance.crisp = !settingsHandler.instance.crisp;
+    }
+
+    public void toggleWallHelper()
+    {
+        Noise();
+        turnLockEnabled = !turnLockEnabled;
     }
 
     public void toggleCamera()

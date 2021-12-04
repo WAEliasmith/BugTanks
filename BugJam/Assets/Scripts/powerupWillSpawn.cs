@@ -14,6 +14,10 @@ public class powerupWillSpawn : MonoBehaviour
 
     public bool powerUpDespawns = true;
 
+    public bool troll3 = false;
+
+    public GameObject singlePowerupParent = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,14 @@ public class powerupWillSpawn : MonoBehaviour
                 {
                     currPowerup.GetComponent<Powerup>().maxLife = 999999;
                 }
+                if (singlePowerupParent != null)
+                {
+                    singlePowerupParent.GetComponent<PowerupDirector>().singlePowerup = currPowerup;
+                }
+            }
+            if (troll3 == true)
+            {
+                currPowerup.GetComponent<bullet>().color = new Color(Random.Range(0f, 1f), Random.Range(0.4f, 1f), Random.Range(0f, 1f));
             }
             Destroy(gameObject);
         }

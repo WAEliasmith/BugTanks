@@ -2359,6 +2359,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: oneAtATime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: noWallsNear
       value: 0
       objectReference: {fileID: 0}
@@ -4401,6 +4405,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 527056263420826823, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482869275502736309, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027736326595357261, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3008235722472567621, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
       propertyPath: m_Name
       value: HP Canvas
@@ -4492,6 +4508,54 @@ PrefabInstance:
     - target: {fileID: 3008235722562176570, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862082847183433624, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919659517189467549, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225746535116720505, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462260590280442485, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771357643389154, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284317876088944601, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596046677337704638, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432949769256928867, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587944865323481642, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620017800955747832, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658593076233470843, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708158197766025155, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba12cb8da1863be4c895c19bb8305f0a, type: 3}

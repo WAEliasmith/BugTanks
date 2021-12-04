@@ -25,6 +25,9 @@ public class PowerupDirector : MonoBehaviour
 
     public bool troll = false;
     public bool troll2 = false;
+
+    public bool oneAtATime = false;
+    public GameObject singlePowerup = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,9 +61,11 @@ public class PowerupDirector : MonoBehaviour
             {
                 timeToSpawn = initialTimeToSpawn / r;
             }
-
-            timeToSpawnLeft = timeToSpawn;
-            CreatePowerup();
+            if (singlePowerup == null || oneAtATime == false)
+            {
+                timeToSpawnLeft = timeToSpawn;
+                CreatePowerup();
+            }
         }
     }
 
@@ -81,6 +86,10 @@ public class PowerupDirector : MonoBehaviour
                     if (enabledPowerups.Count > 0)
                     {
                         powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Count)];
+                        if (oneAtATime)
+                        {
+                            powerup.GetComponent<powerupWillSpawn>().singlePowerupParent = gameObject;
+                        }
                     }
                 }
                 else
@@ -90,6 +99,10 @@ public class PowerupDirector : MonoBehaviour
                         powerup.GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
                         powerup.GetComponent<Gun>().tankColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
                     }
+                }
+                if (oneAtATime)
+                {
+                    singlePowerup = powerup;
                 }
                 return;
             }

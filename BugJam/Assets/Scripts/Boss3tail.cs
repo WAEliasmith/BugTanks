@@ -26,21 +26,8 @@ public class Boss3tail : MonoBehaviour
     public int heart2 = 3;
     public int heart3 = 5;
 
-    public int fakehp = 6;
-
-    public float fakeTime = 0;
     void FixedUpdate()
     {
-        fakeTime++;
-        if (hbox && hbox.hp < fakehp)
-        {
-            fakeTime -= 0.3f;
-        }
-        if (fakeTime > 300)
-        {
-            fakeTime = 0;
-            fakehp--;
-        }
         movement.xAxis = 1f;
         reload1Left--;
         reload2Left--;
@@ -51,22 +38,22 @@ public class Boss3tail : MonoBehaviour
             gun.powerup = "none";
             gun.Shoot();
         }
-        if (reload2Left <= 0 && fakehp <= heart1)
+        if (reload2Left <= 0 && hbox.hp <= heart1)
         {
             reload2Left = reload2;
             gun.powerup = "absorb shot";
             gun.Shoot();
         }
-        if (reload3Left <= 0 && fakehp <= heart2)
+        if (reload3Left <= 0 && hbox.hp <= heart2)
         {
             reload3Left = reload3;
             reload2Left = reload2;
-            reload1Left = reload1 * 8;
+            reload1Left = reload1 * 4;
             gun.powerup = "frag shot";
             gun.Shoot();
         }
 
-        if (fakehp <= heart3 && goTime)
+        if (hbox.hp <= heart3 && goTime)
         {
             goTime = false;
             for (int i = 0; i < 6; i++)
@@ -76,9 +63,9 @@ public class Boss3tail : MonoBehaviour
 
             }
         }
-        if (fakehp <= 1 && goTime2)
+        if (hbox.hp <= 1 && goTime2)
         {
-            goTime = false;
+            goTime2 = false;
             for (int i = 0; i < 2; i++)
             {
                 GameObject p = Instantiate(airRaid2, new Vector3(i, -2.5f, 0f), Quaternion.identity);

@@ -10,10 +10,16 @@ public class Glitch : MonoBehaviour
     public float soundTop = 1f;
     public float soundBottom = 0.8f;
     public bool protag = false;
+    public float glitchTimer;
+
+    private float glitching = 0f;
 
     void FixedUpdate()
     {
+        glitching--;
+        glitchTimer--;
         transform.position = owner.transform.position;
+        transform.eulerAngles = owner.transform.eulerAngles;
     }
 
     // Start is called before the first frame update
@@ -29,12 +35,28 @@ public class Glitch : MonoBehaviour
             p.transform.position = transform.position;
         }
     }
+    public void OnCollisionStay2D(Collision2D other)
+    {
+        if (glitching == -3)
+        {
+            if (other.gameObject.tag == "YWall" || other.gameObject.tag == "XWall")
+            {
+
+                glitchTimer = 18f;
+                Particle();
+            }
+        }
+    }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "YWall" || other.gameObject.tag == "XWall")
+        if (glitchTimer <= 0)
         {
-            Particle();
+            if (other.gameObject.tag == "YWall" || other.gameObject.tag == "XWall")
+            {
+                glitching = 1f;
+            }
         }
     }
+
 }

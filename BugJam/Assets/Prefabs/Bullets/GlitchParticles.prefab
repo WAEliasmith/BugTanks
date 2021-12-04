@@ -4891,6 +4891,7 @@ GameObject:
   - component: {fileID: 477065630189841598}
   - component: {fileID: 2387041282589198857}
   - component: {fileID: 7919130895383698413}
+  - component: {fileID: 8741401696231396303}
   m_Layer: 0
   m_Name: GlitchParticles
   m_TagString: Untagged
@@ -5038,3 +5039,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8741401696231396303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832974597598884514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb95e4690e95e04b95b03c0c79ae518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  child: {fileID: 0}
+  screenSize: {x: 0, y: 0}

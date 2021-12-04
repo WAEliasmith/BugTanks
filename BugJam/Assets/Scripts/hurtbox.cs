@@ -25,8 +25,13 @@ public class hurtbox : MonoBehaviour
         if (tag == "Player" && hp > 1)
         {
             hp += MenuManager.instance.difficultyLevelHearts;
+            if (MenuManager.instance.difficultyLevelHearts == -1)
+            {
+                hp = 1;
+            }
         }
-        if (MenuManager.instance.difficultyLevelHearts == -1)
+
+        if (hp < -50)
         {
             hp = 1;
         }
@@ -58,6 +63,15 @@ public class hurtbox : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+
+        if (other.tag == "Powerup")
+        {
+            if (gun.powerup == "none")
+            {
+                gun.powerup = other.GetComponent<Powerup>().powerup;
+                other.GetComponent<Powerup>().Collected();
+            }
+        }
         if (iFrames <= 0)
         {
             if (other.tag == "Bullet")
@@ -80,15 +94,6 @@ public class hurtbox : MonoBehaviour
                 if (boss1)
                 {
                     Destroy(other.gameObject);
-                }
-            }
-
-            if (other.tag == "Powerup")
-            {
-                if (gun.powerup == "none")
-                {
-                    gun.powerup = other.GetComponent<Powerup>().powerup;
-                    other.GetComponent<Powerup>().Collected();
                 }
             }
         }

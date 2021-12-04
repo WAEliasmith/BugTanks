@@ -10,7 +10,6 @@ public class Wrap : MonoBehaviour
     private Vector2 wrapOffset;
 
     public bool holdCamera = false;
-
     public bullet weirdBullet = null;
 
     void Start()

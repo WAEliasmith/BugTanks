@@ -22,7 +22,7 @@ public class SnakeBoss : MonoBehaviour
         //move head
         transform.position += (Vector3)velocity;
         //edit velocity
-        velocity = velocity * 0.8f;
+        velocity = velocity * 0.7f;
         time++;
         if (Mathf.Round(time * 0.01f) % 2 == 0)
         {
@@ -30,7 +30,7 @@ public class SnakeBoss : MonoBehaviour
         }
         else
         {
-            angle -= 0.8f;
+            angle -= 0.65f;
         }
         float speed = velocity.magnitude;
 

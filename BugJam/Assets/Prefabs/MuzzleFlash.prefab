@@ -300,8 +300,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9211101714675233137, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211101714675233137, guid: 950cede0121d06941b895a917244d878, type: 3}
       propertyPath: m_VelocityScale
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211101714675233137, guid: 950cede0121d06941b895a917244d878, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 570438367
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 950cede0121d06941b895a917244d878, type: 3}

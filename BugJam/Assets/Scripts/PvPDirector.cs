@@ -171,7 +171,10 @@ public class PvPDirector : MonoBehaviour
                 if (controls != -1)
                 {
                     tanks[scoreNumber].GetComponent<PlayerController>().playerControlsNumber = controls;
-
+                    if (controls == 2)
+                    {
+                        tanks[scoreNumber].GetComponent<Wrap>().holdCamera = false;
+                    }
                 }
                 return;
             }

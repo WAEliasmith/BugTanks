@@ -308,7 +308,7 @@ public class Gun : MonoBehaviour
             }
             else if (powerup == "rpg")
             {
-                movement.recoil(-1f * gunPos.transform.right);
+                movement.recoil(-1.8f * gunPos.transform.right);
                 GameObject p = Instantiate(rpg, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<rpg>().velocity = gunPos.transform.right * shotSpeed;
                 if (!infiniteSpecial)
@@ -320,7 +320,7 @@ public class Gun : MonoBehaviour
             }
             else if (powerup == "grenade")
             {
-                movement.recoil(-0.2f * gunPos.transform.right);
+                movement.recoil(-0.4f * gunPos.transform.right);
                 GameObject p = Instantiate(grenade, gunPos.transform.position, Quaternion.identity);
                 p.GetComponent<Grenade>().velocity = gunPos.transform.right * shotSpeed;
                 if (!infiniteSpecial)

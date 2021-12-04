@@ -25,6 +25,7 @@ public class FragGrenade : bullet
             p.GetComponent<Fragment>().velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad * angle),
             Mathf.Sin(Mathf.Deg2Rad * angle)).normalized * shotSpeed;
             p.GetComponent<Fragment>().ownerScoreNumber = ownerScoreNumber;
+            p.GetComponent<Fragment>().color = new Color(color.r, color.g, color.b, 1f);
 
         }
         Instantiate(FragSplosion, transform.position, Quaternion.identity);

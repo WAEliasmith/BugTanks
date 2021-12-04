@@ -551,6 +551,7 @@ MonoBehaviour:
   launchVectorDecay: 0.08
   launchVector: {x: 0, y: 0}
   launchStrength: 5
+  nochangelayer: 0
 --- !u!114 &8133029396500627301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  justWrapped: 1
   weirdBullet: {fileID: 0}
 --- !u!70 &8133029396500627294
 CapsuleCollider2D:
@@ -1133,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
       propertyPath: owner
       value: 
-      objectReference: {fileID: 8133029395662349508}
+      objectReference: {fileID: 8133029396500627292}
     - target: {fileID: 4514920094078228747, guid: 936e0f38aae21024586538c7fb0de164, type: 3}
       propertyPath: soundTop
       value: 1.5

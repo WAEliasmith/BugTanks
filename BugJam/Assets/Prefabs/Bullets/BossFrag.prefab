@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 872608552065841031, guid: 00e3a8f50dccc26499ebe9553212258c, type: 3}
     - target: {fileID: 5341185887193528390, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
       propertyPath: life
-      value: 400
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5341185887193528390, guid: 5606a8a97c27bac4c96a5f89e814092f, type: 3}
       propertyPath: piercing
