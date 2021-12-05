@@ -1936,6 +1936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   players: []
+  victory: 0
+  currentLevel: 0
 --- !u!4 &854953462
 Transform:
   m_ObjectHideFlags: 0
@@ -2053,7 +2055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1016192840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3607,7 +3609,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You cannot GLITCH through reinforced walls
+  m_Text: You cannot shoot more than 5 bullets until the first one despawns
 --- !u!222 &2127443774
 CanvasRenderer:
   m_ObjectHideFlags: 0

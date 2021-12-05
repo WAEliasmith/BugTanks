@@ -434,7 +434,7 @@ PrefabInstance:
     - target: {fileID: 3755751320100140579, guid: a2e5cfec7e0a45c44a3fe69d2bc9b043, type: 3}
       propertyPath: absorbShot
       value: 
-      objectReference: {fileID: 8725747576790343671, guid: d6d55ce967c43774fb5cb893c1a283af, type: 3}
+      objectReference: {fileID: 4905479297812761715, guid: efe0a4a109335b946930a6bba2f81830, type: 3}
     - target: {fileID: 3755751320100140579, guid: a2e5cfec7e0a45c44a3fe69d2bc9b043, type: 3}
       propertyPath: bulletCount
       value: 50
@@ -2001,6 +2001,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   players: []
+  victory: 0
+  currentLevel: 0
+  playerCount: 0
 --- !u!4 &854953462
 Transform:
   m_ObjectHideFlags: 0
@@ -2381,6 +2384,10 @@ PrefabInstance:
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: initialTimeToSpawn
       value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: maxEntitiesSpawned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: enabledPowerups.Array.size

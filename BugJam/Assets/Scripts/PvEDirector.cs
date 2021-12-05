@@ -12,6 +12,8 @@ public class PvEDirector : MonoBehaviour
 
     public int currentLevel;
 
+    public int playerCount;
+
     //private int time;
     // Start is called before the first frame update
     void Start()
@@ -77,7 +79,7 @@ public class PvEDirector : MonoBehaviour
             }
         }
 
-        int playerCount = 0;
+        playerCount = 0;
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -99,7 +101,7 @@ public class PvEDirector : MonoBehaviour
     {
         if (MenuManager.instance.pause == false)
         {
-            yield return new WaitForSecondsRealtime(delayTime);
+            yield return new WaitForSeconds(delayTime);
             if (fail)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -109,10 +111,5 @@ public class PvEDirector : MonoBehaviour
                 MenuManager.instance.goToNextLevel(currentLevel);
             }
         }
-        else
-        {
-            StartCoroutine(delay(fail, 0.5f));
-        }
-
     }
 }

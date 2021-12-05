@@ -26,8 +26,8 @@ public class PowerupDirector : MonoBehaviour
     public bool troll = false;
     public bool troll2 = false;
 
-    public bool oneAtATime = false;
-    public GameObject singlePowerup = null;
+    public int maxEntitiesSpawned = 4;
+    public int entitiesSpawned = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +61,7 @@ public class PowerupDirector : MonoBehaviour
             {
                 timeToSpawn = initialTimeToSpawn / r;
             }
-            if (singlePowerup == null || oneAtATime == false)
+            if (entitiesSpawned < maxEntitiesSpawned || maxEntitiesSpawned == -1)
             {
                 timeToSpawnLeft = timeToSpawn;
                 CreatePowerup();
@@ -81,15 +81,13 @@ public class PowerupDirector : MonoBehaviour
             if (box == null)
             {
                 GameObject powerup = Instantiate(powerupPrefab, transform.position + position, Quaternion.identity);
+                entitiesSpawned++;
                 if (troll == false)
                 {
                     if (enabledPowerups.Count > 0)
                     {
                         powerup.GetComponent<powerupWillSpawn>().powerup = enabledPowerups[Random.Range(0, enabledPowerups.Count)];
-                        if (oneAtATime)
-                        {
-                            powerup.GetComponent<powerupWillSpawn>().singlePowerupParent = gameObject;
-                        }
+                        powerup.GetComponent<powerupWillSpawn>().powerupParent = gameObject;
                     }
                 }
                 else
@@ -98,11 +96,8 @@ public class PowerupDirector : MonoBehaviour
                     {
                         powerup.GetComponent<MoveTank>().innerAngle = Random.Range(0, 360);
                         powerup.GetComponent<Gun>().tankColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                        powerup.GetComponent<MoveTank>().powerupParent = gameObject;
                     }
-                }
-                if (oneAtATime)
-                {
-                    singlePowerup = powerup;
                 }
                 return;
             }

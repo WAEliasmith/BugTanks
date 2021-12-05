@@ -18,7 +18,7 @@ public class Heart : MonoBehaviour
             }
         }
 
-        transform.position += new Vector3(60 * heart, 0f, 0f);
+        transform.position += new Vector3((Screen.width / 20f) * heart, 0f, 0f);
     }
 
     // Update is called once per frame

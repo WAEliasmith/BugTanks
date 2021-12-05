@@ -571,6 +571,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: maxEntitiesSpawned
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: enabledPowerups.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -785,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crispText: {fileID: 176768999}
+  director: {fileID: 1668744182}
 --- !u!114 &176768999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press ESC or P to go back to the menu
+  m_Text: Press TAB or P to go back to the menu
 --- !u!222 &971057688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2650,6 +2655,7 @@ MonoBehaviour:
   players: []
   victory: 1
   currentLevel: 0
+  playerCount: 0
 --- !u!4 &1668744183
 Transform:
   m_ObjectHideFlags: 0
@@ -2789,7 +2795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6314017462324167581, guid: 04d4e29dd0feb9b45876650fef1f2832, type: 3}
       propertyPath: zoomTarget
-      value: 4.2
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 6314017462324167581, guid: 04d4e29dd0feb9b45876650fef1f2832, type: 3}
       propertyPath: screenSize.x
@@ -2899,6 +2905,10 @@ PrefabInstance:
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: initialTimeToSpawn
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: maxEntitiesSpawned
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: enabledPowerups.Array.size

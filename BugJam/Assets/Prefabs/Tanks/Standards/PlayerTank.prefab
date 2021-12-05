@@ -690,9 +690,10 @@ MonoBehaviour:
   dead: 0
   killedBy: {fileID: 0}
   launchVectorDecay: 0.08
-  launchVector: {x: 0, y: 0}
+  launchVector: {x: 6.197139, y: 11.8066}
   launchStrength: 3
   nochangelayer: 0
+  powerupParent: {fileID: 0}
 --- !u!50 &897224242519615261
 Rigidbody2D:
   serializedVersion: 4
@@ -859,12 +860,14 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -2.5384116, y: -2.2631857, z: 0.1}
-  - {x: -2.9712865, y: -4.439394, z: 0}
-  - {x: -3.7428255, y: -0.560606, z: 0}
-  - {x: -3.939394, y: -1.548822, z: 0}
-  - {x: -3.3644233, y: -4.439394, z: 0}
-  - {x: -2.9875863, y: -2.544907, z: 0}
+  - {x: -1.3, y: 2.6625, z: 0.1}
+  - {x: -1.3000002, y: 1.560606, z: 0}
+  - {x: -1.3000004, y: 3.439394, z: 0}
+  - {x: -1.3000007, y: 1.5606058, z: 0}
+  - {x: -1.3000009, y: 3.439394, z: 0}
+  - {x: -1.3000011, y: 1.5606062, z: 0}
+  - {x: -1.3000014, y: 3.4393942, z: 0}
+  - {x: -1.3000016, y: 1.8452281, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

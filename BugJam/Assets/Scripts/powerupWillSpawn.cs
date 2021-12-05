@@ -16,7 +16,7 @@ public class powerupWillSpawn : MonoBehaviour
 
     public bool troll3 = false;
 
-    public GameObject singlePowerupParent = null;
+    public GameObject powerupParent = null;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +38,22 @@ public class powerupWillSpawn : MonoBehaviour
                 {
                     currPowerup.GetComponent<Powerup>().maxLife = 999999;
                 }
-                if (singlePowerupParent != null)
+                if (powerupParent != null)
                 {
-                    singlePowerupParent.GetComponent<PowerupDirector>().singlePowerup = currPowerup;
+                    currPowerup.GetComponent<Powerup>().powerupParent = powerupParent;
+                }
+            }
+            else
+            {
+                if (currPowerup.transform.Find("Turret"))
+                {
+                    //spawning turret
+                    gameObject.transform.Find("Turret").GetComponent<MoveTank>().powerupParent = powerupParent;
+                }
+                else
+                {
+                    //spawning tank 
+                    currPowerup.GetComponent<MoveTank>().powerupParent = powerupParent;
                 }
             }
             if (troll3 == true)

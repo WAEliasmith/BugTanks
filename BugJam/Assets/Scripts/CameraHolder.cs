@@ -62,7 +62,7 @@ public class CameraHolder : MonoBehaviour
 
     void Update()
     {
-        smoothSpeed = 0.075f;
+        smoothSpeed = 0.2f;
         zoom = zoom * 0.95f + zoomTarget * 0.05f;
         C.GetComponent<Camera>().orthographicSize = zoom;
     }

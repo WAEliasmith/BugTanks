@@ -38,6 +38,8 @@ public class MoveTank : MonoBehaviour
         launchVector += recoil;
     }
 
+    public GameObject powerupParent = null;
+
     void Awake()
     {
         launchVector = new Vector2(0, 0);
@@ -137,6 +139,11 @@ public class MoveTank : MonoBehaviour
         }
         else
         {
+            if (powerupParent != null)
+            {
+                powerupParent.GetComponent<PowerupDirector>().entitiesSpawned -= 1;
+            }
+
             GameObject p = Instantiate(explosion, transform.position, Quaternion.identity);
             p.transform.position = transform.position;
             StartCoroutine(settingsHandler.instance.camera.Shake(0.1f, 0.1f));

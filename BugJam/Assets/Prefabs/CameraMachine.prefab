@@ -864,7 +864,7 @@ MonoBehaviour:
   target: {fileID: 0}
   target2: {fileID: 0}
   follow: 1
-  smoothSpeed: 0.125
+  smoothSpeed: 1
   offset: {x: 0, y: 0, z: -10}
   screenSize: {x: 6, y: 6}
   wrapOffset: {x: 0, y: -0.5}

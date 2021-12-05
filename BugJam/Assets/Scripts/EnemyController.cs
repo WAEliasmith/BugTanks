@@ -67,7 +67,6 @@ public class EnemyController : MonoBehaviour
         if (gun.crisp)
         {
             reload -= 10f;
-            WallBounceAim = 2;
         }
         reactionTime += Random.Range(0, 15f);
         screenSize = GameObject.Find("CameraHolder").GetComponent<CameraHolder>().screenSize;
@@ -226,7 +225,7 @@ public class EnemyController : MonoBehaviour
 
     void ShotCheck(bool passive, bool fragPos = false)
     {
-        if (gun.fragOut == null || (gun.fragOut.position - transform.position).magnitude > 1.5f)
+        if (gun.fragOut == null || (gun.fragOut.position - transform.position).magnitude > 1.75f)
         {
             //Shoot ray
             float maxDist = aimDist;
@@ -262,9 +261,13 @@ public class EnemyController : MonoBehaviour
             }
 
             float tempWallBounce = WallBounceAim;
-            if (fragPos)
+            if (fragPos || gun.powerup == "rpg")
             {
                 tempWallBounce = 1;
+            }
+            else if (gun.crisp)
+            {
+                tempWallBounce = 2;
             }
             for (int i = 0; i < tempWallBounce; i++)
             {

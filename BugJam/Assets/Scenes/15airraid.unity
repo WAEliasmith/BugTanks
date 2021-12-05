@@ -637,11 +637,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: extraInitialWait
-      value: 100
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: initialTimeToSpawn
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: maxEntitiesSpawned
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: enabledPowerups.Array.size
@@ -1616,6 +1620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   players: []
+  victory: 0
+  currentLevel: 0
 --- !u!4 &854953462
 Transform:
   m_ObjectHideFlags: 0
@@ -1980,7 +1986,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Watch your back...
+  m_Text: The sky is falling!
 --- !u!222 &998167231
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2365,7 +2371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1689615782
 MonoBehaviour:
   m_ObjectHideFlags: 0

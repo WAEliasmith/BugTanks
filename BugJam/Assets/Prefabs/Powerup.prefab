@@ -213,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectedExplosion: {fileID: 604686358890551021, guid: 2aeab510f26d68c439a18d55d523dd38, type: 3}
   powerup: lazer
-  maxLife: 1000
+  maxLife: 1250
+  powerupParent: {fileID: 0}
   lifeLeft: 0
 --- !u!61 &6940543436775811794
 BoxCollider2D:
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   holdCamera: 0
+  weirdBullet: {fileID: 0}
 --- !u!114 &5802280838077790564
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Powerup : MonoBehaviour
     public GameObject collectedExplosion = null;
     public string powerup = "";
     public int maxLife = 500;
+    public GameObject powerupParent = null;
 
     public int lifeLeft;
 
@@ -22,6 +23,10 @@ public class Powerup : MonoBehaviour
         lifeLeft--;
         if (lifeLeft <= 0)
         {
+            if (powerupParent != null)
+            {
+                powerupParent.GetComponent<PowerupDirector>().entitiesSpawned -= 1;
+            }
             Destroy(gameObject);
         }
     }
@@ -29,7 +34,10 @@ public class Powerup : MonoBehaviour
     public void Collected()
     {
         Instantiate(collectedExplosion, transform.position, Quaternion.identity);
-
+        if (powerupParent != null)
+        {
+            powerupParent.GetComponent<PowerupDirector>().entitiesSpawned -= 1;
+        }
         Destroy(gameObject);
     }
 }

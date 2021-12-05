@@ -423,7 +423,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use WASD or ARROW KEYS to move and E or SPACE to shoot
+  m_Text: Use WASD or ARROW KEYS to move and SPACE or ` to shoot
 --- !u!222 &142363964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use WASD to move and E or SPACE to shoot
+  m_Text: Use WASD to move and ` or SPACE to shoot
 --- !u!222 &537663906
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1617,6 +1617,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   players: []
+  victory: 0
+  currentLevel: 0
+  playerCount: 0
 --- !u!4 &854953462
 Transform:
   m_ObjectHideFlags: 0

@@ -168,6 +168,10 @@ PrefabInstance:
       value: 380
       objectReference: {fileID: 0}
     - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
+      propertyPath: maxEntitiesSpawned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368016928996714696, guid: 40e605485d6e3b84e9e951057eb07310, type: 3}
       propertyPath: enabledPowerups.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5555,6 +5559,7 @@ MonoBehaviour:
   launchVector: {x: 0, y: 0}
   launchStrength: 0
   nochangelayer: 1
+  powerupParent: {fileID: 0}
 --- !u!114 &6450714451195839116
 MonoBehaviour:
   m_ObjectHideFlags: 0

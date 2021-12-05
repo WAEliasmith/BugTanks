@@ -104,6 +104,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+
             if (currMusic != 1)
             {
                 currMusic = 1;

@@ -39,7 +39,6 @@ public class Missile : bullet
         {
             Target = GetClosestHurtbox();
             seeker.StartPath(transform.position, Target.position, OnPathComplete);
-            Debug.Log("getting closest");
             Track();
         }
         //Convert velocity to angle to
@@ -64,6 +63,7 @@ public class Missile : bullet
                 {
                     //Do Something
                     closestHurtboxTransform = Obj.transform;
+
                 }
             }
         }
@@ -83,7 +83,6 @@ public class Missile : bullet
                 }
             }
         }
-
 
         return (closestHurtboxTransform);
     }
